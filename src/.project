@@ -117,6 +117,86 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>[Targets]/[exe] cpp_stress_test</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/Source Files/cpp_stress_test.cpp</name>
+			<type>1</type>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox/cpp_stress_test.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] cpp_stress_test/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/Source Files/max_pairwise_product.cpp</name>
+			<type>1</type>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox/max_pairwise_product.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] max_pairwise_product/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>[Targets]/[exe] a_plus_b</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>

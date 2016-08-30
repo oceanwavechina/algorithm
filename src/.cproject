@@ -392,6 +392,62 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
+					<target name="[exe] cpp_stress_test" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>cpp_stress_test</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] cpp_stress_test/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>cpp_stress_test/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+						<buildTarget>cpp_stress_test</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/cpp_stress_test.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] max_pairwise_product" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>max_pairwise_product</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] max_pairwise_product/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>max_pairwise_product/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+						<buildTarget>max_pairwise_product</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/max_pairwise_product.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
 					<target name="[exe] a_plus_b" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
