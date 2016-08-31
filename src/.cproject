@@ -392,6 +392,34 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
+					<target name="[exe] GCD" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>GCD</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] GCD/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>GCD/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+						<buildTarget>GCD</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/GCD.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
 					<target name="[exe] FibRecurs" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>

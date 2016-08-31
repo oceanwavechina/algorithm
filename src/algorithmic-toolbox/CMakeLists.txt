@@ -16,3 +16,7 @@ add_executable(cpp_stress_test ${cpp_stress_test_SRC})
 # fibrecurs
 set(FibRecurs_SRC FibRecurs.cpp)
 add_executable(FibRecurs ${FibRecurs_SRC})
+
+# GCD.cpp
+set(GCD_SRC GCD.cpp)
+add_executable(GCD ${GCD_SRC})
