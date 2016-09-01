@@ -27,7 +27,7 @@ Week 2
 
 我们计算了太多重复的数值，如下图所示
 
-<img src="pics/QQ20160831-0@2x.png" alt="Drawing" style="width: 600px;"  />
+<img src="pics/QQ20160831-0@2x.png" alt="Drawing" style="width: 500px;"  />
 
 递归掉用实际上是反向掉用，最后按正向的顺序计算，所以我们是不是可以直接按照正向的顺序计算(应该可以但是没有实现。。。), (视频上讲的和这个想法一样，是O(n)级的)
 
@@ -41,14 +41,14 @@ Week 2
 
 利用 [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)  来计算会将时间复杂度由O(n) 提高到 O(log^n), 直观的感受下log函数：
 
-<img src="pics/QQ20160831-1@2x.png" alt="Drawing" style="width: 600px;"  />
+<img src="pics/QQ20160831-1@2x.png" alt="Drawing" style="width: 500px;"  />
 
 
 ### Big-O notation
 
 Big-O notation 描述的是算法消耗时间的sacle， 也就是随着输入数据的不断增大，话费的时间是怎样的走势, 因为当n比较小的时候，运行时间我们可以感受下，随着n不断增大，不同的模型有怎样的走势:
 
-<img src="pics/QQ20160831-2@2x.png" alt="Drawing" style="width: 600px;"  />
+<img src="pics/QQ20160831-2@2x.png" alt="Drawing" style="width: 500px;"  />
 
 Definition:
 > 1. f(n) = O(g(n)) (f is Big-O of g)

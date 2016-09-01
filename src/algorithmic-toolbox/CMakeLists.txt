@@ -22,3 +22,7 @@ add_executable(FibRecurs ${FibRecurs_SRC})
 # GCD.cpp
 set(GCD_SRC GCD.cpp)
 add_executable(GCD ${GCD_SRC})
+
+# LargestNumber.cpp
+set(LargestNumber_SRC LargestNumber.cpp)
+add_executable(LargestNumber ${LargestNumber_SRC})
