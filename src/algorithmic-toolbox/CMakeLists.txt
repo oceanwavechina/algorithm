@@ -26,3 +26,12 @@ add_executable(GCD ${GCD_SRC})
 # LargestNumber.cpp
 set(LargestNumber_SRC LargestNumber.cpp)
 add_executable(LargestNumber ${LargestNumber_SRC})
+
+
+# MinRefills.cpp
+set(MinRefills_SRC MinRefills.cpp)
+add_executable(MinRefills ${MinRefills_SRC})
+
+# PointsCoverSorted.cpp
+set(PointsCoverSorted_SRC PointsCoverSorted.cpp)
+add_executable(PointsCoverSorted ${PointsCoverSorted_SRC})
