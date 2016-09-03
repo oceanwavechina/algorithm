@@ -12,192 +12,6 @@
 				<project-mappings/>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name=": edit_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>edit_cache</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name=": rebuild_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>rebuild_cache</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name=": all" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name=": clean" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>clean</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] GCD" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>GCD</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] GCD/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>GCD/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
-						<buildTarget>GCD</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/GCD.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget/>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] FibRecurs" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>FibRecurs</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] FibRecurs/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>FibRecurs/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] FibRecurs" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
-						<buildTarget>FibRecurs</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] FibRecurs" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/FibRecurs.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget/>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] a_plus_b" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>a_plus_b</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] a_plus_b/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>a_plus_b/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] a_plus_b" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
-						<buildTarget>a_plus_b</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] a_plus_b" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/a_plus_b.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget/>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] cpp_stress_test" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>cpp_stress_test</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] cpp_stress_test/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>cpp_stress_test/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
-						<buildTarget>cpp_stress_test</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/cpp_stress_test.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget/>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] max_pairwise_product" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>max_pairwise_product</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] max_pairwise_product/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>max_pairwise_product/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
-						<buildTarget>max_pairwise_product</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/max_pairwise_product.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget/>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name=": all" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name=": clean" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>clean</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-				</buildTargets>
-			</storageModule>
 			<storageModule moduleId="scannerConfiguration">
 				<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
 				<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
@@ -227,9 +41,194 @@
 		<project id="Algorithm.null.1" name="Algorithm"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name=": edit_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>edit_cache</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name=": rebuild_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>rebuild_cache</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name=": all" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name=": clean" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>clean</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] GCD" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>GCD</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] GCD/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>GCD/fast</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Build" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+				<buildTarget>GCD</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Clean" path="[Targets]/[exe] GCD" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+				<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/GCD.dir/cmake_clean.cmake"</buildArguments>
+				<buildTarget/>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] FibRecurs" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>FibRecurs</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] FibRecurs/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>FibRecurs/fast</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Build" path="[Targets]/[exe] FibRecurs" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+				<buildTarget>FibRecurs</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Clean" path="[Targets]/[exe] FibRecurs" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+				<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/FibRecurs.dir/cmake_clean.cmake"</buildArguments>
+				<buildTarget/>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] a_plus_b" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>a_plus_b</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] a_plus_b/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>a_plus_b/fast</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Build" path="[Targets]/[exe] a_plus_b" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+				<buildTarget>a_plus_b</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Clean" path="[Targets]/[exe] a_plus_b" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+				<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/a_plus_b.dir/cmake_clean.cmake"</buildArguments>
+				<buildTarget/>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] cpp_stress_test" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>cpp_stress_test</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] cpp_stress_test/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>cpp_stress_test/fast</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Build" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+				<buildTarget>cpp_stress_test</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Clean" path="[Targets]/[exe] cpp_stress_test" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+				<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/cpp_stress_test.dir/cmake_clean.cmake"</buildArguments>
+				<buildTarget/>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] max_pairwise_product" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>max_pairwise_product</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="[exe] max_pairwise_product/fast" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>max_pairwise_product/fast</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Build" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src" -j8</buildArguments>
+				<buildTarget>max_pairwise_product</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name="Clean" path="[Targets]/[exe] max_pairwise_product" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/local/Cellar/cmake/3.6.1/bin/cmake</buildCommand>
+				<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/src/algorithmic-toolbox" "/usr/local/Cellar/cmake/3.6.1/bin/cmake" -P "CMakeFiles/max_pairwise_product.dir/cmake_clean.cmake"</buildArguments>
+				<buildTarget/>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name=": all" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+			<target name=": clean" path="algorithmic-toolbox" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+				<buildCommand>/usr/bin/make</buildCommand>
+				<buildArguments>-j8</buildArguments>
+				<buildTarget>clean</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+			</target>
+		</buildTargets>
+	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry excluding="a/|programming_pearls|part1_column1" kind="src" path=""/>
-		<pathentry excluding="a|part1_column1" kind="src" path="programming_pearls"/>
+		<pathentry excluding="a/|programming_pearls|src/|part1_column1" kind="src" path=""/>
 		<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" kind="inc" path="" system="true"/>

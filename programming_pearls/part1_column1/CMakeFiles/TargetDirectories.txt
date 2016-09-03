@@ -1,3 +1,0 @@
-/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/ProgrammingPearls/Part1_Column1/CMakeFiles/edit_cache.dir
-/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/ProgrammingPearls/Part1_Column1/CMakeFiles/rebuild_cache.dir
-/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/ProgrammingPearls/Part1_Column1/CMakeFiles/Problem1.dir
