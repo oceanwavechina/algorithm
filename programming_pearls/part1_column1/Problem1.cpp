@@ -13,6 +13,11 @@
 
 #include <stdlib.h>
 
+
+/*
+ * run with: $ ./Problem1 < data.txt
+ */
+
 template <typename T>
 std::string display(T val) {
 	std::stringstream ss;
