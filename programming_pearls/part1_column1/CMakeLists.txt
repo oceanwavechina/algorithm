@@ -13,3 +13,7 @@ add_executable(bitmap_sort ${bitmap_sort_SRC})
 # bitmap_sort_STL.cpp
 set(bitmap_sort_STL_SRC bitmap_sort_STL.cpp)
 add_executable(bitmap_sort_STL ${bitmap_sort_STL_SRC})
+
+# bitmap_sort_with_count.cpp
+set(bitmap_sort_with_count_SRC bitmap_sort_with_count.cpp)
+add_executable(bitmap_sort_with_count ${bitmap_sort_with_count_SRC})
