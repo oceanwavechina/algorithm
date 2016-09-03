@@ -76,8 +76,9 @@ int c_sort() {
 	}
 	printf("\n");
 
-	printf("sizeof (int*)0+1=%lu\n", ((size_t)((int*)0+1)));
 	printf("sizeof (char*)0+1=%lu\n", ((size_t)((char*)0+1)));
+	printf("sizeof (int*)0+1=%lu\n", ((size_t)((int*)0+1)));
+	printf("sizeof (long*)0+1=%lu\n", ((size_t)((long*)0+1)));
 	printf("sizeof (long long*)0+1=%lu\n", ((size_t)((long long*)0+1)));
 
 	printf("max number=%hu\n", (short unsigned)(-1));
