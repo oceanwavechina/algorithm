@@ -2,6 +2,7 @@ project(Algorithm)
 cmake_minimum_required(VERSION 3.6)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 
+###########  WEEK 2  ###########
 # A plus B
 set(APlusB_SRC APlusB.cpp)
 add_executable(a_plus_b ${APlusB_SRC})
@@ -23,10 +24,11 @@ add_executable(FibRecurs ${FibRecurs_SRC})
 set(GCD_SRC GCD.cpp)
 add_executable(GCD ${GCD_SRC})
 
+
+###########  WEEK 3  ###########
 # LargestNumber.cpp
 set(LargestNumber_SRC LargestNumber.cpp)
 add_executable(LargestNumber ${LargestNumber_SRC})
-
 
 # MinRefills.cpp
 set(MinRefills_SRC MinRefills.cpp)
@@ -39,3 +41,17 @@ add_executable(PointsCoverSorted ${PointsCoverSorted_SRC})
 # fractional_knapsack.cpp
 set(fractional_knapsack_SRC fractional_knapsack.cpp)
 add_executable(fractional_knapsack ${fractional_knapsack_SRC})
+
+
+###########  WEEK 4  ###########
+# recursive_linear_search.cpp
+set(recursive_linear_search_SRC recursive_linear_search.cpp)
+add_executable(recursive_linear_search ${recursive_linear_search_SRC})
+
+# binary_search.cpp
+set(binary_search_SRC binary_search.cpp)
+add_executable(binary_search ${binary_search_SRC})
+
+# polynomial_multiplication.cpp
+set(polynomial_multiplication_SRC polynomial_multiplication.cpp)
+add_executable(polynomial_multiplication ${polynomial_multiplication_SRC})

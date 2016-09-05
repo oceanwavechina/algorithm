@@ -27,11 +27,7 @@ std::string display(T val) {
 }
 
 
-int knapsack(int bag_weight, std::vector<int> goods_weight, std::vector<int> goods_value, std::vector<int>& A, int& V) {
-
-	std::vector<int> w = goods_weight;
-	std::vector<int> v = goods_value;
-	int W = bag_weight;
+int knapsack(int W, std::vector<int> w, std::vector<int> v, std::vector<int>& A, int& V) {
 	V = 0;
 
 	if (w.size() != v.size())
