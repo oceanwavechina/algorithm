@@ -27,16 +27,8 @@ MinRefill Problem:
 <br>
 <br>
 
-<table>
-    <tr>
-        <td>
-            <img src="pics/QQ20160901-1@2x.png" alt="Drawing" style="width: 400px;"  />
-        </td>
-        <td>
-            <img src="pics/QQ20160901-0@2x.png" alt="Drawing" style="width: 400px;"  />
-        </td>
-    </tr>
-</table>
+| <img src="pics/QQ20160901-1@2x.png" alt="Drawing" style="width: 400px;"  /> | <img src="pics/QQ20160901-0@2x.png" alt="Drawing" style="width: 400px;"  />  |
+
 
 其实右图中的证明就是:
     
@@ -88,13 +80,6 @@ Genenic Problem Definition:
 #### Example：Knapsack Problem
 
 > **Lemma**: There exists an optimal solution that use as much as possible of an item with the maximal value per unit of weight
-
-
-
-
-
-
-
 
 
 
