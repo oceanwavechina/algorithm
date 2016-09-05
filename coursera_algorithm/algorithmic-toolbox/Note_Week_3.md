@@ -1,10 +1,12 @@
-Week 3
+Week 3  : Greedy Algorithm
 ======
 
 greedy algorithm 是串行的解决子问题，而每个子问题的解都是当前看来最优的
 
 给定一个问题，我怎么判读是否该用贪心算法？
 > 往往是有多个选择，而且需要迭代多次
+> 还是需要判断是否满足 safe-move
+> 我们要先看看是不是需要对数据进行排序
 
 ### Greedy Algorithm
 #### Definition
@@ -81,5 +83,7 @@ Genenic Problem Definition:
 
 > **Lemma**: There exists an optimal solution that use as much as possible of an item with the maximal value per unit of weight
 
+
+<img src="pics/QQ20160905-0@2x.png" alt="Drawing" style="width: 400px;"  />
 
 

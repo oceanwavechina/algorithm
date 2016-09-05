@@ -35,3 +35,7 @@ add_executable(MinRefills ${MinRefills_SRC})
 # PointsCoverSorted.cpp
 set(PointsCoverSorted_SRC PointsCoverSorted.cpp)
 add_executable(PointsCoverSorted ${PointsCoverSorted_SRC})
+
+# fractional_knapsack.cpp
+set(fractional_knapsack_SRC fractional_knapsack.cpp)
+add_executable(fractional_knapsack ${fractional_knapsack_SRC})
