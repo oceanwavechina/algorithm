@@ -228,7 +228,8 @@
 		</buildTargets>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry excluding="a/|src/|part1_column1|programming_pearls_|programming_pearls/" kind="src" path=""/>
+		<pathentry excluding="a/|programming_pearls/|src/|part1_column1|programming_pearls_" kind="src" path=""/>
+		<pathentry kind="src" path="programming_pearls"/>
 		<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" kind="inc" path="" system="true"/>
@@ -574,6 +575,5 @@
 		<pathentry kind="mac" name="__x86_64" path="" value="1"/>
 		<pathentry kind="mac" name="__x86_64__" path="" value="1"/>
 		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
-		<pathentry kind="src" path="programming_pearls"/>
 	</storageModule>
 </cproject>
