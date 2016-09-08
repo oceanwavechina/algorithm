@@ -29,7 +29,7 @@ MinRefill Problem:
 <br>
 <br>
 
-| <img src="pics/QQ20160901-1@2x.png" alt="Drawing" style="width: 400px;"  /> | <img src="pics/QQ20160901-0@2x.png" alt="Drawing" style="width: 400px;"  />  |
+<img src="pics/QQ20160901-1@2x.png" alt="Drawing" style="width: 400px;"  /> <img src="pics/QQ20160901-0@2x.png" alt="Drawing" style="width: 400px;"  />
 
 
 其实右图中的证明就是:

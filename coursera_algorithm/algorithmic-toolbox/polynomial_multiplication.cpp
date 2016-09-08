@@ -25,7 +25,10 @@ std::vector<int> naive_mult_poly(std::vector<int> A, std::vector<int> B, int n) 
 
 	std::vector<int> product(2*n - 1);
 
-	// i, j的上限要搞清楚
+	/* 1. i, j的上限要搞清楚
+	 * 2. i+j=3 的排列有 0+3, 1+2, 2+1, 3+0, 相当于这两个for循环是在计算系数的排列
+	 * 3. runtime O(n)
+	 */
 	for (int i=0; i<n; ++i) {
 		for(int j=0; j<n; ++j)
 			product[i+j] = product[i+j] + A[i]*B[j];
