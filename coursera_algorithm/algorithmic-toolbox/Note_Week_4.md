@@ -25,3 +25,29 @@ binary search time-complex:
 #### Master Theorem
 
 <img src="pics/QQ20160906-0@2x.png" alt="Drawing" style="width: 400px;"  />  <img src="pics/QQ20160906-1@2x.png" alt="Drawing" style="width: 400px;"  />
+
+
+#### Sorting Problem
+
+Lemma:
+> Any comparison based sorting algorithm performs Ω(nlog<sup>n</sup>) comparisons in the worst case to sort n objects
+
+In other words
+> For any comparison based sorting algorithm, there exists an array A[1...n] such that the algorithm performs at least Ω(nlog<sup>n</sup>) comparisions to srot A.
+
+<img src="pics/QQ20160909-0@2x.png" alt="Drawing" style="width: 400px;"  />
+<br>
+<img src="pics/QQ20160909-1@2x.png" alt="Drawing" style="width: 400px;"  />
+<img src="pics/QQ20160909-2@2x.png" alt="Drawing" style="width: 400px;"  />
+
+
+#### Non comparison based sorting algorithm
+
+这个其实就是 bitmap 的思想呗
+
+summary
+
+<img src="pics/QQ20160909-3@2x.png" alt="Drawing" style="width: 400px;"  />
+
+
+

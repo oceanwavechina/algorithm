@@ -55,3 +55,15 @@ add_executable(binary_search ${binary_search_SRC})
 # polynomial_multiplication.cpp
 set(polynomial_multiplication_SRC polynomial_multiplication.cpp)
 add_executable(polynomial_multiplication ${polynomial_multiplication_SRC})
+
+# selection_sort.cpp
+set(selection_sort_SRC selection_sort.cpp)
+add_executable(selection_sort ${selection_sort_SRC})
+
+# merge_sort.cpp
+set(merge_sort_SRC merge_sort.cpp)
+add_executable(merge_sort ${merge_sort_SRC})
+
+# quick_sort.cpp
+set(quick_sort_SRC quick_sort.cpp)
+add_executable(quick_sort ${quick_sort_SRC})
