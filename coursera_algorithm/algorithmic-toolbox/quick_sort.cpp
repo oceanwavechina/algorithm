@@ -11,6 +11,8 @@
 #include <vector>
 #include <cstdint>
 #include <utility>
+#include <random>
+#include <tuple>
 
 template <typename T>
 std::string display(T val) {
@@ -52,7 +54,7 @@ int partition(std::vector<int>& A, int l, int r) {
 void quick_sort(std::vector<int>& A, int l, int r) {
 
 	if (l >=r )
-		return;
+		return ;
 
 	int m = partition(A, l, r);
 
@@ -61,14 +63,49 @@ void quick_sort(std::vector<int>& A, int l, int r) {
 }
 
 
+void randomized_quick_sort(std::vector<int>& A, int l, int r) {
+	if (l >= r)
+		return ;
+
+	std::random_device rd;
+	int k = l + rd() % (r-l); // 这个是［l,r］之间的某个值，而不是[0,A.size()) 间的某个值
+	std::cout  << "random position:" << k << std::endl;
+	std::swap(A[l], A[k]);
+
+	int m = partition(A, l, r);
+
+	randomized_quick_sort(A, l, m-1);
+	randomized_quick_sort(A, m+1, r);
+}
+
+void quick_sort_iteration(std::vector<int>& A, int l, int r) {
+
+	while(l < r) {
+		int m = partition(A, l, r);
+
+		if((m-l) < (r-m)) {
+			quick_sort_iteration(A, l, m-1);
+			l = m + 1;
+		} else {
+			quick_sort_iteration(A, m+1, r);
+			r = m - 1;
+		}
+	}
+
+}
+
+
 
 int main() {
 
 	std::vector<int> A= {6, 4, 8, 2, 9, 3, 9, 4, 7, 6, 1};
+//	std::vector<int> A= {6, 6, 6, 6, 6, 6, 6};
 
 	std::cout << "original data:\t" << display(A) << std::endl;
 
-	quick_sort(A, 0, A.size()-1);
+//	quick_sort(A, 0, A.size()-1);
+//	randomized_quick_sort(A, 0, A.size()-1);
+	quick_sort_iteration(A, 0, A.size()-1);
 
 	std::cout << "sorted data:\t" << display(A) << std::endl;
 

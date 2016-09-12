@@ -50,4 +50,6 @@ summary
 <img src="pics/QQ20160909-3@2x.png" alt="Drawing" style="width: 400px;"  />
 
 
+#### Quick Sort
 
+[Sorting Algorithms Animations](http://www.sorting-algorithms.com/)
