@@ -21,6 +21,9 @@ std::string display(std::vector<long> val) {
 	return ss.str();
 }
 
+/*
+ * 也是一个排序问题
+ */
 long LargestNumberGreedy(std::vector<long> input) {
 	std::vector<long> output;
 

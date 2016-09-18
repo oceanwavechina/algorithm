@@ -67,3 +67,13 @@ add_executable(merge_sort ${merge_sort_SRC})
 # quick_sort.cpp
 set(quick_sort_SRC quick_sort.cpp)
 add_executable(quick_sort ${quick_sort_SRC})
+
+
+###########  WEEK 5  ###########
+# money_change.cpp
+set(money_change_SRC money_change.cpp)
+add_executable(money_change ${money_change_SRC})
+
+# knapsack_with_repetitions.cpp
+set(knapsack_with_repetitions_SRC knapsack_with_repetitions.cpp)
+add_executable(knapsack_with_repetitions ${knapsack_with_repetitions_SRC})
