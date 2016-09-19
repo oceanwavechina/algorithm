@@ -41,6 +41,7 @@ int knapsack_with_repetitions(int W, std::vector<int> weights, std::vector<int> 
 		for(int i=1; i<=n; ++i) {
 
 			if(weights[i] <= w) {
+				// 这也是一个类似递归的步骤
 				int val = target_value[w-weights[i]] + values[i];
 				std::cout << "val=" << val << ", value[w-weights[i]]=" << target_value[w-weights[i]] << std::endl;
 				if(val > target_value[w]){
