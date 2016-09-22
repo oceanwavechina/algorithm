@@ -378,6 +378,34 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
+					<target name="[exe] Reverse_String" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>Reverse_String</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] Reverse_String/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>Reverse_String/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] Reverse_String" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
+						<buildTarget>Reverse_String</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] Reverse_String" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/Reverse_String.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
 					<target name="[exe] string_rotate" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>

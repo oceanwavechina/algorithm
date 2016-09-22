@@ -11,3 +11,8 @@ set(string_rotate_SRC string_rotate.cpp)
 add_executable(string_rotate ${string_rotate_SRC})
 
 
+# Reverse_String.cpp
+set(Reverse_String_SRC Reverse_String.cpp)
+add_executable(Reverse_String ${Reverse_String_SRC})
+
+
