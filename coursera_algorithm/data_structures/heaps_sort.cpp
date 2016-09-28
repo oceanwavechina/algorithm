@@ -30,8 +30,9 @@ class Heaps {
 	 * 序号 i 是从 1 开始的
 	 */
 public:
-	Heaps(std::vector<long> data):_data(data) {};
-	~Heaps() {};
+	~Heaps() {
+		_data.push_back(0);
+	};
 
 public:
 	long parent(int i) {
@@ -47,11 +48,9 @@ public:
 	}
 
 	void shiftUp(int i) {
-		while(i>1 && _data[parent(i)] < _data[i]) {
+		while(i>0 && _data[parent(i)] < _data[i]) {
 			std::swap(_data[parent(i)], _data[i]);
 			i = parent(i);
-
-			std::cout << "internal data:" << display(_data) << std::endl;
 		}
 	}
 
@@ -76,15 +75,16 @@ public:
 
 	void insert(long p) {
 		_data.push_back(p);
-//		std::cout << "after push back data:" << display(_data) << std::endl;
 		shiftUp(_data.size()-1);
+
+		std::cout << "after insert:" << display(_data) << std::endl;
 	}
 
 	long extraceMax() {
 		int result = _data.front();
-		_data.insert(_data.begin(), _data[_data.size()-1]);
-		_data.erase(_data.end()-1);
-		shiftDown(1);
+		std::swap(_data[0], _data[_data.size()-1]);
+		_data.pop_back();
+		shiftDown(0);
 		return result;
 	}
 
@@ -114,24 +114,28 @@ private:
 };
 
 
+void HeapSort(std::vector<long>& A) {
+	Heaps aHeap = Heaps();
 
-int main() {
-	// 序号 i 是从 1 开始的
-	Heaps aHeap = Heaps({0, 42, 29, 18, 14, 7, 18, 12, 11, 13});
+	for(auto a : A) {
+		aHeap.insert(a);
+	}
 
-	std::cout << "original data:" << display(aHeap.getData()) << std::endl;
-
-	std::cout << "position 4's parent: " << aHeap.parent(4) << std::endl;
-	std::cout << "position 4's left child: " << aHeap.leftChild(4) << std::endl;
-	std::cout << "position 4's right child: " << aHeap.rightChild(4) << std::endl;
-
-
-	aHeap.insert(1);
-	std::cout << "after insert 1:" << display(aHeap.getData()) << std::endl;
-
-	aHeap.insert(100);
-	std::cout << "after insert 100:" << display(aHeap.getData()) << std::endl;
-	return 0;
+	for(int i=A.size(); i>=0; --i) {
+		A[i-1] = aHeap.extraceMax();
+	}
 }
 
 
+int main() {
+
+	std::vector<long> A = {11, 42,  7, 18, 14, 18, 29 ,12, 13};
+
+	std::cout << "original data:" << display(A) << std::endl;
+
+	HeapSort(A);
+
+	std::cout << "after sort: " << display(A) << std::endl;
+
+	return 0;
+}
