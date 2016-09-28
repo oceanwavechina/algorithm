@@ -1,7 +1,7 @@
 /*
  * heaps.cpp
  *
- *  Created on: Sep 22, 2016
+ *  Created on: Sep 28, 2016
  *      Author: liuyanan
  */
 
@@ -27,24 +27,22 @@ std::string display(T val) {
 
 class Heaps {
 	/*
-	 * 序号 i 是从 1 开始的
+	 * 序号 i 是从 0 开始的
 	 */
 public:
-	~Heaps() {
-		_data.push_back(0);
-	};
+	~Heaps() {};
 
 public:
 	long parent(int i) {
-		return std::floor(i/2);
+		return std::floor((i-1)/2);
 	}
 
 	long leftChild(int i) {
-		return 2*i;
+		return 2*i+1;
 	}
 
 	long rightChild(int i) {
-		return 2*i + 1;
+		return 2*i + 2;
 	}
 
 	void shiftUp(int i) {
