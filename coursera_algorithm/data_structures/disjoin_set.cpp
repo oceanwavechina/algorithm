@@ -27,8 +27,8 @@ class DisjoinSet {
 
 public:
 	DisjoinSet() {
-		_parent.resize(50);
-		_rank.resize(50);
+		_parent.resize(10);
+		_rank.resize(10);
 	}
 
 public:
@@ -82,21 +82,41 @@ private:
 int main(int argc, char **argv) {
 	DisjoinSet s = DisjoinSet();
 
+	s.MakeSet(0);
 	s.MakeSet(1);
 	s.MakeSet(2);
 	s.MakeSet(3);
 	s.MakeSet(4);
 	s.MakeSet(5);
+	s.MakeSet(6);
 
 	std::cout << "origin:" << std::endl;
 	s.output();
 
 	std::cout << std::endl;
-	s.Union(2,3);
-	std::cout << "after union:" << std::endl;
+	s.Union(2,4);
+	std::cout << "after union 2,4:" << std::endl;
 	s.output();
 
+	std::cout << std::endl;
+	s.Union(5, 2);
+	std::cout << "after union 5,2:" << std::endl;
+	s.output();
 
+	std::cout << std::endl;
+	s.Union(3, 1);
+	std::cout << "after union 3,1:" << std::endl;
+	s.output();
+
+	std::cout << std::endl;
+	s.Union(2, 3);
+	std::cout << "after union 2,3:" << std::endl;
+	s.output();
+
+	std::cout << std::endl;
+	s.Union(2, 6);
+	std::cout << "after union 2,6:" << std::endl;
+	s.output();
 
 }
 
