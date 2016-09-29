@@ -11,3 +11,7 @@ add_executable(heaps_sort ${heaps_sort_SRC})
 set(heaps_sort_zero_based_SRC heaps_sort_zero_based.cpp)
 add_executable(heaps_sort_zero_based ${heaps_sort_zero_based_SRC})
 
+# disjoin_set.cpp
+set(disjoin_set_SRC disjoin_set.cpp)
+add_executable(disjoin_set ${disjoin_set_SRC})
+

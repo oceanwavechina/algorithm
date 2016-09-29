@@ -11,5 +11,29 @@ Priority Queues: Heaps
 
 
 
-Priority Queues: Heaps Sort
----------------------------
+Disjoint Sets
+-------------
+
+**Definition**:
+> A disjoin-set data structure supports the following operations:
+
+> - MakeSet(x) creates a singleton set {x}
+> - Find(x) return ID of the set containing x:
+> - -- if x and y lies in the same set, then Find(x) = Find(y)
+> - -- otherwise, Find(x) != Find(y)
+> - Union(x,y) merges two sets containing x and y
+
+
+**Implementation: Tree**
+
+> - Q: how to merge two trees?
+> - A: hang one of the trees under the root of the other one
+> 
+> - Q: which one to hang?
+> - A: a shorter one, since we would like to keep the tree shallow
+>
+> - When merging two trees we hang a shorter one under the root of a taller one
+> - To quickly find a height of a tree, we will keep the height of each subtree in an array rank[1...n]: rank[i] is the height of the subtree whose root is i
+> - hanging a shorter tree under a taller one is called a union by rank heuristic
+
+> <img src="pics/QQ20160929-0@2x.png" alt="Drawing" style="width: 400px;"  />
