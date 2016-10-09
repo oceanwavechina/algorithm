@@ -1,43 +1,34 @@
 Week 3
 ======
 
-Priority Queues: Heaps
+Hash Tables
 ----------------------
 
-**Definition**:
-> Binary max-heap is a binary-tree where the value of each node is at least the values of its children. （也就是父节点 大于等于 子节点）
-
-> In the previous module, we defined the height of a tree as the number of nodes on a longest path from the root to a leaf. In this module, we use a slightly different definition of the height: we define it to be equal to the number of edges on the longest path from the root to a leaf.
+**Overview**
+> 密码验证也是用的 hash table, 具体是咋做到的？
 
 
-
-Disjoint Sets
--------------
-
-**Overview**:
-> 解决迷宫问题
+**Definition**: hash function
+> For any set of objects S and any integer m>0, a function h: S -> {0, 1, ... , m-1} is called a hash function.
+> **m** is called the cardinalty of hash function h.  
 
 
-**Definition**:
-> A disjoin-set data structure supports the following operations:
+**Desirable Properties**
 
-> - MakeSet(x) creates a singleton set {x}
-> - Find(x) return ID of the set containing x:
-> - -- if x and y lies in the same set, then Find(x) = Find(y)
-> - -- otherwise, Find(x) != Find(y)
-> - Union(x,y) merges two sets containing x and y
+> - **h** should be fast to compute
+> - Different values for different objects
+> - Direct addressing with O(m) memory
+> - Want small cardinalty **m**
+> - Impssible to have all different values if number of objects |**S**| is more than m
 
 
-**Implementation: Tree**
+**Definition**: Collisions
+> when h(o<sub>1</sub>)=h(o<sub>1</sub>) and o<sub>1</sub> != o<sub>2</sub>, this is a collision.
 
-> - Q: how to merge two trees?
-> - A: hang one of the trees under the root of the other one
-> 
-> - Q: which one to hang?
-> - A: a shorter one, since we would like to keep the tree shallow
->
-> - When merging two trees we hang a shorter one under the root of a taller one
-> - To quickly find a height of a tree, we will keep the height of each subtree in an array rank[1...n]: rank[i] is the height of the subtree whose root is i
-> - hanging a shorter tree under a taller one is called a union by rank heuristic
 
-> <img src="pics/QQ20160929-0@2x.png" alt="Drawing" style="width: 400px;"  />
+**Definition**: Map
+> Map from S to V is a data structure with methods HasKey(O), Get(O), Set(O, v), where O ∈ S, v ∈ V.
+
+**Hash Functions**
+
+<img src="pics/QQ20161009-0@2x.png" alt="Drawing" style="width: 400px;"/> <img src="pics/QQ20161009-1@2x.png" alt="Drawing" style="width: 400px;"/> <img src="pics/QQ20161009-2@2x.png" alt="Drawing" style="width: 400px;"/> <img src="pics/QQ20161009-3@2x.png" alt="Drawing" style="width: 400px;"/>
