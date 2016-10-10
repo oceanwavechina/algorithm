@@ -19,3 +19,7 @@ add_executable(disjoin_set ${disjoin_set_SRC})
 # disjoin_set_path_compression.cpp
 set(disjoin_set_path_compression_SRC disjoin_set_path_compression.cpp)
 add_executable(disjoin_set_path_compression ${disjoin_set_path_compression_SRC})
+
+# binary_search_tree.cpp
+set(binary_search_tree_SRC binary_search_tree.cpp)
+add_executable(binary_search_tree ${binary_search_tree_SRC})

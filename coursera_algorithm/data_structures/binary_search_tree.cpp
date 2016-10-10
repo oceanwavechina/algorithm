@@ -6,23 +6,23 @@
  */
 
 
-
-
 #include <iostream>
+#include <vector>
 
 
 struct Node {
 
-	Node():key(0), left(nullptr), right(nullptr), parent(nullptr) {}
-	Node(int k):key(k), left(nullptr), right(nullptr), parent(nullptr) {}
+	Node():key(0), left(nullptr), right(nullptr), parent(nullptr), height(1) {}
+	Node(int k):key(k), left(nullptr), right(nullptr), parent(nullptr), height(1) {}
 
 	int key;
 
 	Node* left;
 	Node* right;
 	Node* parent;
-};
 
+	int height;	// height of the tree
+};
 
 
 class BinarySearchTree {
@@ -30,7 +30,26 @@ public:
 	typedef std::vector<Node*> Nodes;
 
 public:
-	Node* Find(int k, Node* R) {
+
+	static void DisplayNode(Node* n) {
+		std::cout << "node:" << n->key << std::endl;
+	}
+
+	static void DisplayRange(Nodes nodes) {
+
+		std::cout << "range is:";
+		for (auto node : nodes) {
+			std::cout << " " << node->key;
+		}
+		std::cout <<  std::endl;
+	}
+
+	static Node* Find(int k, Node* R) {
+		/*
+		 * missing key: if you stop before reaching a null pointer,
+		 * you find the place in the tree where K would fit.
+		 * we will return something close to it
+		 */
 
 		if (R->key == k)
 			return R;
@@ -46,15 +65,20 @@ public:
 				return R;
 	}
 
-	Node* LeftDescendent(Node* N) {
+	static Node* LeftDescendent(Node* N) {
 		if (N->left == nullptr)
 			return N;
 		else
 			return LeftDescendent(N->left);
 	}
 
-	Node* RightAncestor(Node* N) {
-		if (N == nullptr)
+	static Node* RightAncestor(Node* N) {
+		// 不断的找parent节点
+
+		// N is the largest number, then it has no ancestor,
+		// so when call RightAncestor(N->parent); we got nullptr as the parameter
+		// N->parent == nullptr:  这句话可别忘了。。。
+		if (N == nullptr || N->parent == nullptr)
 			return nullptr;
 
 		if (N->key < N->parent->key)
@@ -64,57 +88,122 @@ public:
 	}
 
 	/*
-	 * 找到次大的那个元素
+	 * 找到 next largest key
 	 */
-	Node* Next(Node* N) {
+	static Node* Next(Node* N) {
 		if (N->right != nullptr)
 			return LeftDescendent(N->right);
 		else
 			return RightAncestor(N);
 	}
 
-	Nodes RangeSearch(int x, int y, Node* R) {
+	static Nodes RangeSearch(int x, int y, Node* R) {
 		Nodes L;
 
 		Node* N = Find(x, R);
 
-		while (N->key <= y) {
-			if (N->key >= x) {
+		while (N->key <= y) { 		// 上限
+			if (N->key >= x) {		// 下限
 				L.push_back(N);
 			}
 
 			N = Next(N);
+			if (nullptr == N)
+				break;
 		}
 
 		return L;
 	}
 
-	void Insert(int k, Node* R) {
+	static void Insert(int k, Node* R) {
 		Node* P = Find(k, R);
 
-		Node* n = new Node(k);
-		n->parent = R;
+		std::cout << "find before insert: ";
+		DisplayNode(P);
 
-		if (k > R->key)
-			R->right = n;
+		Node* n = new Node(k);
+		n->parent = P;
+
+		if (k > P->key)
+			P->right = n;
 		else
-			R->left = n;
+			P->left = n;
 	}
 
-	void Delete(Node* N) {
-		if (N->right ==  nullptr)
+	/*
+	 * delete 没调试好，有问题
+	 */
+	static void Delete(Node* N) {
+		if (N->right ==  nullptr) {
 			// remove N, promote N->left
-			;
-		else
-			// X <- Next(N)
+
+			N->left->parent = N->parent;
+			if (N->left->key > N->parent->key)
+				N->parent->right = N->left;
+			else
+				N->parent->left = N->left;
+
+			delete N;
+
+		} else {
 			// replace N by X, promote X->right
-			;
+
+			Node *X = Next(N);
+			*N = *X;
+
+			N->right->parent = N->parent;
+			if (N->right->key > N->parent->key)
+				N->parent->right = N->left;
+			else
+				N->parent->left = N->left;
+		}
+	}
+
+	static void _middle_order(Node* R) {
+		if(R != nullptr){
+			_middle_order(R->left);
+			std::cout << " " << R->key;
+			_middle_order(R->right);
+		}
+	}
+
+	static void middle_order(Node* R) {
+		_middle_order(R);
+		std::cout << std::endl;
 	}
 };
 
 
 int main() {
 
+	Node* tree = new Node(9);
+
+	BinarySearchTree::Insert(1, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(6, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(2, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(7, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(4, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(8, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(3, tree);
+	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::Insert(5, tree);
+	BinarySearchTree::middle_order(tree);
+	std::cout << "tree built complete ..." << std::endl << std::endl;
+
+	BinarySearchTree::DisplayRange(BinarySearchTree::RangeSearch(2, 9, tree));
+
+	Node* node_5 = BinarySearchTree::Find(5, tree);
+	BinarySearchTree::DisplayNode(node_5);
+
+//	BinarySearchTree::Delete(node_5);
+
+//	BinarySearchTree::middle_order(tree);
 
 	return 0;
 }
