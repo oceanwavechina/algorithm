@@ -136,26 +136,37 @@ public:
 	static void Delete(Node* N) {
 		if (N->right ==  nullptr) {
 			// remove N, promote N->left
+			Node *X = Next(N);
+			N->key = X->key;
 
-			N->left->parent = N->parent;
-			if (N->left->key > N->parent->key)
-				N->parent->right = N->left;
-			else
-				N->parent->left = N->left;
+			if (X && X->left) {
+				N->parent->right = X->left;
+			} else {
+				N->parent->right = nullptr;
+			}
 
-			delete N;
+			delete X;
 
 		} else {
 			// replace N by X, promote X->right
-
+			std::cout <<  "delete right is not null" << std::endl;
 			Node *X = Next(N);
-			*N = *X;
+			N->key = X->key;
 
-			N->right->parent = N->parent;
-			if (N->right->key > N->parent->key)
-				N->parent->right = N->left;
-			else
-				N->parent->left = N->left;
+			if (X->right){
+				if (X->right)
+					N->right = X->right;
+				else
+					N->right = nullptr;
+				delete X->right;
+			} else {
+				std::cout <<  "delete X" << std::endl;
+				if (X->right)
+					N->right = X->right->right;
+				else
+					N->right = nullptr;
+				delete X;
+			}
 		}
 	}
 
@@ -196,14 +207,14 @@ int main() {
 	BinarySearchTree::middle_order(tree);
 	std::cout << "tree built complete ..." << std::endl << std::endl;
 
-	BinarySearchTree::DisplayRange(BinarySearchTree::RangeSearch(2, 9, tree));
+	BinarySearchTree::DisplayRange(BinarySearchTree::RangeSearch(2, 90, tree));
 
-	Node* node_5 = BinarySearchTree::Find(5, tree);
+	Node* node_5 = BinarySearchTree::Find(6, tree);
 	BinarySearchTree::DisplayNode(node_5);
 
-//	BinarySearchTree::Delete(node_5);
+	BinarySearchTree::Delete(node_5);
 
-//	BinarySearchTree::middle_order(tree);
+	BinarySearchTree::middle_order(tree);
 
 	return 0;
 }
