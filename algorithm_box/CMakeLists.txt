@@ -21,3 +21,14 @@ set(problility_SRC problility.cpp)
 add_executable(problility ${problility_SRC})
 
 
+# straight_insertion_sort.cpp
+set(straight_insertion_sort_SRC straight_insertion_sort.cpp)
+add_executable(straight_insertion_sort ${straight_insertion_sort_SRC})
+
+# selection_sort.cpp
+set(selection_sort_SRC selection_sort.cpp)
+add_executable(selection_sort ${selection_sort_SRC})
+
+# BinaryTree_2_LinkList.cpp
+set(BinaryTree_2_LinkList_SRC BinaryTree_2_LinkList.cpp)
+add_executable(BinaryTree_2_LinkList ${BinaryTree_2_LinkList_SRC})

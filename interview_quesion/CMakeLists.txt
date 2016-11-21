@@ -8,6 +8,10 @@ set(fork_test_SRC fork_test.cpp)
 add_executable(fork_test ${fork_test_SRC})
 
 
-# class_derive.cpp
-set(class_derive_SRC class_derive.cpp)
-add_executable(class_derive ${class_derive_SRC})
+# class_derive_1.cpp
+set(class_derive_1_SRC class_derive_1.cpp)
+add_executable(class_derive_1 ${class_derive_1_SRC})
+
+# class_derive_2.cpp
+set(class_derive_2_SRC class_derive_2.cpp)
+add_executable(class_derive_2 ${class_derive_2_SRC})

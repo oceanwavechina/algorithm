@@ -49,6 +49,7 @@ int main()
 	cout << "\n --------------------------------\n " << endl;
 
 	// 加不加 virtual输出的值是不一样的
+	// 看对象是哪个，就是调用哪个的方法
 	Base *p_2 = new Derived();
 	p_2->doSomething();
 	delete p_2;

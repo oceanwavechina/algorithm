@@ -117,6 +117,86 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/Source Files/BinaryTree_2_LinkList.cpp</name>
+			<type>1</type>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box/BinaryTree_2_LinkList.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] BinaryTree_2_LinkList/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/Source Files/selection_sort.cpp</name>
+			<type>1</type>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box/selection_sort.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] selection_sort/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>[Targets]/[exe] Reverse_String</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -233,6 +313,46 @@
 		</link>
 		<link>
 			<name>[Targets]/[exe] string_rotate/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/Source Files/straight_insertion_sort.cpp</name>
+			<type>1</type>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box/straight_insertion_sort.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] straight_insertion_sort/Object Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
