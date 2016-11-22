@@ -40,3 +40,7 @@ add_executable(BinaryTree_2_LinkList_with_queue ${BinaryTree_2_LinkList_with_que
 # radix_convert.cpp
 set(radix_convert_SRC radix_convert.cpp)
 add_executable(radix_convert ${radix_convert_SRC})
+
+# linklist_reverse.cpp
+set(linklist_reverse_SRC linklist_reverse.cpp)
+add_executable(linklist_reverse ${linklist_reverse_SRC})

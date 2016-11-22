@@ -364,10 +364,59 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 				<buildTargets>
-					<target name=": edit_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] sum_of_three_numbers" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>edit_cache</buildTarget>
+						<buildTarget>sum_of_three_numbers</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] sum_of_three_numbers/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>sum_of_three_numbers/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] sum_of_three_numbers" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
+						<buildTarget>sum_of_three_numbers</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] sum_of_three_numbers" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/sum_of_three_numbers.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] string_rotate" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>string_rotate</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] string_rotate/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>string_rotate/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] string_rotate" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
+						<buildTarget>string_rotate</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] string_rotate" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/string_rotate.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
@@ -462,6 +511,41 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
+					<target name=": edit_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>edit_cache</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] straight_insertion_sort" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>straight_insertion_sort</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="[exe] straight_insertion_sort/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-j8</buildArguments>
+						<buildTarget>straight_insertion_sort/fast</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Build" path="[Targets]/[exe] straight_insertion_sort" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
+						<buildTarget>straight_insertion_sort</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name="Clean" path="[Targets]/[exe] straight_insertion_sort" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/straight_insertion_sort.dir/cmake_clean.cmake"</buildArguments>
+						<buildTarget></buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
 					<target name="[exe] Reverse_String" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
@@ -546,86 +630,30 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="[exe] string_rotate" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] linklist_reverse" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>string_rotate</buildTarget>
+						<buildTarget>linklist_reverse</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="[exe] string_rotate/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] linklist_reverse/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>string_rotate/fast</buildTarget>
+						<buildTarget>linklist_reverse/fast</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Build" path="[Targets]/[exe] string_rotate" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Build" path="[Targets]/[exe] linklist_reverse" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
-						<buildTarget>string_rotate</buildTarget>
+						<buildTarget>linklist_reverse</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Clean" path="[Targets]/[exe] string_rotate" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Clean" path="[Targets]/[exe] linklist_reverse" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/string_rotate.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget></buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] straight_insertion_sort" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>straight_insertion_sort</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] straight_insertion_sort/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>straight_insertion_sort/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] straight_insertion_sort" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
-						<buildTarget>straight_insertion_sort</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] straight_insertion_sort" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/straight_insertion_sort.dir/cmake_clean.cmake"</buildArguments>
-						<buildTarget></buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] sum_of_three_numbers" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>sum_of_three_numbers</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="[exe] sum_of_three_numbers/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-j8</buildArguments>
-						<buildTarget>sum_of_three_numbers/fast</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Build" path="[Targets]/[exe] sum_of_three_numbers" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/bin/make</buildCommand>
-						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
-						<buildTarget>sum_of_three_numbers</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>false</useDefaultCommand>
-					</target>
-					<target name="Clean" path="[Targets]/[exe] sum_of_three_numbers" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
-						<buildCommand>/usr/local/Cellar/cmake/3.6.2/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/sum_of_three_numbers.dir/cmake_clean.cmake"</buildArguments>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.6.2/bin/cmake" -P "CMakeFiles/linklist_reverse.dir/cmake_clean.cmake"</buildArguments>
 						<buildTarget></buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
