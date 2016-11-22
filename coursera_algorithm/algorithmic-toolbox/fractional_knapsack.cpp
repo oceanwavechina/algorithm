@@ -5,10 +5,20 @@
  *      Author: liuyanan
  */
 
+
+
 /*
  * greedy algorithm 还是用排好序的数据处理方便
  *
+ * knapsack 分为两种：fractional_knapsack 和 discrete_knapsack
+ * 这里我们要讨论的是 fractional_knapsack
+ *
+ * input:
+ * 		weights w1, ..., wn and values v1, ..., vn of n items; capacity W.
+ * output:
+ * 		the maximum total value of fractions of items that fit into a bag of capacity W.
  */
+
 
 #include <iostream>
 #include <sstream>

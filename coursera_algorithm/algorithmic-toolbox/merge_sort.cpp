@@ -6,6 +6,11 @@
  */
 
 
+/*
+ * 归并排序的实现要点是：合并两个有序列表
+ *
+ */
+
 
 #include <iostream>
 #include <sstream>

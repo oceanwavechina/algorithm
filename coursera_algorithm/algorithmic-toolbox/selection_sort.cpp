@@ -11,6 +11,10 @@
 #include <vector>
 #include <cstdint>
 
+/*
+ * 练习 递归 与 迭代 的相互转换
+ */
+
 template <typename T>
 std::string display(T val) {
 	std::stringstream ss;

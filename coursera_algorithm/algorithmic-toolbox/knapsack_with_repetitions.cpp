@@ -6,6 +6,21 @@
  */
 
 
+/*
+ * Dynamic Programming Algorithm
+ *
+ * discrete_knapsack 分为 with_repeat 和 without_repeat 的情况，
+ * 			这两种情况都不能用 greedy algorithm 解决， 需要引入动态规划算法
+ *
+ * input:
+ * 		weights w1, ..., wn and values v1, ..., vn of n items; total weight W
+ *
+ * output:
+ * 		the maximum value of items whose weight does not exceed W.
+ * 		Each item can be used any number of times;
+ *
+ */
+
 
 #include <iostream>
 #include <sstream>

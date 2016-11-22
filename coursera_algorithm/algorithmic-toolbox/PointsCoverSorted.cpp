@@ -4,12 +4,17 @@
  *  Created on: Sep 2, 2016
  *      Author: liuyanan
  *
- *  Description: 1. 这个问题是，对于有序的数据，在给定单位长度的情况下，我们根据这个长度将数据分组，使得分组最少，
+ */
+
+
+/*
+ * Greedy Algorithm
+ *
+ * Description: 1. 这个问题是，对于有序的数据，在给定单位长度的情况下，我们根据这个长度将数据分组，使得分组最少，
  *  				我们的结果不是确定的分组而是，找到相对应的区间
  *  			 2. 实际的问题，数据一般都不会排序，所以排序是第一步
  *
  */
-
 
 #include <vector>
 #include <ctime>

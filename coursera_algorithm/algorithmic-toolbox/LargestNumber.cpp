@@ -12,6 +12,16 @@
 #include <sstream>
 #include <cmath>
 
+
+/*
+ * Greedy Algorithm
+ *
+ * what is the largest number that consists of digits 5, 7, 3, 9, 1, 9 ?
+ * (use all the digits)
+ *
+ */
+
+
 std::string display(std::vector<long> val) {
 	std::stringstream ss;
 	for (auto v : val) {
