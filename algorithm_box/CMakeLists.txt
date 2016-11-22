@@ -32,3 +32,11 @@ add_executable(selection_sort ${selection_sort_SRC})
 # BinaryTree_2_LinkList.cpp
 set(BinaryTree_2_LinkList_SRC BinaryTree_2_LinkList.cpp)
 add_executable(BinaryTree_2_LinkList ${BinaryTree_2_LinkList_SRC})
+
+# BinaryTree_2_LinkList_with_queue.cpp
+set(BinaryTree_2_LinkList_with_queue_SRC BinaryTree_2_LinkList_with_queue.cpp)
+add_executable(BinaryTree_2_LinkList_with_queue ${BinaryTree_2_LinkList_with_queue_SRC})
+
+# radix_convert.cpp
+set(radix_convert_SRC radix_convert.cpp)
+add_executable(radix_convert ${radix_convert_SRC})
