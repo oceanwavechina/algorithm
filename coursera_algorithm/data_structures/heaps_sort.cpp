@@ -35,6 +35,8 @@ public:
 	};
 
 public:
+
+	// 下面这3个方法可以实现层级的遍历
 	long parent(int i) {
 		return std::floor(i/2);
 	}
@@ -54,6 +56,7 @@ public:
 		}
 	}
 
+	// 元素下沉， 这个是将乱序数组转换成堆 和 实现堆排序 的基础
 	void shiftDown(int i) {
 		int maxIndex = i;
 

@@ -17,7 +17,8 @@ int binary_search_recursive(std::vector<int> A, int low, int high, int key) {
 	if (high < low)
 		return low -1;
 
-	int mid = std::floor(low + (high-low)/2);
+	// ** 考察的点：不能是，(low+high)/2, 因为可能出现越界
+	int mid = low + (high-low)/2;
 
 	if (key == A[mid]) {
 		return mid;
@@ -34,7 +35,7 @@ int binary_search_iterative(std::vector<int> A, int low, int high, int key) {
 		2. 找到每次迭代的 step大小 是多少
 	*/
 	while (low <= high) {
-		int mid = std::floor(low + (high-low)/2);
+		int mid = low + (high-low)/2;
 
 		if (key == A[mid]) {
 			return mid;
