@@ -8,9 +8,9 @@
 '''
 
 
-def legal_ip(str):
+def legal_ip(string):
     try:
-        if int(str) < 255:
+        if int(string) < 255 and int(string) >= 0:
             return True
         else:
             return False
@@ -18,18 +18,20 @@ def legal_ip(str):
         return False
 
 
-def get_ips(str):
+def get_ips(string):
 
     ret = []
 
     for i in xrange(1, 5):
         for j in xrange(1, 5):
             for k in xrange(1, 5):
-                if (all([legal_ip(str[0:i]), legal_ip(str[i:-j][0:k]), legal_ip(str[i:-j][k:]), legal_ip(str[-j:])])):
-                    ret.append('.'.join([str[0:i].lstrip('0'), str[i:-j][0:k].lstrip('0'), str[i:-j][k:].lstrip('0'), str[-j:].lstrip('0')]))
-                    # print str[0:i], str[i:-j][0:k], str[i:-j][k:], str[-j:]
+                if (all([legal_ip(string[0:i]), legal_ip(string[i:-j][0:k]), legal_ip(string[i:-j][k:]), legal_ip(string[-j:])])):
+
+                    ret.append('.'.join([string[0:i], string[i:-j][0:k], string[i:-j][k:], string[-j:]]))
+                    print string[0:i], string[i:-j][0:k], string[i:-j][k:], string[-j:]
 
     return ret
 
 if __name__ == '__main__':
-    print get_ips("2502501135")
+    # print get_ips("2502501135")
+    print get_ips("250250")
