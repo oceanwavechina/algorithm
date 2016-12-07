@@ -10,6 +10,8 @@
 
 using namespace std;
 
+int i=0;
+
 class Base
 {
 public:
@@ -19,7 +21,7 @@ public:
 	}
 
 
-	// void doSomething() {
+	//void doSomething() {
 	virtual void doSomething() {
 		cout << "Base do something" << endl;
 	}
@@ -29,14 +31,21 @@ public:
 class Derived : public Base
 {
 public:
-	Derived() {}
+	Derived() {
+		_counter = ++i;
+		cout << "construct:" << _counter << endl;
+	}
 	virtual ~Derived() {
-		cout << "Derived destructor" << endl;
+		cout << "Derived destructor: " << _counter << endl;
 	}
 
 	void doSomething() {
 		cout << "Derived do something" << endl;
 	}
+
+private:
+	// 对象创建和销毁的顺序
+	int _counter;
 };
 
 
@@ -53,6 +62,11 @@ int main()
 	Base *p_2 = new Derived();
 	p_2->doSomething();
 	delete p_2;
+
+	Derived a[10];
+
+//	Derived* b = new Derived[3];
+
 
 	return 0;
 }

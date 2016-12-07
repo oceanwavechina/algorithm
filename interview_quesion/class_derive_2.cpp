@@ -78,7 +78,7 @@ int main()
 	 */
 	B b;
 	C *pc_2 = (C*)(&b); // 这种虽然强转可以，但是没什么意义
-	C *pc_2_t = dynamic_cast<C*>(&b);
+//	C *pc_2_t = dynamic_cast<C*>(&b);
 	C *pc_2_s = reinterpret_cast<C*>(&b);
 	C *pc_2_p = static_cast<C*>(&b);
 	cout << &b << endl;
