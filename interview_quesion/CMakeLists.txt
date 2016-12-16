@@ -23,3 +23,7 @@ add_executable(cpp_01 ${cpp_01_SRC})
 # test_new.cpp
 set(test_new_SRC test_new.cpp)
 add_executable(test_new ${test_new_SRC})
+
+# varaibles.cpp
+set(varaibles_SRC varaibles.cpp)
+add_executable(varaibles ${varaibles_SRC})
