@@ -12,9 +12,9 @@ set(string_rotate_SRC string_rotate.cpp)
 add_executable(string_rotate ${string_rotate_SRC})
 
 
-# Reverse_String.cpp
-set(Reverse_String_SRC Reverse_String.cpp)
-add_executable(Reverse_String ${Reverse_String_SRC})
+# string_reverse.cpp
+set(string_reverse_SRC string_reverse.cpp)
+add_executable(string_reverse ${string_reverse_SRC})
 
 
 # problility.cpp
@@ -53,3 +53,7 @@ add_executable(BinaryTree_Traversing ${BinaryTree_Traversing_SRC})
 # memory_pool.cpp
 set(memory_pool_SRC memory_pool.cpp)
 add_executable(memory_pool ${memory_pool_SRC})
+
+# strstr.cpp
+set(strstr_SRC strstr.cpp)
+add_executable(strstr ${strstr_SRC})
