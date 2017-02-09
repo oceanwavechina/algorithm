@@ -76,6 +76,7 @@ int main_1()
 
 	kill(pid, SIGKILL);
 
+	return 0;
 }
 
 
