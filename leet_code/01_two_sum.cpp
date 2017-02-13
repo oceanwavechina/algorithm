@@ -36,7 +36,27 @@ std::string display(T val) {
 }
 
 
-tuple<int, int> tow_number(vector<int> numbers, int target) {
+tuple<int, int> tow_number_hash(vector<int> numbers, int target) {
+
+	// O(n) runtime, O(n) space – Hash table
+
+	unordered_map<int, int> visited;
+
+	for(int i=0; i<numbers.size(); ++i) {
+		auto another = visited.find(target-numbers[i]);
+		if(another != visited.end()){
+			return make_tuple(another->second, i);
+		} else {
+			visited[numbers[i]] = i;
+		}
+	}
+
+	return make_tuple(-1, -1);
+}
+
+tuple<int, int> tow_number_tow_pointor(vector<int> numbers, int target) {
+
+	// O(n) runtime, O(n) space – Hash table
 
 	unordered_map<int, int> visited;
 
@@ -60,7 +80,7 @@ int main(int argc, char **argv) {
 	cout << "input numbers: " << display(numbers) << endl;
 	cout << "target sum: " << target << endl;
 
-	tuple<int, int> solution = tow_number(numbers, target);
+	tuple<int, int> solution = tow_number_hash(numbers, target);
 
 	cout << "solution: " << get<0>(solution) << ", " << get<1>(solution) << endl;
 
