@@ -14,3 +14,7 @@ add_executable(02_valid_palindrome ${02_valid_palindrome_SRC})
 # 03_sentence_reverse.cpp
 set(03_sentence_reverse_SRC 03_sentence_reverse.cpp)
 add_executable(03_sentence_reverse ${03_sentence_reverse_SRC})
+
+# 04_reverse_integer.cpp
+set(04_reverse_integer_SRC 04_reverse_integer.cpp)
+add_executable(04_reverse_integer ${04_reverse_integer_SRC})

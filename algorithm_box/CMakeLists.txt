@@ -54,6 +54,6 @@ add_executable(BinaryTree_Traversing ${BinaryTree_Traversing_SRC})
 set(memory_pool_SRC memory_pool.cpp)
 add_executable(memory_pool ${memory_pool_SRC})
 
-# strstr.cpp
-set(strstr_SRC strstr.cpp)
-add_executable(strstr ${strstr_SRC})
+# common_node_in_linklist.cpp
+set(common_node_in_linklist_SRC common_node_in_linklist.cpp)
+add_executable(common_node_in_linklist ${common_node_in_linklist_SRC})

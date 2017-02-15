@@ -117,42 +117,42 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr</name>
+			<name>[Targets]/[exe] common_node_in_linklist</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/</name>
+			<name>[Targets]/[exe] common_node_in_linklist/</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/Source Files</name>
+			<name>[Targets]/[exe] common_node_in_linklist/Source Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/Source Files/strstr.cpp</name>
+			<name>[Targets]/[exe] common_node_in_linklist/Source Files/common_node_in_linklist.cpp</name>
 			<type>1</type>
-			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box/strstr.cpp</location>
+			<location>/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box/common_node_in_linklist.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/Header Files</name>
+			<name>[Targets]/[exe] common_node_in_linklist/Header Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/CMake Rules</name>
+			<name>[Targets]/[exe] common_node_in_linklist/CMake Rules</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/Resources</name>
+			<name>[Targets]/[exe] common_node_in_linklist/Resources</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] strstr/Object Files</name>
+			<name>[Targets]/[exe] common_node_in_linklist/Object Files</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>

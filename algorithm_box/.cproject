@@ -364,30 +364,30 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 				<buildTargets>
-					<target name="[exe] strstr" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] common_node_in_linklist" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>strstr</buildTarget>
+						<buildTarget>common_node_in_linklist</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="[exe] strstr/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] common_node_in_linklist/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>strstr/fast</buildTarget>
+						<buildTarget>common_node_in_linklist/fast</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Build" path="[Targets]/[exe] strstr" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Build" path="[Targets]/[exe] common_node_in_linklist" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
-						<buildTarget>strstr</buildTarget>
+						<buildTarget>common_node_in_linklist</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Clean" path="[Targets]/[exe] strstr" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Clean" path="[Targets]/[exe] common_node_in_linklist" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/local/Cellar/cmake/3.7.2/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.7.2/bin/cmake" -P "CMakeFiles/strstr.dir/cmake_clean.cmake"</buildArguments>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.7.2/bin/cmake" -P "CMakeFiles/common_node_in_linklist.dir/cmake_clean.cmake"</buildArguments>
 						<buildTarget></buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
