@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++14")
 
+if(0)
 # sum_of_three_numbers.cpp
 set(sum_of_three_numbers_SRC sum_of_three_numbers.cpp)
 add_executable(sum_of_three_numbers ${sum_of_three_numbers_SRC})
@@ -57,3 +58,13 @@ add_executable(memory_pool ${memory_pool_SRC})
 # common_node_in_linklist.cpp
 set(common_node_in_linklist_SRC common_node_in_linklist.cpp)
 add_executable(common_node_in_linklist ${common_node_in_linklist_SRC})
+
+# up_the_steps.cpp
+set(up_the_steps_SRC up_the_steps.cpp)
+add_executable(up_the_steps ${up_the_steps_SRC})
+
+endif(0)
+
+# longest_unrepeat_substring.cpp
+set(longest_unrepeat_substring_SRC longest_unrepeat_substring.cpp)
+add_executable(longest_unrepeat_substring ${longest_unrepeat_substring_SRC})
