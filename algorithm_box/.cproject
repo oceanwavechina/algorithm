@@ -378,30 +378,30 @@
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="[exe] longest_unrepeat_substring" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] tree_depth" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>longest_unrepeat_substring</buildTarget>
+						<buildTarget>tree_depth</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="[exe] longest_unrepeat_substring/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="[exe] tree_depth/fast" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-j8</buildArguments>
-						<buildTarget>longest_unrepeat_substring/fast</buildTarget>
+						<buildTarget>tree_depth/fast</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Build" path="[Targets]/[exe] longest_unrepeat_substring" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Build" path="[Targets]/[exe] tree_depth" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/bin/make</buildCommand>
 						<buildArguments>-C "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" -j8</buildArguments>
-						<buildTarget>longest_unrepeat_substring</buildTarget>
+						<buildTarget>tree_depth</buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
 					</target>
-					<target name="Clean" path="[Targets]/[exe] longest_unrepeat_substring" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+					<target name="Clean" path="[Targets]/[exe] tree_depth" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 						<buildCommand>/usr/local/Cellar/cmake/3.7.2/bin/cmake</buildCommand>
-						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.7.2/bin/cmake" -P "CMakeFiles/longest_unrepeat_substring.dir/cmake_clean.cmake"</buildArguments>
+						<buildArguments>-E chdir "/Users/liuyanan/my_work/Eclipse_Space/algorithm.git/algorithm_box" "/usr/local/Cellar/cmake/3.7.2/bin/cmake" -P "CMakeFiles/tree_depth.dir/cmake_clean.cmake"</buildArguments>
 						<buildTarget></buildTarget>
 						<stopOnError>true</stopOnError>
 						<useDefaultCommand>false</useDefaultCommand>
