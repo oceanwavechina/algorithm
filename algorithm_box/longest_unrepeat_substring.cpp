@@ -46,12 +46,15 @@ void output_map(const map<int, char>& dict) {
 
 
 void del(map<int, char>& dict, int max_index) {
-
+	/*
+	 * 关于itorator 的earase: References and iterators to the erased elements are invalidated.
+	 * 						 Other references and iterators are not affected
+	 */
 	for(auto it=dict.begin(); it!= dict.end(); ) {
 		if (it->first <= max_index) {
-			dict.erase(it++);
+			dict.erase(it++);  // 所以这里 ++ 要放在后边
 		} else {
-			it++;
+			++it;
 		}
 	}
 }
