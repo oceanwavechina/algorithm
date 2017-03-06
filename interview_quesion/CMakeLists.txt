@@ -1,5 +1,6 @@
 project(InterviewQuestion)
 cmake_minimum_required(VERSION 3.6)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++98")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++11")
 
 
@@ -27,3 +28,7 @@ add_executable(test_new ${test_new_SRC})
 # varaibles.cpp
 set(varaibles_SRC varaibles.cpp)
 add_executable(varaibles ${varaibles_SRC})
+
+# varaibles.cpp
+set(size_vs_empty_SRC size_vs_empty.cpp)
+add_executable(size_vs_empty ${size_vs_empty_SRC})
