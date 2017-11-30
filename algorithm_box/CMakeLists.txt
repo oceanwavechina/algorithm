@@ -67,10 +67,13 @@ add_executable(up_the_steps ${up_the_steps_SRC})
 set(longest_unrepeat_substring_SRC longest_unrepeat_substring.cpp)
 add_executable(longest_unrepeat_substring ${longest_unrepeat_substring_SRC})
 
-endif(0)
-
-
 # tree_depth.cpp
 set(tree_depth_SRC tree_depth.cpp)
 add_executable(tree_depth ${tree_depth_SRC})
 
+endif(0)
+
+
+# selection_sort.cpp
+set(selection_sort_SRC selection_sort.cpp)
+add_executable(selection_sort ${selection_sort_SRC})

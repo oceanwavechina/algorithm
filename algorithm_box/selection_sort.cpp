@@ -10,6 +10,7 @@
 #include <sstream>
 #include <vector>
 #include <cstdint>
+#include <cstdlib>
 
 using namespace std;
 
@@ -73,10 +74,13 @@ int main()
 {
 	// vector<int>  A = {3, 1, 5, 7, 2, 4, 9, 6};
 	vector<int>  A = {1, 2, 3, 4, 5, 6};
+    for(auto i=0; i<100000; ++i) {
+        A.push_back(std::rand());
+    }
 
-	cout << "original data:" << display(A) << endl;
+	cout << "original data:" << display(A) <<  time(0) << endl;
 	simple_selection_sort(A);
-	cout << "sorted data (simple_selection_sort):" << display(A) << endl;
+	cout << "sorted data (simple_selection_sort):" << display(A) << time(0) << endl;
 
 	cout << endl;
 //
