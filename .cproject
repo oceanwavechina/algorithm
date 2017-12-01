@@ -227,9 +227,13 @@
 			</target>
 		</buildTargets>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry excluding="a/|programming_pearls/|algorithm_box/src|src/|part1_column1|programming_pearls_|interview_quesion/|linux/|python/|leet_code/" kind="src" path=""/>
+		<pathentry excluding="a/|algorithm_box/src|python/|linux/|leet_code/|programming_pearls/|interview_quesion/|src/|part1_column1|programming_pearls_" kind="src" path=""/>
+		<pathentry kind="src" path="interview_quesion"/>
+		<pathentry kind="src" path="linux"/>
 		<pathentry kind="src" path="programming_pearls"/>
+		<pathentry kind="src" path="python"/>
 		<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" kind="inc" path="" system="true"/>
@@ -237,7 +241,10 @@
 		<pathentry include="/System/Library/Frameworks" kind="inc" path="" system="true"/>
 		<pathentry include="/Library/Frameworks" kind="inc" path="" system="true"/>
 		<pathentry include="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/c++/4.2.1" kind="inc" path="" system="true"/>
+		<pathentry kind="mac" name="GXXEXPERIMENTALCXX11" path="" value=""/>
 		<pathentry kind="mac" name="OBJC_NEW_PROPERTIES" path="" value="1"/>
+		<pathentry kind="mac" name="_GLIBCXX_STD" path="" value="std"/>
 		<pathentry kind="mac" name="_LP64" path="" value="1"/>
 		<pathentry kind="mac" name="__APPLE_CC__" path="" value="6000"/>
 		<pathentry kind="mac" name="__APPLE__" path="" value="1"/>
@@ -559,7 +566,7 @@
 		<pathentry kind="mac" name="__clang_version__" path="" value="&quot;7.3.0 (clang-703.0.29)&quot;"/>
 		<pathentry kind="mac" name="__core2" path="" value="1"/>
 		<pathentry kind="mac" name="__core2__" path="" value="1"/>
-		<pathentry kind="mac" name="__cplusplus" path="" value="199711L"/>
+		<pathentry kind="mac" name="__cplusplus" path="" value="201103L"/>
 		<pathentry kind="mac" name="__cpp_exceptions" path="" value="199711"/>
 		<pathentry kind="mac" name="__cpp_rtti" path="" value="199711"/>
 		<pathentry kind="mac" name="__llvm__" path="" value="1"/>
@@ -575,9 +582,5 @@
 		<pathentry kind="mac" name="__x86_64" path="" value="1"/>
 		<pathentry kind="mac" name="__x86_64__" path="" value="1"/>
 		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
-		<pathentry kind="src" path="interview_quesion"/>
-		<pathentry kind="src" path="linux"/>
-		<pathentry kind="src" path="python"/>
-		<pathentry kind="src" path="leet_code"/>
 	</storageModule>
 </cproject>
