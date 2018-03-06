@@ -38,6 +38,11 @@ int partition(std::vector<int>& A, int l, int r) {
 	int x = A[l];
 	int j = l;
 
+	/*
+	  i: 是遍历整个parition
+	  j: 指向最右端那个比 哨兵值 小的元素，
+	  所以在遍历i遍历完后，就应该把j指向的元素与哨兵互换。从而实现哨兵左边小于等于哨兵，哨兵右边大于哨兵
+	 */
 	for(int i=l+1; i<=r; ++i) {
 		if(A[i] <= x) {
 			++j;  						// 这里的 j 只有当需要往 “小值” 队列里追加的时候才会 +1 , 而且是先加 1

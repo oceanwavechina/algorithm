@@ -42,6 +42,16 @@ Node* construct_linklist(vector<int> values)
 	return head;
 }
 
+
+/*
+	pre		 cur    next
+	 |		  |		 |
+	 V		  V		 V
+	 NULL ->	 HEAD -> X -> X -> X -> TAIL
+
+    这个题，找清楚上述三个位置就好，搞明白如何把头节点一般化处理
+ */
+
 Node* reverse(Node* head)
 {
 	if (!head) {

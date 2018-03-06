@@ -35,9 +35,9 @@ add_executable(selection_sort ${selection_sort_SRC})
 set(BinaryTree_2_LinkList_SRC BinaryTree_2_LinkList.cpp)
 add_executable(BinaryTree_2_LinkList ${BinaryTree_2_LinkList_SRC})
 
-# BinaryTree_2_LinkList_with_queue.cpp
-set(BinaryTree_2_LinkList_with_queue_SRC BinaryTree_2_LinkList_with_queue.cpp)
-add_executable(BinaryTree_2_LinkList_with_queue ${BinaryTree_2_LinkList_with_queue_SRC})
+# BinaryTree_output_by_level.cpp
+set(BinaryTree_output_by_level_SRC BinaryTree_output_by_level.cpp)
+add_executable(BinaryTree_output_by_level ${BinaryTree_output_by_level_SRC})
 
 # radix_convert.cpp
 set(radix_convert_SRC radix_convert.cpp)
@@ -95,10 +95,28 @@ add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
 set(05_strstr_SRC 05_strstr.cpp)
 add_executable(05_strstr ${05_strstr_SRC})
 
-
-endif(0)
-
-
 # selection_sort.cpp
 set(selection_sort_SRC selection_sort.cpp)
 add_executable(selection_sort ${selection_sort_SRC})
+
+# longest_unrepeat_substring.cpp
+set(longest_unrepeat_substring_SRC longest_unrepeat_substring.cpp)
+add_executable(longest_unrepeat_substring ${longest_unrepeat_substring_SRC})
+
+# find_kth_to_tail.cpp
+set(find_kth_to_tail_SRC find_kth_to_tail.cpp)
+add_executable(find_kth_to_tail ${find_kth_to_tail_SRC})
+
+# remove_duplicates.cpp
+set(remove_duplicates_SRC remove_duplicates.cpp)
+add_executable(remove_duplicates ${remove_duplicates_SRC})
+
+# search_in_rotated_sorted_array.cpp
+set(search_in_rotated_sorted_array_SRC search_in_rotated_sorted_array.cpp)
+add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_SRC})
+
+endif(0)
+
+# binary_tree_maximum_path_sum.cpp
+set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
+add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})

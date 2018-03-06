@@ -21,6 +21,7 @@
 #include <unordered_map>
 #include <sstream>
 #include <cstring>
+#include <stack>
 
 using namespace std;
 
@@ -55,6 +56,42 @@ string sentence_reverse_with_dict(string& sentence) {
 	return ss.str();
 }
 
+string sentence_reverse_with_stack(string& sentence) {
+	/*
+	 * 因为有 反转 二字，所以自然而然想到栈实现
+	 */
+
+	stack<int> word_positions_stack;	//记录每个单词的起始位置
+
+	for(int i = 0; i < sentence.size()-1; ++i) {
+		if (i == 0) {
+			word_positions_stack.push(i);
+		} else if (i-1 > 0 && sentence[i-1] == ' ' ) {
+			word_positions_stack.push(i);
+			//std::cout << sentence[i] << std::endl;
+		}
+	}
+
+	stringstream ss;
+
+	while(!word_positions_stack.empty()) {
+		int pos = word_positions_stack.top();
+		word_positions_stack.pop();
+
+		int i = pos;
+		while(sentence[i] != ' ' && sentence[i] != '\0') {
+			ss << sentence[i];
+			++i;
+		}
+
+
+		if (word_positions_stack.size() > 0) {
+			ss << ' ';
+		}
+	}
+
+	return ss.str();
+}
 
 /* ******************************  in place reverse  ****************************** */
 
@@ -76,7 +113,7 @@ void reverse(string& str, int start, int end) {
 
 string sentence_reverse_in_place(string& sentence) {
 	// 两次反转法，见 <<编程珠玑>>
-	reverse(sentence, 0, sentence.size()-1);
+	reverse(sentence, 0, (int)sentence.size()-1);
 
 	int start = 0;
 	int end = 0;
@@ -104,10 +141,13 @@ int main(int argc, char **argv) {
 
 	string sentence = "the sky is blue";
 	cout << "input string: <" << sentence << '>' << endl;
-
 	cout << "after reverse sentence_reverse_with_dict: " << sentence_reverse_with_dict(sentence) << endl;
 
+	sentence = "the sky is blue";
 	cout << "after reverse sentence_reverse_in_place: " << sentence_reverse_in_place(sentence) << endl;
+
+	sentence = "the sky is blue";
+	cout << "after reverse sentence_reverse_with_stack: " << sentence_reverse_with_stack(sentence) << endl;
 
 	return 0;
 }

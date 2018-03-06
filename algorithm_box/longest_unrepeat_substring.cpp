@@ -29,7 +29,6 @@
 
 using namespace std;
 
-
 string _format_map_iterator(map<int, char>::const_iterator it) {
 
 	stringstream ss;
@@ -126,13 +125,65 @@ string longest_substr(const string& s) {
 }
 
 
+string longest_substr2(const string& s) {
+	string ret;
+
+	int head = 0;
+	int tail=0;
+	map<char, int> visited;
+	int max = 0;
+	int max_head=0;
+
+	while(tail != s.length()) {
+
+		char cur = s[tail++];
+		cout << "cur: " << cur << endl;
+
+		if (visited.find(cur) == visited.end()) {
+
+			visited[cur] = tail;
+			if (visited.size() > max) {
+				max = visited.size();
+				max_head = head;
+				cout << "max:" << max << ", max_head:" << max_head << endl;
+			}
+			cout << "append: " << cur << endl;
+
+		} else {
+
+			cout << "del: ";
+			while(visited.find(cur) != visited.end()){
+				char c_del = s[head++];
+				cout << c_del;
+				visited.erase(c_del);
+			}
+
+			cout << endl;
+		}
+
+	}
+
+	cout << "longest_substr2, substr start:" << head << endl;
+	for(int i=0; i<max; ++i) {
+		ret += s[head+i];
+	}
+
+	return ret;
+}
+
+
 int main(int argc, char **argv) {
 
 	// 对于字符串“abcabcbb”，返回的应是“abc”。
-	string s = "abcabcbb";
+	//string s = "abcbcbb";
+
+	// 对于字符串“abcbcbbefghiklmnopq”，返回的应是“befghiklmnopq”。
+	string s = "abcbcbbefghiklmnopq";
 	cout << "original string:" << s << endl;
 
-	cout << "longest substr:" << longest_substr(s) << endl;
+	//cout << "longest substr:" << longest_substr(s) << endl;
+
+	cout << "longest substr:" << longest_substr2(s) << endl;
 
 
 	return 0;
