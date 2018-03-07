@@ -115,8 +115,15 @@ add_executable(remove_duplicates ${remove_duplicates_SRC})
 set(search_in_rotated_sorted_array_SRC search_in_rotated_sorted_array.cpp)
 add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_SRC})
 
-endif(0)
-
 # binary_tree_maximum_path_sum.cpp
 set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
 add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
+
+endif(0)
+
+# longet_common_subsequence.cpp
+set(longet_common_subsequence_SRC longet_common_subsequence.cpp)
+add_executable(longet_common_subsequence ${longet_common_subsequence_SRC})
+
+
+
