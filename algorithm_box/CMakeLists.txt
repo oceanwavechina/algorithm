@@ -119,11 +119,16 @@ add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_S
 set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
 add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
 
-endif(0)
-
 # longet_common_subsequence.cpp
 set(longet_common_subsequence_SRC longet_common_subsequence.cpp)
 add_executable(longet_common_subsequence ${longet_common_subsequence_SRC})
+
+endif(0)
+
+# find_greatest_sum_of_subarray.cpp
+set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
+add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
+
 
 
 

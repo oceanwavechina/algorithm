@@ -20,6 +20,9 @@ using namespace std;
 		– y: BDCABC
 		– “BCAB” is the longest subsequence found in both sequences, so the answer is 4
 
+	原理：
+		每遍历一边 y 就能确定，x[i] 在y出现的
+
 	参考：
 		http://blog.csdn.net/hrn1216/article/details/51534607
  */
