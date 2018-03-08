@@ -20,8 +20,13 @@ using namespace std;
 		– y: BDCABC
 		– “BCAB” is the longest subsequence found in both sequences, so the answer is 4
 
-	原理：
-		每遍历一边 y 就能确定，x[i] 在y出现的
+	例子：
+		S1={1,3,4,5,6,7,7,8} 和 S2={3,5,7,4,8,6,7,8,2}
+		假如S1的最后一个元素 与 S2的最后一个元素相等，那么S1和S2的LCS就等于 {S1减去最后一个元素} 与 {S2减去最后一个元素} 的 LCS  再加上 S1和S2相等的最后一个元素。
+		假如S1的最后一个元素 与 S2的最后一个元素不等（本例子就是属于这种情况），那么S1和S2的LCS就等于 ： {S1减去最后一个元素} 与 S2 的LCS， {S2减去最后一个元素} 与 S1 的LCS 中的最大的那个序列。
+
+	动态规划：
+		一般都是从最后一个情况入手分析，然后递归倒推
 
 	参考：
 		http://blog.csdn.net/hrn1216/article/details/51534607

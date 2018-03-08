@@ -56,18 +56,8 @@ tuple<int, int> tow_number_hash(vector<int> numbers, int target) {
 
 tuple<int, int> tow_number_tow_pointor(vector<int> numbers, int target) {
 
-	// O(n) runtime, O(n) space – Hash table
-
-	unordered_map<int, int> visited;
-
-	for(int i=0; i<numbers.size(); ++i) {
-		auto another = visited.find(target-numbers[i]);
-		if(another != visited.end()){
-			return make_tuple(another->second, i);
-		} else {
-			visited[numbers[i]] = i;
-		}
-	}
+	// 两指针的方法需要排序，也就改变了原来的位置，所以用这个方法实现不了
+	// 可以定义一个新的结构体，把位置信息带上，不过既然有hash的方法了，干嘛还这么麻烦
 
 	return make_tuple(-1, -1);
 }
