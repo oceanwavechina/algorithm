@@ -29,14 +29,14 @@ int __main()
 
 		cout << "child :x = " << ++x << endl;
 		int count = sleep(2);
-		cout << "child exit, with cout:" << count << endl;
+		cout << "child exit, with cout:" << count << ", address of x: " << &x << endl;
 		exit(100);
 
 	} else {
 //		cout << "parent get pid:" <<getpid() << endl;
 //		cout << "parent get p_pid:" <<getppid() << endl;
 
-		cout << "parent :x = " << --x << endl;
+		cout << "parent :x = " << --x << ", address of x: " << &x << endl;
 
 		int status;
 		waitpid(pid, &status, 0);

@@ -123,12 +123,13 @@ add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
 set(longet_common_subsequence_SRC longet_common_subsequence.cpp)
 add_executable(longet_common_subsequence ${longet_common_subsequence_SRC})
 
-endif(0)
-
 # find_greatest_sum_of_subarray.cpp
 set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
 add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
 
+endif(0)
 
 
-
+# LRU_cache.cpp
+set(LRU_cache_SRC LRU_cache.cpp)
+add_executable(LRU_cache ${LRU_cache_SRC})

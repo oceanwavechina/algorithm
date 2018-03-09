@@ -23,7 +23,13 @@ target_link_libraries(mutex_and_condition_var pthread)
 # epoll.c
 set(epoll_SRC epoll.c)
 add_executable(epoll ${epoll_SRC})
-endif(0)
+
 # rand_test.cpp
 set(dummy_test_SRC dummy_test.cpp)
 add_executable(dummy_test ${dummy_test_SRC})
+
+endif(0)
+
+# fork_test.cpp
+set(fork_test_SRC fork_test.cpp)
+add_executable(fork_test ${fork_test_SRC})

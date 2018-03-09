@@ -40,11 +40,29 @@ int recursive_count(int n) {
 	return recursive_count(n-1) + recursive_count(n-2);
 }
 
+int climb_staires(int n) {
+	/*
+	 * 想着挺简单，写起来，边界判断还挺值得注意的
+	 */
+	int pre = 0;
+	int cur = 1;
+
+	for(int i=1; i<=n; ++i) {
+		int tmp = cur;
+		cur = pre + cur;
+		pre = tmp;
+	}
+
+	return cur;
+}
+
 
 int main(int argc, char **argv) {
 
-	recursive_count(7);
+	// recursive_count(7);
 //	cout << recursive(7) << endl;
+
+	cout << climb_staires(2) << endl;
 
 	return 0;
 }
