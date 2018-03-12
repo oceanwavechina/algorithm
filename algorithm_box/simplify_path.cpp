@@ -47,17 +47,15 @@ string simplify_path(const string& path) {
 		} else {
 			// 根据当前子路径，判断压栈还是出栈，还是不做处理
 			if (cur_str == ".") {
-				cur_str = "";
 				continue;
 			} else if (cur_str == "..") {
 				if (!str_vec.empty()) {
 					str_vec.pop_back();
 				}
-				cur_str = "";
 			} else if (!cur_str.empty()) {
 				str_vec.push_back(cur_str);
-				cur_str = "";
 			}
+			cur_str = "";
 		}
 	}
 
