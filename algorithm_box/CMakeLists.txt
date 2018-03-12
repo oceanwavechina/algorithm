@@ -127,9 +127,12 @@ add_executable(longet_common_subsequence ${longet_common_subsequence_SRC})
 set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
 add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
 
-endif(0)
-
-
 # LRU_cache.cpp
 set(LRU_cache_SRC LRU_cache.cpp)
 add_executable(LRU_cache ${LRU_cache_SRC})
+
+endif(0)
+
+# simplify_path.cpp
+set(simplify_path_SRC simplify_path.cpp)
+add_executable(simplify_path ${simplify_path_SRC})
