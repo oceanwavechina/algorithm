@@ -131,8 +131,16 @@ add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC
 set(LRU_cache_SRC LRU_cache.cpp)
 add_executable(LRU_cache ${LRU_cache_SRC})
 
-endif(0)
-
 # simplify_path.cpp
 set(simplify_path_SRC simplify_path.cpp)
 add_executable(simplify_path ${simplify_path_SRC})
+
+
+endif(0)
+
+
+# factorial_zero_cnt.cpp
+set(factorial_zero_cnt_SRC factorial_zero_cnt.cpp)
+add_executable(factorial_zero_cnt ${factorial_zero_cnt_SRC})
+
+
