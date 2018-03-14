@@ -1,5 +1,10 @@
 #! coding:utf8
 
+'''
+基于PB的未来5年股票价格估算
+主要适用于金融资产类股票的测试算，我们要假设未来5年企业的ROE是稳定增长的（起码平均值是这样）
+'''
+
 book_value_per_share = 6.88
 ROE_estimates = 0.11
 earn_per_share_estimates = 0.27
