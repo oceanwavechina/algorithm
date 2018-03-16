@@ -135,12 +135,12 @@ add_executable(LRU_cache ${LRU_cache_SRC})
 set(simplify_path_SRC simplify_path.cpp)
 add_executable(simplify_path ${simplify_path_SRC})
 
-
-endif(0)
-
-
 # factorial_zero_cnt.cpp
 set(factorial_zero_cnt_SRC factorial_zero_cnt.cpp)
 add_executable(factorial_zero_cnt ${factorial_zero_cnt_SRC})
 
+endif(0)
 
+# find_all_legal_IPs.cpp
+set(find_all_legal_IPs_SRC find_all_legal_IPs.cpp)
+add_executable(find_all_legal_IPs ${find_all_legal_IPs_SRC})
