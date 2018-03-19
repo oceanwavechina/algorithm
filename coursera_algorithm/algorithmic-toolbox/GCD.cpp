@@ -24,6 +24,7 @@ long long NaivaGCD(long long a, long long b) {
 
 /*
  * 辗转相除法， 又名欧几里德算法
+ * 即： gcd(a,b) = gcd(b,a mod b)
  */
 long long EuclidGCD(long long a, long long b) {
 	if (0 == b)
