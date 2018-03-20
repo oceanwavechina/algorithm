@@ -30,6 +30,8 @@ using namespace std;
 
 	参考：
 		http://blog.csdn.net/hrn1216/article/details/51534607
+
+	TODO：还是不大懂诶。。。
  */
 
 #define MAX_SIZE		10

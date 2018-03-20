@@ -139,8 +139,15 @@ add_executable(simplify_path ${simplify_path_SRC})
 set(factorial_zero_cnt_SRC factorial_zero_cnt.cpp)
 add_executable(factorial_zero_cnt ${factorial_zero_cnt_SRC})
 
-endif(0)
-
 # find_all_legal_IPs.cpp
 set(find_all_legal_IPs_SRC find_all_legal_IPs.cpp)
 add_executable(find_all_legal_IPs ${find_all_legal_IPs_SRC})
+
+
+endif(0)
+
+
+# bloom_filter.cpp
+set(bloom_filter_SRC bloom_filter.cpp)
+add_executable(bloom_filter ${bloom_filter_SRC})
+
