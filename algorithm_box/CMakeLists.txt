@@ -143,11 +143,24 @@ add_executable(factorial_zero_cnt ${factorial_zero_cnt_SRC})
 set(find_all_legal_IPs_SRC find_all_legal_IPs.cpp)
 add_executable(find_all_legal_IPs ${find_all_legal_IPs_SRC})
 
+# bloom_filter.cpp
+set(bloom_filter_SRC bloom_filter.cpp)
+add_executable(bloom_filter ${bloom_filter_SRC})
+
+# find_in_sorted_2D_array.cpp
+set(find_in_sorted_2D_array_SRC find_in_sorted_2D_array.cpp)
+add_executable(find_in_sorted_2D_array ${find_in_sorted_2D_array_SRC})
+
+# single_number.cpp
+set(single_number_SRC single_number.cpp)
+add_executable(single_number ${single_number_SRC})
+
 
 endif(0)
 
 
-# bloom_filter.cpp
-set(bloom_filter_SRC bloom_filter.cpp)
-add_executable(bloom_filter ${bloom_filter_SRC})
+# merge_sorted_linklist.cpp
+set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
+add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
+
 
