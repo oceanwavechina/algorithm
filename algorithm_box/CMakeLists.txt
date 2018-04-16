@@ -155,12 +155,20 @@ add_executable(find_in_sorted_2D_array ${find_in_sorted_2D_array_SRC})
 set(single_number_SRC single_number.cpp)
 add_executable(single_number ${single_number_SRC})
 
+# merge_sorted_linklist.cpp
+set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
+add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
+
+# find_median.cpp
+set(find_median_SRC find_median.cpp)
+add_executable(find_median ${find_median_SRC})
+
 
 endif(0)
 
 
-# merge_sorted_linklist.cpp
-set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
-add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
+# merge_k_sorted_linklist.cpp
+set(merge_k_sorted_linklist_SRC merge_k_sorted_linklist.cpp)
+add_executable(merge_k_sorted_linklist ${merge_k_sorted_linklist_SRC})
 
 

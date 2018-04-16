@@ -28,7 +28,7 @@ using namespace std;
 			    V		 V		 V
 			172  .  10   .    4  .   12
 			 ^		^		  ^		 ^
-		   part1	   part2		part3	part4
+		   part1   part2    part3  part4
  */
 
 

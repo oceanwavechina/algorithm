@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++98")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++11")
 
-
+if(0)
 # fork_test.cpp
 set(fork_test_SRC fork_test.cpp)
 add_executable(fork_test ${fork_test_SRC})
@@ -32,3 +32,14 @@ add_executable(varaibles ${varaibles_SRC})
 # varaibles.cpp
 set(size_vs_empty_SRC size_vs_empty.cpp)
 add_executable(size_vs_empty ${size_vs_empty_SRC})
+
+# Duffs_device.cpp
+set(Duffs_device_SRC Duffs_device.cpp)
+add_executable(Duffs_device ${Duffs_device_SRC})
+
+endif(0)
+
+# toy_coroutine.cpp
+set(toy_coroutine_SRC toy_coroutine.cpp)
+add_executable(toy_coroutine ${toy_coroutine_SRC})
+
