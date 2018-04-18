@@ -23,7 +23,7 @@ using namespace std;
 		for i in rangeN(1, 5):
 			print(i)
 
-	shamely copied from:
+	shamed copied from:
 		https://www.geeksforgeeks.org/coroutines-in-c-cpp/
 
 	Implement using:
