@@ -38,11 +38,17 @@ add_executable(size_vs_empty ${size_vs_empty_SRC})
 set(toy_coroutine_SRC toy_coroutine.cpp)
 add_executable(toy_coroutine ${toy_coroutine_SRC})
 
+# Duffs_device.cpp
+set(Duffs_device_SRC Duffs_device.cpp)
+add_executable(Duffs_device ${Duffs_device_SRC})
+# class_derive_3.cpp
+set(class_derive_3_SRC class_derive_3.cpp)
+add_executable(class_derive_3 ${class_derive_3_SRC})
 
 
 endif(0)
 
-# Duffs_device.cpp
-set(Duffs_device_SRC Duffs_device.cpp)
-add_executable(Duffs_device ${Duffs_device_SRC})
 
+# class_derive_1.cpp
+set(class_derive_1_SRC class_derive_1.cpp)
+add_executable(class_derive_1 ${class_derive_1_SRC})

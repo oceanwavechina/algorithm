@@ -43,6 +43,16 @@ public:
 		cout << "Derived do something" << endl;
 	}
 
+	string foo() {
+		cout << "Derived foo" << endl;
+		return "Derived foo";
+	}
+
+	void dummy() {
+		cout << "Derived dummy" << endl;
+	}
+
+
 private:
 	// 对象创建和销毁的顺序
 	int _counter;
@@ -67,6 +77,14 @@ int main()
 
 //	Derived* b = new Derived[3];
 
+	Derived d;
+	typedef string (Derived::*fun)();
+	fun f1 = &Derived::foo;
+
+	// ???为啥都是1
+	cout << "nonstatic member function address dummy:" << &Derived::dummy << ", foo:"  << &Derived::foo << endl;
+
+	cout << "nonstatic member function called by fun pointer:" << (d.*f1)() << endl;
 
 	return 0;
 }
