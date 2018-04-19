@@ -163,12 +163,16 @@ add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
 set(find_median_SRC find_median.cpp)
 add_executable(find_median ${find_median_SRC})
 
-
-endif(0)
-
-
 # merge_k_sorted_linklist.cpp
 set(merge_k_sorted_linklist_SRC merge_k_sorted_linklist.cpp)
 add_executable(merge_k_sorted_linklist ${merge_k_sorted_linklist_SRC})
+
+
+endif(0)
+
+# fast_invert_sqrt.cpp
+set(fast_invert_sqrt_SRC fast_invert_sqrt.cpp)
+add_executable(fast_invert_sqrt ${fast_invert_sqrt_SRC})
+
 
 
