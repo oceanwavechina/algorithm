@@ -9,9 +9,12 @@
 #include <stdexcept>
 #include <cassert>
 
+
 /*
  * try 初始化列表，还可以这样用
  * https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Construction_Tracker
+ *
+ * https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms
  */
 
 struct B {
