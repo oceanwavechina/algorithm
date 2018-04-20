@@ -45,10 +45,20 @@ add_executable(Duffs_device ${Duffs_device_SRC})
 set(class_derive_3_SRC class_derive_3.cpp)
 add_executable(class_derive_3 ${class_derive_3_SRC})
 
+# class_derive_1.cpp
+set(class_derive_1_SRC class_derive_1.cpp)
+add_executable(class_derive_1 ${class_derive_1_SRC})
+
+# Template_tricks.cpp
+set(Template_tricks_SRC Template_tricks.cpp)
+add_executable(Template_tricks ${Template_tricks_SRC})
+
 
 endif(0)
 
 
-# class_derive_1.cpp
-set(class_derive_1_SRC class_derive_1.cpp)
-add_executable(class_derive_1 ${class_derive_1_SRC})
+# tricks.cpp
+set(tricks_SRC tricks.cpp)
+add_executable(tricks ${tricks_SRC})
+
+
