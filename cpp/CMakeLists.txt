@@ -66,7 +66,7 @@ endif(0)
 
 
 
-# Duffs_device.cpp
-set(Duffs_device_SRC Duffs_device.cpp)
-add_executable(Duffs_device ${Duffs_device_SRC})
+# other_tricks.cpp
+set(other_tricks_SRC other_tricks.cpp)
+add_executable(other_tricks ${other_tricks_SRC})
 
