@@ -53,12 +53,15 @@ add_executable(class_derive_1 ${class_derive_1_SRC})
 set(Template_tricks_SRC Template_tricks.cpp)
 add_executable(Template_tricks ${Template_tricks_SRC})
 
+# Comma_expression_tricks.cpp
+set(Comma_expression_tricks_SRC Comma_expression_tricks.cpp)
+add_executable(Comma_expression_tricks ${Comma_expression_tricks_SRC})
 
 endif(0)
 
 
-# tricks.cpp
-set(tricks_SRC tricks.cpp)
-add_executable(tricks ${tricks_SRC})
+# reverse_pair_tricks.cpp
+set(reverse_pair_tricks_SRC reverse_pair_tricks.cpp)
+add_executable(reverse_pair_tricks ${reverse_pair_tricks_SRC})
 
 
