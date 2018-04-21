@@ -1,8 +1,8 @@
 project(InterviewQuestion)
 cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++98")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -Os -std=c++11")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++11")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -Os -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++11")
 
 if(0)
 # fork_test.cpp
@@ -41,6 +41,7 @@ add_executable(toy_coroutine ${toy_coroutine_SRC})
 # Duffs_device.cpp
 set(Duffs_device_SRC Duffs_device.cpp)
 add_executable(Duffs_device ${Duffs_device_SRC})
+
 # class_derive_3.cpp
 set(class_derive_3_SRC class_derive_3.cpp)
 add_executable(class_derive_3 ${class_derive_3_SRC})
@@ -57,11 +58,15 @@ add_executable(Template_tricks ${Template_tricks_SRC})
 set(Comma_expression_tricks_SRC Comma_expression_tricks.cpp)
 add_executable(Comma_expression_tricks ${Comma_expression_tricks_SRC})
 
-endif(0)
-
-
 # reverse_pair_tricks.cpp
 set(reverse_pair_tricks_SRC reverse_pair_tricks.cpp)
 add_executable(reverse_pair_tricks ${reverse_pair_tricks_SRC})
 
+endif(0)
+
+
+
+# Duffs_device.cpp
+set(Duffs_device_SRC Duffs_device.cpp)
+add_executable(Duffs_device ${Duffs_device_SRC})
 

@@ -11,6 +11,7 @@
 #include <map>
 #include <chrono>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
@@ -45,6 +46,17 @@ using namespace std;
 	time of 4copy_with_loop_unrolling32: 2171.57ms
 	time of 6copy_with_loop_unrolling128: 2182.47ms
 	time of 6copy_with_loop_unrolling64: 2179.28ms
+
+
+	在做加法运算时，如果没开编译器优化，Duff's Device 会有优势， 而且次数越大，差距越明显
+	如果开了优化，反而不如普通的for循环
+
+	循环 10000000000 次
+		time of 0add_with_loop: 11583.9ms
+		time of 1add_with_loop_unrolling8: 3161.91ms
+	循环 10000 次
+		time of 0add_with_loop: 0.075ms
+		time of 1add_with_loop_unrolling8: 0.031ms
  */
 
 void copy_with_loop_unrolling8(const char* src, char* dst, int count)
@@ -65,11 +77,6 @@ void copy_with_loop_unrolling8(const char* src, char* dst, int count)
 	case 3:		*dst++ = *src++;
 	case 2:		*dst++ = *src++;
 	case 1:		*dst++ = *src++;
-
-	default:
-		//cout << ", cur swtich=" << n%7 << endl;
-		;
-
 			} while(--n >0);
 	}
 
@@ -383,12 +390,47 @@ void copy_with_memcpy(const char* src, char* dst, int count)
 	memcpy(dst, src, count);
 }
 
+
+/* *************************** 加法应用 *************************** */
+int add_with_loop(vector<int>& nums) {
+	int ret = 0;
+	for(int i=0; i< nums.size(); ++i) {
+		ret +=  nums[i];
+	}
+	return ret;
+}
+
+int add_with_loop_unrolling8(vector<int>& nums)
+{
+	int size = nums.size();
+	int n = (size + 7) >> 3;	// 这个n是指要循环多少次
+	int ret = 0;
+	int i = 0;
+
+	// 这个switch里边的值写错了，这个值是第一次进入时的offset
+	switch (size & 7) {
+
+	case 0: do {ret += nums[i++];
+	case 7:		ret += nums[i++];
+	case 6:		ret += nums[i++];
+	case 5:		ret += nums[i++];
+	case 4:		ret += nums[i++];
+	case 3:		ret += nums[i++];
+	case 2:		ret += nums[i++];
+	case 1:		ret += nums[i++];
+			} while(--n >0);
+	}
+
+	return ret;
+}
+
 //#define TEST_UNROLLING_LOOP
 int main(int argc, char **argv) {
 
+#if 1
 #ifdef TEST_UNROLLING_LOOP
-	const char* src = "testwithsomecharactorsbalabala";
-	char dst[100] = {0};
+	const char* src =  new char[1000000000000];
+	const char* dst =  new char[1000000000000];
 
 	copy_with_loop_unrolling(src, dst, strlen(src));
 
@@ -398,7 +440,7 @@ int main(int argc, char **argv) {
 	cout << "src==dst ? :" << boolalpha << ret << endl;
 #else
 
-	int COUNT = 8*1000*1000*100;
+	int COUNT = 8*1000*100000;
 
 	typedef void (*cpfun)(const char* src, char* dst, int count);
 
@@ -413,22 +455,39 @@ int main(int argc, char **argv) {
 			{"6copy_with_loop_unrolling128", copy_with_loop_unrolling128}
 #endif
 	};
-
 	for (auto it : func_map) {
-		char* src = new char[COUNT];
-		char* dst = new char[COUNT];
+			char* src = new char[COUNT];
+			char* dst = new char[COUNT];
 
-		std::clock_t start = std::clock();
-		it.second(src, dst, COUNT);
-		std::clock_t end = std::clock();
-		std::cout << "time of " << it.first <<": " << 1000.0 * (end-start) / CLOCKS_PER_SEC << "ms" << endl;
+			std::clock_t start = std::clock();
+			it.second(src, dst, COUNT);
+			std::clock_t end = std::clock();
+			std::cout << "time of " << it.first <<": " << 1000.0 * (end-start) / CLOCKS_PER_SEC << "ms" << endl;
 
-		delete[] src; src = nullptr;
-		delete[] dst; dst = nullptr;
-	}
+			delete[] src; src = nullptr;
+			delete[] dst; dst = nullptr;
+		}
+
+#endif
+
+#else	// add
 
 
+	typedef int (*addfun)(vector<int>&);
+	map<string, addfun> add_func_map = {
+		{"0add_with_loop", add_with_loop},
+		{"1add_with_loop_unrolling8", add_with_loop_unrolling8},
+	};
 
+	vector<int> nums = {1, 2, 3, 4};
+	nums.resize(10000);
+	for (auto it : add_func_map) {
+
+			std::clock_t start = std::clock();
+			cout << it.second(nums) << endl;
+			std::clock_t end = std::clock();
+			std::cout << "time of " << it.first <<": " << 1000.0 * (end-start) / CLOCKS_PER_SEC << "ms" << endl;
+		}
 #endif
 	return 0;
 }
