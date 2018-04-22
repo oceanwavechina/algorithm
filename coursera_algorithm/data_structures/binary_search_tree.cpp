@@ -9,11 +9,16 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
+/*
+ *	在搜索二叉树中，父节点比左孩子大，比右孩子小
+ */
 
 struct Node {
 
-	Node():key(0), left(nullptr), right(nullptr), parent(nullptr), height(1) {}
-	Node(int k):key(k), left(nullptr), right(nullptr), parent(nullptr), height(1) {}
+	Node():key(0), left(nullptr), right(nullptr), parent(nullptr), data(-1) {}
+	Node(int k):key(k), left(nullptr), right(nullptr), parent(nullptr), data(-1) {}
 
 	int key;
 
@@ -21,7 +26,7 @@ struct Node {
 	Node* right;
 	Node* parent;
 
-	int height;	// height of the tree
+	int data;
 };
 
 
@@ -30,209 +35,184 @@ public:
 	typedef std::vector<Node*> Nodes;
 
 public:
+	BinarySearchTree():_root(nullptr)
+	{}
 
-	static void DisplayNode(Node* n) {
-		std::cout << "node:" << n->key << std::endl;
-	}
 
-	static void DisplayRange(Nodes nodes) {
-
-		std::cout << "range is:";
-		for (auto node : nodes) {
-			std::cout << " " << node->key;
+public:
+	Node* Search(int k)
+	{
+		Node* iter = _root;
+		while(iter)
+		{
+			if (iter->key == k){
+				return iter;
+			} else if(k < iter->key) {
+				iter = iter->left;
+			} else {
+				iter = iter->right;
+			}
 		}
-		std::cout <<  std::endl;
+
+		return nullptr;
 	}
 
-	static Node* Find(int k, Node* R) {
-		/*
-		 * missing key: if you stop before reaching a null pointer,
-		 * you find the place in the tree where K would fit.
-		 * we will return something close to it
+	Node* Minimum(Node* node)
+	{
+		// 找到该子树上最小的节点, 一路向左
+		while(node && node->left) {
+			node = node->left;
+		}
+
+		return node;
+	}
+
+	Node* Maximum(Node* node)
+	{
+		// 该子树的最大值，一直向右
+		while(node && node->right) {
+			node = node->right;
+		}
+
+		return node;
+	}
+
+	Node* Successor(Node* x)
+	{
+		// 右节点不为空时
+		if(x->right)
+			return Minimum(x->right);
+
+		/* 有节点为空时
+		 *	1. 循环向上是，x, y 要满足的关系：y 是 x 的父节点，并且 x 是 y 的右孩子
+		 *	2. 退出循环条件：x 是 y 的左孩子
 		 */
-
-		if (R->key == k)
-			return R;
-		else if (R->key > k)
-			if (R->left != nullptr)
-				return Find(k, R->left);
-			else
-				return R;
-		else
-			if (R->right != nullptr)
-				return Find(k, R->right);
-			else
-				return R;
-	}
-
-	static Node* LeftDescendent(Node* N) {
-		if (N->left == nullptr)
-			return N;
-		else
-			return LeftDescendent(N->left);
-	}
-
-	static Node* RightAncestor(Node* N) {
-		// 不断的找parent节点
-
-		// N is the largest number, then it has no ancestor,
-		// so when call RightAncestor(N->parent); we got nullptr as the parameter
-		// N->parent == nullptr:  这句话可别忘了。。。
-		if (N == nullptr || N->parent == nullptr)
-			return nullptr;
-
-		if (N->key < N->parent->key)
-			return N->parent;
-		else
-			return RightAncestor(N->parent);
-	}
-
-	/*
-	 * 找到 next largest key
-	 */
-	static Node* Next(Node* N) {
-		if (N->right != nullptr)
-			return LeftDescendent(N->right);
-		else
-			return RightAncestor(N);
-	}
-
-	static Nodes RangeSearch(int x, int y, Node* R) {
-		Nodes L;
-
-		Node* N = Find(x, R);
-
-		while (N->key <= y) { 		// 上限
-			if (N->key >= x) {		// 下限
-				L.push_back(N);
-			}
-
-			N = Next(N);
-			if (nullptr == N)
-				break;
+		Node* y = x->parent;
+		while(y && x == y->right) {
+			x = y;
+			y = x->parent;
 		}
 
-		return L;
+		return y;
 	}
 
-	static void Insert(int k, Node* R) {
-		Node* P = Find(k, R);
+	void Insert(Node* z)
+	{
+		Node* y = nullptr;
+		Node* x = _root;
 
-		std::cout << "find before insert: ";
-		DisplayNode(P);
-
-		Node* n = new Node(k);
-		n->parent = P;
-
-		if (k > P->key)
-			P->right = n;
-		else
-			P->left = n;
-	}
-
-	/*
-	 * delete 没调试好，有问题
-	 */
-	static void Delete(Node* N, Node** root) {
-
-		if (N->right == nullptr && N->left != nullptr) {
-			if (N->parent != nullptr) {
-				if (N == N->parent->right)
-					N->parent->right = nullptr;
-				else
-					N->parent->left = nullptr;
-			} else {
-				*root = N->left;
-			}
-
-			delete N;
-
-		} else if (N->right != nullptr && N->left == nullptr) {
-			if (N->parent != nullptr) {
-				if (N == N->parent->right)
-					N->parent->right = N->right;
-				else
-					N->parent->left = N->right;
-			} else {
-				*root = N->right;
-			}
-
-			delete N;
-
-		} else if (N->right == nullptr && N->left != nullptr) {
-			if (N == N->parent->right)
-				N->parent->right = N->left;
+		// 按二叉树的特点查找这样一个节点y，y至少又一个孩子是空
+		// y 保存 x上一个值
+		while(x) {
+			y = x;
+			if(z->key < x->key)
+				x = x->left;
 			else
-				N->parent->left = N->left;
+				x = x->right;
+		}
 
-			delete N;
+		// 此时，y 就是 待插入节点 z 点的父节点
+		z->parent = y;
 
-		} else {
-			Node *X = Next(N);
-			N->key = X->key;
-
-			if (X->right){
-				if (X->right)
-					N->right = X->right;
-				else
-					N->right = nullptr;
-				delete X->right;
-			} else {
-				std::cout <<  "delete X" << std::endl;
-				if (X->right)
-					N->right = X->right->right;
-				else
-					N->right = nullptr;
-				delete X;
-			}
+		if(!y)
+			_root = z;
+		else {
+			// 看看是左孩子，还是右孩子
+			if(z->key < y->key)
+				y->left = z;
+			else
+				y->right = z;
 		}
 	}
 
-	static void _middle_order(Node* R) {
-		if(R != nullptr){
-			_middle_order(R->left);
-			std::cout << " " << R->key;
-			_middle_order(R->right);
+	Node* Delete(Node* z) {
+		Node* y = nullptr;	// 真正要删除的节点，因为如果z的两个孩子都有的话，可以它它的后继复制过来，然后删除后继
+		Node* x = nullptr;	// 被删除节点的孩子节点
+
+		if(!z->left || !z->right)
+			y = z;
+		else
+			y = Successor(z);
+
+		if(y->left)
+			x = y->left;
+		else
+			x = y->right;
+
+		// 把孩子几点提升
+		if(x) {
+			x->parent = y->parent;
+		}
+
+		if(!(y->parent))	// 被删除的是根节点
+			_root = x;
+		else {
+			if(y == y->parent->left)
+				y->parent->left = x;
+			else
+				y->parent->right = x;
+		}
+
+		if(y != z) {
+			z->key = y->key;
+			z->data = y->data;
+		}
+
+		return y;
+	}
+
+	void MidOrderOutput() {
+		_midOrderOutput(_root);
+		cout << endl;
+	}
+
+private:
+	void _midOrderOutput(Node* x) {
+		if (x) {
+			_midOrderOutput(x->left);
+			cout << x->key << "\t";
+			_midOrderOutput(x->right);
 		}
 	}
 
-	static void middle_order(Node* R) {
-		_middle_order(R);
-		std::cout << std::endl;
-	}
+
+private:
+	Node* _root;
 };
 
 
 int main() {
 
-	Node* tree = new Node(9);
+	BinarySearchTree tree;
 
-	BinarySearchTree::Insert(1, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(6, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(2, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(7, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(4, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(8, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(3, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(5, tree);
-	BinarySearchTree::middle_order(tree);
-	std::cout << "tree built complete ..." << std::endl << std::endl;
+	vector<int> nums = {15, 5, 3, 12, 10, 13, 6, 7, 16, 20, 18, 23};
 
-	BinarySearchTree::DisplayRange(BinarySearchTree::RangeSearch(2, 90, tree));
+	// build tree
+	for(auto x : nums)
+	{
+		tree.Insert(new Node(x));
+		tree.MidOrderOutput();
+	}
 
-	Node* node_del = BinarySearchTree::Find(9, tree);
-	BinarySearchTree::DisplayNode(node_del);
+	vector<int> search_case = {0, -1, 4, 6, 11, 99};
+	for(auto key : search_case) {
+		if(!tree.Search(key)) {
+			cout << "find " << key << ":  xxx" << endl;
+		} else {
+			cout << "find " << key << ":  √√√" << endl;
+		}
+	}
 
-	BinarySearchTree::Delete(node_del, &tree);
+	for(auto x : nums)
+	{
+		Node* p = tree.Search(x);
+		p = tree.Delete(p);
+		delete p; p=nullptr;
+		cout << "after delete " << x << endl;
+		tree.MidOrderOutput();
 
-	BinarySearchTree::middle_order(tree);
+		tree.Insert(new Node(x));
+	}
 
 	return 0;
 }
