@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
 
 struct Node {
 
@@ -118,8 +119,8 @@ public:
 	static void Insert(int k, Node* R) {
 		Node* P = Find(k, R);
 
-		std::cout << "find before insert: ";
-		DisplayNode(P);
+		//std::cout << "find before insert: ";
+		//DisplayNode(P);
 
 		Node* n = new Node(k);
 		n->parent = P;
@@ -171,6 +172,17 @@ public:
 			Node *X = Next(N);
 			N->key = X->key;
 
+			if(!X->parent) {
+				*root = N;
+			} else {
+				if(X->parent->left == X)
+					X->parent->left = X->right;
+				else
+					X->parent->right = X->right;
+			}
+
+			delete X;
+#if 0
 			if (X->right){
 				if (X->right)
 					N->right = X->right;
@@ -185,6 +197,7 @@ public:
 					N->right = nullptr;
 				delete X;
 			}
+#endif
 		}
 	}
 
@@ -207,32 +220,35 @@ int main() {
 
 	Node* tree = new Node(9);
 
-	BinarySearchTree::Insert(1, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(6, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(2, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(7, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(4, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(8, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(3, tree);
-	BinarySearchTree::middle_order(tree);
-	BinarySearchTree::Insert(5, tree);
-	BinarySearchTree::middle_order(tree);
-	std::cout << "tree built complete ..." << std::endl << std::endl;
 
-	BinarySearchTree::DisplayRange(BinarySearchTree::RangeSearch(2, 90, tree));
+	vector<int> nums = {15, 5, 3, 12, 10, 13, 6, 7, 16, 20, 18, 23};
 
-	Node* node_del = BinarySearchTree::Find(9, tree);
-	BinarySearchTree::DisplayNode(node_del);
+	// build tree
+	for(auto x : nums)
+	{
+		BinarySearchTree::Insert(x, tree);
+		BinarySearchTree::middle_order(tree);
+	}
 
-	BinarySearchTree::Delete(node_del, &tree);
+	vector<int> search_case = {0, -1, 4, 6, 11, 99};
+	for(auto key : search_case) {
+		Node* node_del = BinarySearchTree::Find(key, tree);
+		if(node_del->key != key) {
+			cout << "find " << key << ":  xxx" << endl;
+		} else if(node_del->key == key) {
+			cout << "find " << key << ":  √√√" << endl;
+		}
+	}
 
-	BinarySearchTree::middle_order(tree);
+	for(auto x : nums)
+	{
+		Node* node_del = BinarySearchTree::Find(x, tree);
+		delete node_del; node_del=nullptr;
+		cout << "after delete " << x << endl;
+		BinarySearchTree::middle_order(tree);
+
+		BinarySearchTree::Insert(x, tree);
+	}
 
 	return 0;
 }

@@ -25,17 +25,18 @@ add_executable(disjoin_set_path_compression ${disjoin_set_path_compression_SRC})
 set(binary_search_tree_SRC binary_search_tree.cpp)
 add_executable(binary_search_tree ${binary_search_tree_SRC})
 
+
+# binary_search_tree_2.cpp
+set(binary_search_tree_2_SRC binary_search_tree_2.cpp)
+add_executable(binary_search_tree_2 ${binary_search_tree_2_SRC})
+
+
 # hash_table.cpp
 set(hash_table_SRC hash_table.cpp)
 add_executable(hash_table ${hash_table_SRC})
 
 endif(0)
 
-
-
-# binary_search_tree.cpp
-set(binary_search_tree_SRC binary_search_tree.cpp)
-add_executable(binary_search_tree ${binary_search_tree_SRC})
 
 # binary_search_tree_2.cpp
 set(binary_search_tree_2_SRC binary_search_tree_2.cpp)

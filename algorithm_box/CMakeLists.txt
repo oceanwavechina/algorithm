@@ -167,12 +167,17 @@ add_executable(find_median ${find_median_SRC})
 set(merge_k_sorted_linklist_SRC merge_k_sorted_linklist.cpp)
 add_executable(merge_k_sorted_linklist ${merge_k_sorted_linklist_SRC})
 
-
-endif(0)
-
 # fast_invert_sqrt.cpp
 set(fast_invert_sqrt_SRC fast_invert_sqrt.cpp)
 add_executable(fast_invert_sqrt ${fast_invert_sqrt_SRC})
+
+
+endif(0)
+
+
+# BinaryTree_output_by_level.cpp
+set(BinaryTree_output_by_level_SRC BinaryTree_output_by_level.cpp)
+add_executable(BinaryTree_output_by_level ${BinaryTree_output_by_level_SRC})
 
 
 

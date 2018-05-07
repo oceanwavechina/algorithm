@@ -62,11 +62,14 @@ add_executable(Comma_expression_tricks ${Comma_expression_tricks_SRC})
 set(reverse_pair_tricks_SRC reverse_pair_tricks.cpp)
 add_executable(reverse_pair_tricks ${reverse_pair_tricks_SRC})
 
-endif(0)
-
-
-
 # other_tricks.cpp
 set(other_tricks_SRC other_tricks.cpp)
 add_executable(other_tricks ${other_tricks_SRC})
+
+endif(0)
+
+
+# question_tricks.cpp
+set(question_tricks_SRC question_tricks.cpp)
+add_executable(question_tricks ${question_tricks_SRC})
 
