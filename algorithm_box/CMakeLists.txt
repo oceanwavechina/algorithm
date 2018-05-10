@@ -171,13 +171,17 @@ add_executable(merge_k_sorted_linklist ${merge_k_sorted_linklist_SRC})
 set(fast_invert_sqrt_SRC fast_invert_sqrt.cpp)
 add_executable(fast_invert_sqrt ${fast_invert_sqrt_SRC})
 
+# my_atoi.cpp
+set(my_atoi_SRC my_atoi.cpp)
+add_executable(my_atoi ${my_atoi_SRC})
+
 
 endif(0)
 
 
-# BinaryTree_output_by_level.cpp
-set(BinaryTree_output_by_level_SRC BinaryTree_output_by_level.cpp)
-add_executable(BinaryTree_output_by_level ${BinaryTree_output_by_level_SRC})
+# my_itoa.cpp
+set(my_itoa_SRC my_itoa.cpp)
+add_executable(my_itoa ${my_itoa_SRC})
 
 
 
