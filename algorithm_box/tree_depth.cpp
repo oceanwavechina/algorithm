@@ -72,7 +72,15 @@ int depth(Node* p) {
 	if (!p)
 		return 0;
 
-	return max(depth(p->left), depth(p->right)) + 1;
+
+	/*
+	 * 深度是相对跟节点的，所以递归返回的时候，到跟节点就可以找到左右子树的最大值，也就是深度
+	 */
+
+	int left_len = depth(p->left);
+	int right_len = depth(p->right);
+
+	return max(left_len, right_len) + 1;
 }
 
 int main(int argc, char **argv) {

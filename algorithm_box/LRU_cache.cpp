@@ -21,6 +21,9 @@ using namespace std;
 		要点是：
 			1. 无论查找还是更新，都要重新排序，所以，记得更新map中的位置
 
+	NOTE：
+		hash + linklist 应该还可以演化成 集合(set) 的实现，可以使得
+		insert, delete, update, ismember, getallelements 这5个操作的时间复杂度都是O(1)
  */
 
 

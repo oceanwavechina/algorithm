@@ -175,13 +175,15 @@ add_executable(fast_invert_sqrt ${fast_invert_sqrt_SRC})
 set(my_atoi_SRC my_atoi.cpp)
 add_executable(my_atoi ${my_atoi_SRC})
 
-
-endif(0)
-
-
 # my_itoa.cpp
 set(my_itoa_SRC my_itoa.cpp)
 add_executable(my_itoa ${my_itoa_SRC})
 
 
+endif(0)
+
+
+# tree_diameter.cpp
+set(tree_diameter_SRC tree_diameter.cpp)
+add_executable(tree_diameter ${tree_diameter_SRC})
 
