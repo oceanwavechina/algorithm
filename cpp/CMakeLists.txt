@@ -66,10 +66,16 @@ add_executable(reverse_pair_tricks ${reverse_pair_tricks_SRC})
 set(other_tricks_SRC other_tricks.cpp)
 add_executable(other_tricks ${other_tricks_SRC})
 
-endif(0)
-
-
 # question_tricks.cpp
 set(question_tricks_SRC question_tricks.cpp)
 add_executable(question_tricks ${question_tricks_SRC})
+
+endif(0)
+
+
+# null_and_virtual_func.cpp
+set(null_and_virtual_func_SRC null_and_virtual_func.cpp)
+add_executable(null_and_virtual_func ${null_and_virtual_func_SRC})
+
+
 
