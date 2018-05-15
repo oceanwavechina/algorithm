@@ -64,13 +64,24 @@ Node* getLowestCommonAncestor(Node* tree, int v1, int v2)
 	Node* iterator = tree;
 
 	while(iterator) {
-		if( iterator->value < small ) { // 在 iterator 的右孩子上
+		if( iterator->value < small) { // 在 iterator 的右孩子上
 			iterator = iterator->right;
 			continue;
-		} else if(iterator->value > big ) {	// 在iterator 的左孩子上
+		} else if(iterator->value > big) {	// 在iterator 的左孩子上
 			iterator = iterator->left;
 			continue;
 		}
+
+		// 好像不能判断某个值是不是在二叉树中
+//		if (!iterator->left || ! iterator->right) {
+//			// 这个判断用来检查v1,或是 v2不是二叉树节点的情况
+//			return nullptr;
+//		} else if (iterator->value < small && iterator->value > big) {
+//			return nullptr;
+//		} else {
+//			return iterator;
+//		}
+
 		return iterator;
 	}
 
@@ -82,17 +93,25 @@ Node* getLowestCommonAncestor(Node* tree, int v1, int v2)
 int main(int argc, char **argv) {
 
 	Node* tree = getTestTree();
-	int tes_cases[4][3] = {
+	int tes_cases[6][3] = {
 			{2, 9, 5},
 			{2, 19, 12},
 			{2, 16, 12},
 			{15, 19, 18},
+			{100, 19, 0},
+			{-1, 19, 0},
 	};
 
 
-	for(int i=0; i < 4; ++i) {
+	for(int i=0; i < 6; ++i) {
+		cout << "testcase: " << tes_cases[i][0] << " " << tes_cases[i][1] << ", ";
 		Node* target = getLowestCommonAncestor(tree, tes_cases[i][0], tes_cases[i][1]);
-		assert(target->value == tes_cases[i][2]);
+		if (target && tes_cases[i][2] != 0) {
+			cout << "get target: " << target->value;
+			assert(target->value == tes_cases[i][2]);
+		}
+
+		cout << endl;
 	}
 
 	cout << "all passed !" << endl;
