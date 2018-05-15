@@ -179,11 +179,13 @@ add_executable(my_atoi ${my_atoi_SRC})
 set(my_itoa_SRC my_itoa.cpp)
 add_executable(my_itoa ${my_itoa_SRC})
 
-
-endif(0)
-
-
 # tree_diameter.cpp
 set(tree_diameter_SRC tree_diameter.cpp)
 add_executable(tree_diameter ${tree_diameter_SRC})
 
+endif(0)
+
+
+# lowest_common_ancestor_of_BST.cpp
+set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
+add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC})
