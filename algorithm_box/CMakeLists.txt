@@ -187,10 +187,19 @@ add_executable(tree_diameter ${tree_diameter_SRC})
 set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
 add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC})
 
-endif(0)
-
-
 # find_the_difference.cpp
 set(find_the_difference_SRC find_the_difference.cpp)
 add_executable(find_the_difference ${find_the_difference_SRC})
 
+
+endif(0)
+
+
+# simple_timing_wheels.cpp
+# set(simple_timing_wheels_SRC simple_timing_wheels.cpp)
+# add_executable(simple_timing_wheels ${simple_timing_wheels_SRC})
+
+
+# alias_method.cpp
+set(alias_method_SRC alias_method.cpp)
+add_executable(alias_method ${alias_method_SRC})

@@ -70,12 +70,14 @@ add_executable(other_tricks ${other_tricks_SRC})
 set(question_tricks_SRC question_tricks.cpp)
 add_executable(question_tricks ${question_tricks_SRC})
 
-endif(0)
-
-
 # null_and_virtual_func.cpp
 set(null_and_virtual_func_SRC null_and_virtual_func.cpp)
 add_executable(null_and_virtual_func ${null_and_virtual_func_SRC})
 
+endif(0)
 
+
+# cpp_02.cpp
+set(cpp_02_SRC cpp_02.cpp)
+add_executable(cpp_02 ${cpp_02_SRC})
 
