@@ -191,15 +191,14 @@ add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC
 set(find_the_difference_SRC find_the_difference.cpp)
 add_executable(find_the_difference ${find_the_difference_SRC})
 
+# maximum_swap.cpp
+set(maximum_swap_SRC maximum_swap.cpp)
+add_executable(maximum_swap ${maximum_swap_SRC})
+
 
 endif(0)
 
 
-# simple_timing_wheels.cpp
-# set(simple_timing_wheels_SRC simple_timing_wheels.cpp)
-# add_executable(simple_timing_wheels ${simple_timing_wheels_SRC})
-
-
-# alias_method.cpp
-set(alias_method_SRC alias_method.cpp)
-add_executable(alias_method ${alias_method_SRC})
+# count_complete_tree_nodes.cpp
+set(count_complete_tree_nodes_SRC count_complete_tree_nodes.cpp)
+add_executable(count_complete_tree_nodes ${count_complete_tree_nodes_SRC})
