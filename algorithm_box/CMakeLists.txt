@@ -195,10 +195,19 @@ add_executable(find_the_difference ${find_the_difference_SRC})
 set(maximum_swap_SRC maximum_swap.cpp)
 add_executable(maximum_swap ${maximum_swap_SRC})
 
+# count_complete_tree_nodes.cpp
+set(count_complete_tree_nodes_SRC count_complete_tree_nodes.cpp)
+add_executable(count_complete_tree_nodes ${count_complete_tree_nodes_SRC})
+
 
 endif(0)
 
 
-# count_complete_tree_nodes.cpp
-set(count_complete_tree_nodes_SRC count_complete_tree_nodes.cpp)
-add_executable(count_complete_tree_nodes ${count_complete_tree_nodes_SRC})
+## reverse_pair.cpp
+#set(reverse_pair_SRC reverse_pair.cpp)
+#add_executable(reverse_pair ${reverse_pair_SRC})
+
+
+# binary_tree_maximum_path_sum.cpp
+set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
+add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})

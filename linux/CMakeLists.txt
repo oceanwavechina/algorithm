@@ -28,8 +28,14 @@ add_executable(epoll ${epoll_SRC})
 set(dummy_test_SRC dummy_test.cpp)
 add_executable(dummy_test ${dummy_test_SRC})
 
-endif(0)
-
 # fork_test.cpp
 set(fork_test_SRC fork_test.cpp)
 add_executable(fork_test ${fork_test_SRC})
+
+
+endif(0)
+
+# mutex_and_condition_var.cpp
+set(mutex_and_condition_var_SRC mutex_and_condition_var.cpp)
+add_executable(mutex_and_condition_var ${mutex_and_condition_var_SRC})
+target_link_libraries(mutex_and_condition_var pthread) 

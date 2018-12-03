@@ -33,9 +33,9 @@ void* produce(void* ) {
 //		pthread_mutex_lock(&g_mutex);
 		g_product.push(i);
 
-		cout << "before cond_signal" << endl;
+		//cout << "before cond_signal" << endl;
 		pthread_cond_signal(&cond);
-		cout << "after cond_signal" << endl;
+		//cout << "after cond_signal" << endl;
 
 		int ret = pthread_mutex_unlock(&g_mutex);
 
@@ -54,13 +54,12 @@ void* produce(void* ) {
 
 
 void* consumer(void* ) {
-
 	for(int i=0; i<10;) {
-		pthread_mutex_lock(&g_mutex);
+		int ret = pthread_mutex_lock(&g_mutex);
 
 		if (g_product.empty()) {
-//			pthread_mutex_unlock(&g_mutex);
-//			continue;
+			pthread_mutex_unlock(&g_mutex);
+			continue;
 
 			cout << "before cond_wait" << endl;
 			pthread_cond_wait(&cond,&g_mutex);

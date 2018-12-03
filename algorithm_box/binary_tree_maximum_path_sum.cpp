@@ -35,8 +35,8 @@
 		iii. max(left subtree) + max(right subtree) + node
 		iv. the node itself
 		Then, we need to return the maximum path sum that goes through this node and to either one of its left or right subtree to its parent.
-		There’s a little trick here: If this maximum happens to be negative, we should return 0,
-			which means: “Do not include this subtree as part of the maximum path of the parent node”, which greatly simplifies our code.
+		There is a little trick here: If this maximum happens to be negative, we should return 0,
+			which means: 鈥淒o not include this subtree as part of the maximum path of the parent node, which greatly simplifies our code.
  */
 
 
@@ -45,6 +45,7 @@
 #include <stdlib.h>
 #include <stack>
 #include <cstdint>
+#include <vector>
 
 
 using namespace std;
@@ -103,8 +104,6 @@ Node* getTestTree() {
 	return node10;
 }
 
-static int g_maxSum;
-
 
 int find_max(Node* p) {
 	if(!p)
@@ -113,25 +112,48 @@ int find_max(Node* p) {
 	int left = find_max(p->left);
 	int right = find_max(p->right);
 
-	g_maxSum = max(p->value + left + right, g_maxSum);
+	// 或是全局变量
+	static int g_maxSum = max(p->value + left + right, g_maxSum);
 
 	int ret = p->value + max(left, right);
 
 	return ret > 0 ? ret : 0;
 }
 
-int max_path_sum(Node* tree) {
-	g_maxSum = INT_MIN;
+int find_max_using_stack(Node* p) {
 
-	find_max(tree);
+	if(!p)
+		return 0;
 
-	return g_maxSum;
+	static int max_sum = INT_MIN;
+	stack<Node*> _stack;
+	int stack_sum = 0;
+
+	// 先压栈
+	Node* tmp_node = tmp_node;
+	while(tmp_node) {
+		_stack.push(tmp_node);
+		stack_sum += tmp_node->value;
+		tmp_node  = tmp_node->left;
+	}
+	max_sum = stack_sum;
+
+	//
+	while(!_stack.empty()) {
+		Node* top = _stack.top();
+		_stack.pop();
+		if(top->right)
+	}
+
 }
 
 
 
 int main(int argc, char **argv) {
 
+	Node* p = getTestTree();
+
+	cout << "max tree path sum: " << find_max(p) << endl;
 
 	return 0;
 }
