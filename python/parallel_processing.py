@@ -6,7 +6,7 @@ Created on Dec 3, 2018
 
 import multiprocessing as mp
 import numpy as np
-from time import time
+import time
 import timeit
 
 '''
@@ -21,7 +21,8 @@ def get_mp_count():
 
 def prepare_data():
     np.random.RandomState(100)
-    arr = np.random.randint(0, 10, size=[200000, 5])
+    # arr = np.random.randint(0, 10, size=[200000, 5])
+    arr = np.random.randint(0, 10, size=[5, 5])
     data = arr.tolist()
     return data
 
@@ -30,18 +31,29 @@ data = prepare_data()
 
 
 def worker(row, minimum=4, maximum=8):
+
     count = 0
+
+    # 其实下边这样的计算是cpu密集型的，切换多个进程并不能加快处理速度
     for n in row:
         if minimum <= n <= maximum:
             count = count + 1
+
+    # 下面这种场景就适合用多进程了
+    time.sleep(1)
+
     return count
 
 
 def worker2(i, row, minimum=4, maximum=8):
     count = 0
+    # 其实下边这样的计算是cpu密集型的，切换多个进程并不能加快处理速度
     for n in row:
         if minimum <= n <= maximum:
             count = count + 1
+
+    # 下面这种场景就适合用多进程了
+    time.sleep(1)
     return (i, count)
 
 
