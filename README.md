@@ -18,10 +18,6 @@ programming pearls目录
 1. Part1_coulumn1
 
 
-python目录
--------------
-这个是python的用法和技巧，语言模型相关
-
 
 linux目录
 -------------
