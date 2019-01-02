@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -72,10 +73,76 @@ void shift_and_division() {
 }
 
 
+/*
+ * 首先数值的类型是 16bit的，如果是32bit的就不是这个数了，但是一定有这样的结果
+ *	-32768 的补码表示 		 是 1...............
+ *	-32768 * -1, 的补码表示依然是 1...............
+ */
+void pitfall_twos_complement() {
+	ostringstream oss;
+
+	short x =-32768;
+	oss << "x:" << x;
+	if((signed)x < 0)
+		// x = -x;
+		x = x*-1;
+
+	oss << ", -x:" << x;
+	cout << oss.str() << endl;
+}
+
+/*
+ *	对一个数右移k位
+ *		如果 k=sizeof(type)， 我们并不会的到0，而是原来的数, cpu会忽略此次运算
+ *		所以我们希望得到预期的结果时，要加上shift为0的判断
+ */
+void shift_max() {
+	typedef unsigned long TYPE;
+	TYPE num = ~0;
+	TYPE shift = 0;
+	TYPE t = num >> (8*sizeof(TYPE) - shift);
+	cout << num << " shift " << (8*sizeof(TYPE) - shift) << " bit:" << t << endl;
+
+	shift = 1;
+	t = num >> (8*sizeof(TYPE) - shift);
+	cout << num << " shift " << (8*sizeof(TYPE) - shift) << " bit:" << t << endl;
+
+	shift = 0;
+	if(shift == 0) {
+		t = 0;
+		cout << num << " shift " << (8*sizeof(TYPE) - shift) << " bit with fix:" << t << endl;
+	}
+
+}
+
+void short_cut() {
+	int a = 0;
+	int b = 1;
+
+	// 判断a, b 中至少有一个是0
+	cout << "( " << a << "," << b << " ): at least has one 0: " << (! (a&b)) << endl;
+
+	// 判断a,b中都为0
+	cout << "( " << a << "," << b << " ): both are 0: " << ((a|b)==0) << endl;
+	a = 0;
+	b = 0;
+	int c = 0;
+	cout << "( " << a << "," << b << "," << c << " ): both are 0: " << ((a|b|c)==0) << endl;
+
+	// 只有一个是0
+	cout << "( " << a << "," << b << " ): exactly has one 0: " << ((!a)^(!b)) << endl;
+	a = 1;
+	b = 0;
+	cout << "( " << a << "," << b << " ): exactly has one 0: " << ((!a)^(!b)) << endl;
+}
+
 int main(int argc, char **argv) {
 	is_little_endian();
 	cast_pointer_to_int();
 	shift_and_division();
+	pitfall_twos_complement();
+	shift_max();
+	short_cut();
 
 	return 0;
 }
