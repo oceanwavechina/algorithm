@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 using namespace std;
 
@@ -87,7 +88,7 @@ void pitfall_twos_complement() {
 		// x = -x;
 		x = x*-1;
 
-	oss << ", -x:" << x;
+	oss << ", -x:" << x << ", abs(x):" << abs(x);
 	cout << oss.str() << endl;
 }
 
@@ -136,6 +137,31 @@ void short_cut() {
 	cout << "( " << a << "," << b << " ): exactly has one 0: " << ((!a)^(!b)) << endl;
 }
 
+void next_or_previous_even_or_odd_value() {
+	u_long x = 7;
+
+	cout << "x:" << x;
+
+	cout << "\n\tnext_even of x:" << (x+2-(x&1));
+	cout << "\n\tpre_even of x:" << (x-2+(x&1));
+
+	cout << "\n\tnext_odd of x:" << (x+1+(x&1));
+	cout << "\n\tpre_odd of x:" << (x-1-(x&1));
+	
+	cout << endl;
+}
+
+/*
+	用整形做乘法容易溢出，浮点数表示的范围比较大
+*/
+void integer_versus_float_multiplication() {
+	uint32_t i = 111111111;
+	uint64_t i_64 = 111111111;
+	float f = 111111111;
+	cout << "uint32_t " << i  << " x " << i << " = " << i*i << endl;
+	cout << "float " << f  << " x " << f << " = " << f*f << endl;
+}
+
 int main(int argc, char **argv) {
 	is_little_endian();
 	cast_pointer_to_int();
@@ -143,6 +169,8 @@ int main(int argc, char **argv) {
 	pitfall_twos_complement();
 	shift_max();
 	short_cut();
+	next_or_previous_even_or_odd_value();
+	integer_versus_float_multiplication();
 
 	return 0;
 }
