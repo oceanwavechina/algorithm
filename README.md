@@ -11,19 +11,26 @@ coursera目录
 5. Advanced Algorithms and Complexity
 
 
+matters computational目录
+-------------
+学习fxt book上算法的笔记
+1. bit 相关的算法，以及在进行bit运算时会遇到的陷阱, 这些对于理解计算机中数值的表示很有帮助
+
 
 programming pearls目录
 -------------
 《编程珠玑》上的练习
-1. Part1_coulumn1
-
+1. Part1_coulumn1， bitmap算法的实现和练习
 
 
 linux目录
 -------------
-linux api相关的练习和备忘
+1. 面试遇到的问题
+2. 其他linux问题的验证
 
 
 cpp目录
 -------------
-cpp 语言相关，语言模型，技巧啥的
+1. 语言模型相关
+2. 一些有意思的tricks的实现和备忘
+3. 面试中可能遇到的问题
