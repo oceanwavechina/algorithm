@@ -199,15 +199,18 @@ add_executable(maximum_swap ${maximum_swap_SRC})
 set(count_complete_tree_nodes_SRC count_complete_tree_nodes.cpp)
 add_executable(count_complete_tree_nodes ${count_complete_tree_nodes_SRC})
 
+# subarray_with_given_sum.cpp
+set(subarray_with_given_sum_SRC subarray_with_given_sum.cpp)
+add_executable(subarray_with_given_sum ${subarray_with_given_sum_SRC})
 
 endif(0)
 
 
-## reverse_pair.cpp
-#set(reverse_pair_SRC reverse_pair.cpp)
-#add_executable(reverse_pair ${reverse_pair_SRC})
+# reverse_pair.cpp
+set(reverse_pair_SRC reverse_pair.cpp)
+add_executable(reverse_pair ${reverse_pair_SRC})
 
 
 # binary_tree_maximum_path_sum.cpp
-set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
-add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
+#set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
+#add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})

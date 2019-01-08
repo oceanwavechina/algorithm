@@ -359,6 +359,27 @@ public:
 	}
 };
 
+void is_power_of_2() {
+	/*
+		判断一个数是不是2的幂
+	*/
+	ostringstream oss;
+	Formatter formater(__FUNCTION__);
+
+	int64_t num = 1024;
+	oss << num << " is power of 2: " << !(num & (num-1));
+	formater << oss;
+
+	num = -1024;
+	oss << num << " is power of 2: " << !(num & (num-1));
+	formater << oss;
+
+	num = 0;
+	oss << num << " is power of 2: " << !(num & (num-1));
+	formater << oss;
+
+}
+
 int main(int argc, char **argv) {
 	is_little_endian();
 	cast_pointer_to_int();
@@ -371,6 +392,8 @@ int main(int argc, char **argv) {
 
 	LowestBit lowest_bit;
 	lowest_bit.test();
+
+	is_power_of_2();
 	
 	return 0;
 }
