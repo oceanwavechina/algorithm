@@ -203,14 +203,35 @@ add_executable(count_complete_tree_nodes ${count_complete_tree_nodes_SRC})
 set(subarray_with_given_sum_SRC subarray_with_given_sum.cpp)
 add_executable(subarray_with_given_sum ${subarray_with_given_sum_SRC})
 
+# print_Z_pattern.cpp
+set(print_Z_pattern_SRC print_Z_pattern.cpp)
+add_executable(print_Z_pattern ${print_Z_pattern_SRC})
+
+# equilibrium_index.cpp
+set(equilibrium_index_SRC equilibrium_index.cpp)
+add_executable(equilibrium_index ${equilibrium_index_SRC})
+
+# find_all_subarray_with_0_sum.cpp
+set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
+add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
+
+# find_all_subarray_with_x_sum.cpp
+set(find_all_subarray_with_x_sum_SRC find_all_subarray_with_x_sum.cpp)
+add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
+
 endif(0)
 
 
 # reverse_pair.cpp
-set(reverse_pair_SRC reverse_pair.cpp)
-add_executable(reverse_pair ${reverse_pair_SRC})
+#set(reverse_pair_SRC reverse_pair.cpp)
+#add_executable(reverse_pair ${reverse_pair_SRC})
 
 
 # binary_tree_maximum_path_sum.cpp
 #set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
 #add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
+
+
+# find_all_subarray_with_0_sum.cpp
+set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
+add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
