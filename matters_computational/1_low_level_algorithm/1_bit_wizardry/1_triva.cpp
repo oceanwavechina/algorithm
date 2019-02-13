@@ -37,7 +37,7 @@ void is_little_endian() {
  *  在64位机上 int也是32位的，比pointor的数据小
  *  所以这是一个坑
  */
-void cast_pointer_to_int() {
+void pitfall_cast_pointer_to_int() {
 	const char* s = "fad";
 
 	ostringstream oss;
@@ -67,7 +67,7 @@ void cast_pointer_to_int() {
 	(-22<<29): 1073741824
 	(-22<<30): -2147483648
  */
-void shift_and_division() {
+void pitfall_shift_and_division() {
 	int a = -1;
 	int c = a >> 1;
 	int d = a / 2;
@@ -154,7 +154,7 @@ void pitfall_twos_complement() {
  *		如果 k=sizeof(type)， 我们并不会的到0，而是原来的数, cpu会忽略此次运算
  *		所以我们希望得到预期的结果时，要加上shift为0的判断
  */
-void shift_max() {
+void pitfall_shift_max() {
 
 	ostringstream oss;
 	Formatter formater(__FUNCTION__);
@@ -258,110 +258,12 @@ void integer_versus_float_multiplication() {
 	formater << oss;
 }
 
-
-class LowestBit{
-public:
-	/*
-		返回最低有效位代表的那个word，也就是只设置不为0的最低有效位的word
-	*/
-	void word_of_lowest_one() {
-		ostringstream oss;
-		Formatter formater(string(typeid(this).name()) + "::" + __FUNCTION__);
-		u_long x = 10;
-		
-		oss	<< "word of lowest bit = " << (x&-x);
-		formater << oss;
-		oss	<< "-x = " << long(-x);
-		formater << oss;
-		oss	<< "binary = " << binary_str(-x);
-		formater << oss;
-	}
-
-	/*
-		把最后一个0置成1
-	*/
-	void set_lowest_zero() {
-		ostringstream oss;
-		Formatter formater(string(typeid(this).name()) + "::" + __FUNCTION__);
-		
-		u_long x = 13;
-
-		oss << "x = " << x;
-		formater << oss;
-		oss << "binary = " << binary_str(x);
-		formater << oss;
-		oss	<< "after set lowest zero bit = " << (x|(x+1));
-		formater << oss;
-		oss	<< "binary = " << binary_str(x|(x+1));
-		formater << oss;
-	}
-
-	/*
-		把最后一个1置成0
-	*/
-	void clear_lowest_one() {
-		ostringstream oss;
-		Formatter formater(string(typeid(this).name()) + "::" + __FUNCTION__);
-
-		u_long x = 10;
-
-		oss	<< "x = " << x;
-		formater << oss;
-		oss	<< "binary = " << binary_str(x);
-		formater << oss;
-		oss	<< "after clear lowest one bit = " << (x&(x-1));
-		formater << oss;
-		oss	<< "binary = " << binary_str(x&(x-1));
-		formater << oss;
-	}
-
-	/*
-		返回最有一个1的索引
-	*/
-	void counting_the_index_of_the_lowest_one() {
-		ostringstream oss;
-		Formatter formater(string(typeid(this).name()) + "::" + __FUNCTION__);
-
-		u_long x = 8;
-		oss	<< "x = " << x;
-		formater << oss;
-		oss	<< "binary = " << binary_str(x);
-		formater << oss;
-
-		// O(1)时间
-		u_long index = x;
-		asm("bsfq %0, %0" : "=r" (index) : "0" (index));
-		oss	<< "index of " << x << "'s lowest one bit(using asm:'bsfq') = " << (index);
-		formater << oss;
-
-		/* O(logn)时间
-				这个是二分查找的思想，从高位到低位判断
-		 */
-		x = 1;
-		x &= -x; // 先找到最后一个 1
-		index = 0;
-		if ( x & 0xffffffff00000000UL ) index += 32;
-		if ( x & 0xffff0000ffff0000UL ) index += 16;
-		if ( x & 0xff00ff00ff00ff00UL ) index += 8;
-		if ( x & 0xf0f0f0f0f0f0f0f0UL ) index += 4;
-		if ( x & 0xccccccccccccccccUL ) index += 2;
-		if ( x & 0xaaaaaaaaaaaaaaaaUL ) index += 1;
-
-		oss	<< "index of " << x <<"'s lowest one bit(using divide_and_conquer) = " << index;
-		formater << oss;
-	}
-
-	void test() {
-		word_of_lowest_one();
-		set_lowest_zero();
-		clear_lowest_one();
-		counting_the_index_of_the_lowest_one();
-	}
-};
-
 void is_power_of_2() {
 	/*
 		判断一个数是不是2的幂
+		NOTE:
+			利用率 x-1 会把最低有效位到末位的0，全置成1
+			而把最低有效位置成0
 	*/
 	ostringstream oss;
 	Formatter formater(__FUNCTION__);
@@ -382,17 +284,21 @@ void is_power_of_2() {
 
 int main(int argc, char **argv) {
 	is_little_endian();
-	cast_pointer_to_int();
-	shift_and_division();
+	
+	// 位运算中存在的坑
+	pitfall_cast_pointer_to_int();
+	pitfall_shift_and_division();
 	pitfall_twos_complement();
-	shift_max();
+	pitfall_shift_max();
+	
+	// 常用的简便判断
 	short_cut();
+	
+	// 查找下一个奇数或偶数
 	next_or_previous_even_or_odd_value();
 	integer_versus_float_multiplication();
 
-	LowestBit lowest_bit;
-	lowest_bit.test();
-
+	// 判断是不是2的幂
 	is_power_of_2();
 	
 	return 0;
