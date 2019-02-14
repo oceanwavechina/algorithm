@@ -232,6 +232,6 @@ endif(0)
 #add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
 
 
-# find_all_subarray_with_0_sum.cpp
-set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
-add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
+# word_break_problem_by_DP.cpp
+set(word_break_problem_by_DP_SRC word_break_problem_by_DP.cpp)
+add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
