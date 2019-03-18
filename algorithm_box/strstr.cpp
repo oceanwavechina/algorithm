@@ -34,7 +34,7 @@ size_t _strlen(char* str) {
 
 size_t _strstr(char* origin_str, char* sub_str) {
 	if (origin_str == NULL || sub_str == NULL) {
-		return NULL;
+		return 0;
 	}
 
 	int origin_len = _strlen(origin_str);
@@ -56,15 +56,15 @@ size_t _strstr(char* origin_str, char* sub_str) {
 
 	}
 
-	return NULL;
+	return 0;
 }
 
 
 int main(int argc, char **argv) {
 
-	std::cout << _strlen("test") << std::endl;
+	std::cout << _strlen((char *)"test") << std::endl;
 
-	std::cout << _strstr("test", "st") << std::endl;
+	std::cout << _strstr((char *)"test", (char *)"st") << std::endl;
 
 	return 0;
 }

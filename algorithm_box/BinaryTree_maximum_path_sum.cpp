@@ -22,7 +22,8 @@
 	The highlighted path yields the maximum sum 10.
 
  Hint:
-	Anytime when you found that doing top down approach uses a lot of repeated calculation, bottom up approach usually is able to be more efficient.
+	Anytime when you found that doing top down approach uses a lot of repeated calculation, 
+	bottom up approach usually is able to be more efficient.
 
  	 	 	 	 _____Node____
  	 	 	    / 			  \
@@ -32,11 +33,14 @@
 	Try the bottom up approach. At each node, the potential maximum path could be one of these cases:
 		i. max(left subtree) + node
 		ii. max(right subtree) + node
-		iii. max(left subtree) + max(right subtree) + node
+		iii. max(left subtree) + max(right subtree) + node (相当于横跨了当前节点的一个 ^ 形状的路径)
 		iv. the node itself
-		Then, we need to return the maximum path sum that goes through this node and to either one of its left or right subtree to its parent.
-		There is a little trick here: If this maximum happens to be negative, we should return 0,
-			which means: 鈥淒o not include this subtree as part of the maximum path of the parent node, which greatly simplifies our code.
+		
+		Then, we need to return the maximum path sum that goes through this node and 
+		to either one of its left or right subtree to its parent.
+		There is a little trick here: 
+			If this maximum happens to be negative, we should return 0,
+			which means: not include this subtree as part of the maximum path of the parent node, which greatly simplifies our code.
  */
 
 
@@ -95,15 +99,17 @@ Node* getTestTree() {
 	Node* node8 = createNode(8);
 	Node* node12 = createNode(12);
 	Node* node16 = createNode(16);
-	Node* node9 = createNode(4);
+	Node* node9 = createNode(9);
 
 	buildTree(node10, node6, node14);
 	buildTree(node6, node4, node8);
 	buildTree(node14, node12, node16);
+	buildTree(node4, node9, nullptr);
 
 	return node10;
 }
 
+static int g_maxSum = 0;
 
 int find_max(Node* p) {
 	if(!p)
@@ -112,14 +118,19 @@ int find_max(Node* p) {
 	int left = find_max(p->left);
 	int right = find_max(p->right);
 
-	// 或是全局变量
-	static int g_maxSum = max(p->value + left + right, g_maxSum);
 
+	/* 这个全局变量才是我们最终的结果，注意是左右子树和当前节点的和
+		（因为如果有一边是小于0的时候，我们返回的是0，这样就去除了这边的子树）
+	*/
+	g_maxSum = max(p->value + left + right, g_maxSum);
+
+
+	// 注意这里返回的是当前子树的最大值
 	int ret = p->value + max(left, right);
-
+	// （因为如果有一边是小于0的时候，我们返回的是0，这样就去除了这边的子树）
 	return ret > 0 ? ret : 0;
 }
-
+#if 0
 int find_max_using_stack(Node* p) {
 
 	if(!p)
@@ -146,6 +157,7 @@ int find_max_using_stack(Node* p) {
 	}
 
 }
+#endif
 
 
 
@@ -153,7 +165,9 @@ int main(int argc, char **argv) {
 
 	Node* p = getTestTree();
 
-	cout << "max tree path sum: " << find_max(p) << endl;
+	// cout << "max tree path sum: " << find_max(p) << endl;
+	find_max(p);
+	cout << "max tree path sum: " << g_maxSum << endl;
 
 	return 0;
 }

@@ -67,9 +67,9 @@ add_executable(up_the_steps ${up_the_steps_SRC})
 set(longest_unrepeat_substring_SRC longest_unrepeat_substring.cpp)
 add_executable(longest_unrepeat_substring ${longest_unrepeat_substring_SRC})
 
-# tree_depth.cpp
-set(tree_depth_SRC tree_depth.cpp)
-add_executable(tree_depth ${tree_depth_SRC})
+# BinaryTree_tree_depth.cpp
+set(BinaryTree_tree_depth_SRC BinaryTree_tree_depth.cpp)
+add_executable(BinaryTree_tree_depth ${BinaryTree_tree_depth_SRC})
 
 # 01_two_sum.cpp
 set(01_two_sum_SRC 01_two_sum.cpp)
@@ -87,21 +87,13 @@ add_executable(03_sentence_reverse ${03_sentence_reverse_SRC})
 set(04_reverse_integer_SRC 04_reverse_integer.cpp)
 add_executable(04_reverse_integer ${04_reverse_integer_SRC})
 
-# binary_tree_maximum_path_sum.cpp
-set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
-add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
+# BinaryTree_maximum_path_sum.cpp
+set(BinaryTree_maximum_path_sum_SRC BinaryTree_maximum_path_sum.cpp)
+add_executable(BinaryTree_maximum_path_sum ${BinaryTree_maximum_path_sum_SRC})
 
-# 05_strstr.cpp
-set(05_strstr_SRC 05_strstr.cpp)
-add_executable(05_strstr ${05_strstr_SRC})
-
-# selection_sort.cpp
-set(selection_sort_SRC selection_sort.cpp)
-add_executable(selection_sort ${selection_sort_SRC})
-
-# longest_unrepeat_substring.cpp
-set(longest_unrepeat_substring_SRC longest_unrepeat_substring.cpp)
-add_executable(longest_unrepeat_substring ${longest_unrepeat_substring_SRC})
+# strstr.cpp
+set(strstr_SRC strstr.cpp)
+add_executable(strstr ${strstr_SRC})
 
 # find_kth_to_tail.cpp
 set(find_kth_to_tail_SRC find_kth_to_tail.cpp)
@@ -114,10 +106,6 @@ add_executable(remove_duplicates ${remove_duplicates_SRC})
 # search_in_rotated_sorted_array.cpp
 set(search_in_rotated_sorted_array_SRC search_in_rotated_sorted_array.cpp)
 add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_SRC})
-
-# binary_tree_maximum_path_sum.cpp
-set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
-add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
 
 # longet_common_subsequence.cpp
 set(longet_common_subsequence_SRC longet_common_subsequence.cpp)
@@ -179,9 +167,9 @@ add_executable(my_atoi ${my_atoi_SRC})
 set(my_itoa_SRC my_itoa.cpp)
 add_executable(my_itoa ${my_itoa_SRC})
 
-# tree_diameter.cpp
-set(tree_diameter_SRC tree_diameter.cpp)
-add_executable(tree_diameter ${tree_diameter_SRC})
+# BinaryTree_tree_diameter.cpp
+set(BinaryTree_tree_diameter_SRC BinaryTree_tree_diameter.cpp)
+add_executable(BinaryTree_tree_diameter ${BinaryTree_tree_diameter_SRC})
 
 # lowest_common_ancestor_of_BST.cpp
 set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
@@ -219,18 +207,15 @@ add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
 set(find_all_subarray_with_x_sum_SRC find_all_subarray_with_x_sum.cpp)
 add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
 
-endif(0)
+# word_break_problem_by_DP.cpp
+set(word_break_problem_by_DP_SRC word_break_problem_by_DP.cpp)
+add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
 
+endif(0)
 
 # reverse_pair.cpp
 #set(reverse_pair_SRC reverse_pair.cpp)
 #add_executable(reverse_pair ${reverse_pair_SRC})
-
-
-# binary_tree_maximum_path_sum.cpp
-#set(binary_tree_maximum_path_sum_SRC binary_tree_maximum_path_sum.cpp)
-#add_executable(binary_tree_maximum_path_sum ${binary_tree_maximum_path_sum_SRC})
-
 
 # word_break_problem_by_DP.cpp
 set(word_break_problem_by_DP_SRC word_break_problem_by_DP.cpp)
