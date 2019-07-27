@@ -7,6 +7,11 @@
 
 
 
+/*
+	Question:
+
+	For example, given s = -321, return -123
+ */
 
 #include <iostream>
 

@@ -62,7 +62,6 @@ string sentence_reverse_with_stack(string& sentence) {
 	 */
 
 	stack<int> word_positions_stack;	//记录每个单词的起始位置
-
 	for(int i = 0; i < sentence.size()-1; ++i) {
 		if (i == 0) {
 			word_positions_stack.push(i);
@@ -73,18 +72,18 @@ string sentence_reverse_with_stack(string& sentence) {
 	}
 
 	stringstream ss;
-
 	while(!word_positions_stack.empty()) {
 		int pos = word_positions_stack.top();
 		word_positions_stack.pop();
 
+		// 输出当前的单词
 		int i = pos;
 		while(sentence[i] != ' ' && sentence[i] != '\0') {
 			ss << sentence[i];
 			++i;
 		}
 
-
+		// 追加一个空格
 		if (word_positions_stack.size() > 0) {
 			ss << ' ';
 		}
@@ -107,9 +106,7 @@ void reverse(string& str, int start, int end) {
 		++start;
 		--end;
 	}
-
 }
-
 
 string sentence_reverse_in_place(string& sentence) {
 	// 两次反转法，见 <<编程珠玑>>
@@ -120,16 +117,19 @@ string sentence_reverse_in_place(string& sentence) {
 	int i = 0;
 	while(sentence[i] != '\0') {
 
+		// 跳过开始的空字符
 		while(sentence[i] == ' ') {
 			++i;
 		}
 		start = i;
 
+		// 找到当前单词的结尾
 		while(sentence[i] != ' ' and sentence[i] != '\0') {
 			i++;
 		}
 		end = i-1;
 
+		// 翻转当前单词
 		reverse(sentence, start, end);
 	}
 
