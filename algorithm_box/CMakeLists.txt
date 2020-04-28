@@ -213,18 +213,6 @@ add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
 
 endif(0)
 
-# reverse_pair.cpp
-#set(reverse_pair_SRC reverse_pair.cpp)
-#add_executable(reverse_pair ${reverse_pair_SRC})
-
-# word_break_problem_by_DP.cpp
-set(word_break_problem_by_DP_SRC word_break_problem_by_DP.cpp)
-add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
-
-# array_alternate_fashion_sort.cpp
-set(array_alternate_fashion_sort_SRC array_alternate_fashion_sort.cpp)
-add_executable(array_alternate_fashion_sort ${array_alternate_fashion_sort_SRC})
-
-# 04_reverse_integer.cpp
-set(04_reverse_integer_SRC 04_reverse_integer.cpp)
-add_executable(04_reverse_integer ${04_reverse_integer_SRC})
+# consistent_hash_with_virtual_nodes.cpp
+set(consistent_hash_with_virtual_nodes_SRC consistent_hash_with_virtual_nodes.cpp)
+add_executable(consistent_hash_with_virtual_nodes ${consistent_hash_with_virtual_nodes_SRC})

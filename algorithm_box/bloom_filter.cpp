@@ -13,6 +13,9 @@
 #define MAX_SIZE		10000000
 
 /*
+
+ * https://dadario.com.br/cryptographic-and-non-cryptographic-hash-functions/
+ * 
  * 容器越大，正确率越高
  */
 //#define MAX_SIZE		10
