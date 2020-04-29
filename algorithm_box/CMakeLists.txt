@@ -211,8 +211,13 @@ add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
 set(word_break_problem_by_DP_SRC word_break_problem_by_DP.cpp)
 add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
 
-endif(0)
-
 # consistent_hash_with_virtual_nodes.cpp
 set(consistent_hash_with_virtual_nodes_SRC consistent_hash_with_virtual_nodes.cpp)
 add_executable(consistent_hash_with_virtual_nodes ${consistent_hash_with_virtual_nodes_SRC})
+
+endif(0)
+
+
+# dp_cut_rode.cpp
+set(dp_cut_rode_SRC dp_cut_rode.cpp)
+add_executable(dp_cut_rode ${dp_cut_rode_SRC})
