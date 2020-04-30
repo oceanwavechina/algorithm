@@ -17,6 +17,8 @@
  * https://dadario.com.br/cryptographic-and-non-cryptographic-hash-functions/
  * 
  * 容器越大，正确率越高
+ * # CS168: The Modern Algorithmic Toolbox Lecture #1: Introduction and Consistent Hashing
+ * 		bloomfilter 还可以用来减少数据传输的场景里。 比如与其传输具体的数据，我们可以传输bloomfileter的值来进行同步
  */
 //#define MAX_SIZE		10
 

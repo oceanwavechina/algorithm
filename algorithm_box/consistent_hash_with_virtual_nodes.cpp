@@ -8,6 +8,10 @@
 /*
     实现一致性hash
     copied from https://blog.csdn.net/xinzhongtianxia/article/details/81323490
+
+    # CS168: The Modern Algorithmic Toolbox Lecture #1: Introduction and Consistent Hashing
+    虚拟节点还可以对处理能力强的节点进行倾斜，也就是可以对处理能力强的节点生成多个虚拟节点
+
 */
 
 #include <iostream>

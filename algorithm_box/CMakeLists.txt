@@ -215,9 +215,15 @@ add_executable(word_break_problem_by_DP ${word_break_problem_by_DP_SRC})
 set(consistent_hash_with_virtual_nodes_SRC consistent_hash_with_virtual_nodes.cpp)
 add_executable(consistent_hash_with_virtual_nodes ${consistent_hash_with_virtual_nodes_SRC})
 
-endif(0)
-
-
 # dp_cut_rode.cpp
 set(dp_cut_rode_SRC dp_cut_rode.cpp)
 add_executable(dp_cut_rode ${dp_cut_rode_SRC})
+
+
+endif(0)
+
+
+# counter_min_sketch.cpp
+set(counter_min_sketch_SRC counter_min_sketch.cpp)
+add_executable(counter_min_sketch ${counter_min_sketch_SRC})
+
