@@ -2,7 +2,7 @@
  * @Author: liuyanan 
  * @Date: 2020-04-30 16:04:54 
  * @Last Modified by: liuyanan
- * @Last Modified time: 2020-04-30 17:57:21
+ * @Last Modified time: 2020-04-30 18:32:16
  */
 
 #include <iostream>
@@ -18,6 +18,13 @@
     Approximate Heavy Hitters and the Count-Min Sketch.pdf
 
     这个东西可以当做一个可以计数的hash用，但是空间会降低很多
+     
+    重点：
+        关于 MAX_BUKETS， 和 N_HASH_FUNC 数值的选取
+            https://zhuanlan.zhihu.com/p/84688298
+
+            这里的取值是有讲究的： [e/ε]， [ln(1/δ)]，两个参数的含义是：
+                在 [1-δ] 的概率下，总误差（所有元素查询误差的之和）小于 [ε] 。
 */
 
 
