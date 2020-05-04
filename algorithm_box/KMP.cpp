@@ -2,7 +2,7 @@
  * @Author: liuyanan 
  * @Date: 2020-05-04 17:49:02 
  * @Last Modified by: liuyanan
- * @Last Modified time: 2020-05-04 18:04:42
+ * @Last Modified time: 2020-05-04 20:15:01
  */
 
 #include <iostream>
@@ -10,6 +10,10 @@
 #include <vector>
 
 using namespace std;
+
+/*
+    详解见 KMP.md
+*/
 
 int kmp(const string& str, const string& pattern, const vector<int>& next) 
 {
