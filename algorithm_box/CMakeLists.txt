@@ -220,10 +220,15 @@ set(dp_cut_rode_SRC dp_cut_rode.cpp)
 add_executable(dp_cut_rode ${dp_cut_rode_SRC})
 
 
-endif(0)
-
-
 # counter_min_sketch.cpp
 set(counter_min_sketch_SRC counter_min_sketch.cpp)
 add_executable(counter_min_sketch ${counter_min_sketch_SRC})
+
+
+endif(0)
+
+
+# KMP.cpp
+set(KMP_SRC KMP.cpp)
+add_executable(KMP ${KMP_SRC})
 

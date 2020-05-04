@@ -2,7 +2,7 @@
  * @Author: liuyanan 
  * @Date: 2020-04-30 16:04:54 
  * @Last Modified by: liuyanan
- * @Last Modified time: 2020-04-30 18:32:16
+ * @Last Modified time: 2020-04-30 19:32:30
  */
 
 #include <iostream>
@@ -24,6 +24,7 @@
             https://zhuanlan.zhihu.com/p/84688298
 
             这里的取值是有讲究的： [e/ε]， [ln(1/δ)]，两个参数的含义是：
+                这个e就是log中以e为底的e
                 在 [1-δ] 的概率下，总误差（所有元素查询误差的之和）小于 [ε] 。
 */
 
