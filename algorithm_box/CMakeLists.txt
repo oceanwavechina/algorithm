@@ -224,11 +224,16 @@ add_executable(dp_cut_rode ${dp_cut_rode_SRC})
 set(counter_min_sketch_SRC counter_min_sketch.cpp)
 add_executable(counter_min_sketch ${counter_min_sketch_SRC})
 
+# KMP.cpp
+set(KMP_SRC KMP.cpp)
+add_executable(KMP ${KMP_SRC})
 
 endif(0)
 
 
-# KMP.cpp
-set(KMP_SRC KMP.cpp)
-add_executable(KMP ${KMP_SRC})
+# Aho-Corasick_automation.cpp
+set(Aho-Corasick_automation_SRC Aho-Corasick_automation.cpp)
+add_executable(Aho-Corasick_automation ${Aho-Corasick_automation_SRC})
+
+
 
