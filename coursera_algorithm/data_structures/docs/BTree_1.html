@@ -1,0 +1,243 @@
+
+<!-- saved from url=(0066)http://www.cs.utexas.edu/users/djimenez/utsa/cs3343/lecture16.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title> Analysis of Algorithms: Lecture 16 </title>
+</head><body>
+<h1>B-Trees</h1>
+<em>B-Trees</em> are a variation on binary search trees that allow quick
+searching in files on disk.  Instead of storing one key and having
+two children, B-tree nodes have <em>n</em> keys and <em>n+1</em> children,
+where <em>n</em> can be large.  This shortens the tree (in terms of
+height) and requires much less disk access than a binary search tree would.
+The algorithms are a bit more complicate, requiring more computation than
+a binary search tree, but this extra complication is worth it because
+computation is much cheaper than disk access.
+<h2>Disk Access</h2>
+<em>Secondary storage</em> usually refers to the fixed disks found
+in modern computers.  These devices contain several platters of magnetically
+sensitive material rotating rapidly.  Data is stored as changes in the 
+magnetic properties on different portions of the platters.  Data is separated
+into <em>tracks</em>, concentric circles on the platters.  Each track is
+further divided into <em>sectors</em> which form the unit of a transaction
+between the disk and the CPU.  A typical sector size is 512 bytes.  The data is
+read and written by arms that go over the platters, accessing different 
+sectors as they are requested.
+The disk is spinning at a constant rate (7200 RPM is typical for 
+1998 mid-range systems). 
+<p>
+The time it takes to access data on secondary storage is a function of
+three variables:
+</p><ul>
+<li> The time it takes for the arm to move to the track where the 
+requested sector lies.  Usually around 10 milliseconds.
+</li><li> The time it takes for the right sector to spin under the arm.
+For a 7200 RPM drive, this is 4.1 milliseconds.
+</li><li> The time it takes to read or write the data.  Depending on the density
+of the data, this time is negligible compared to the other two.
+</li></ul>
+So an arbitrary 512-byte sector can be accessed (read or written) in roughly 
+15 milliseconds.  Subsequent reads to an adjacent area of the disk will
+be much faster, since the head is already in exactly the right place.
+Data can be arranged into "blocks" that are these adjacent multi-sector
+aggregates.
+<p>
+Contrast this to access times to RAM.  From the last lecture, a typical
+non-sequential RAM access took about 5 microseconds.  This is 3000 times
+faster; we can do at least 3000 memory accesses in the time it takes to do one
+disk access, and probably more since the algorithm doing the memory accesses
+is typically following the principal of locality.
+</p><p>
+So, we had better make each disk access count as much as possible.  This is
+what B-trees do.
+</p><p>
+For the purposes of discussion, records we might want to search through
+(bank records, student records, etc.) are stored on disk along with their
+keys (account number, social security number, etc.), and many are all stored
+on the same disk "block."  The size of a block and the amount of data can
+be tuned with experimentation or analysis beyond the scope of this lecture.
+In practice, sometimes only "pointers" to other disk blocks are stored
+in internal nodes of a B-tree, with leaf nodes containing the real data; this
+allows storing many more keys and/or having smaller (and thus faster) blocks.
+</p><h2>B-Tree Definition</h2>
+Here is a sample B-tree:
+<pre>				 _________
+				|_30_|_60_|
+			       _/    |    \_
+			     _/      |      \_
+			   _/        |        \_
+			 _/          |          \_
+		       _/            |            \_
+		     _/              |              \_
+		   _/                |                \_
+	________ _/          ________|              ____\_________
+       |_5_|_20_|           |_40_|_50_|            |_70_|_80_|_90_|
+      /    |     \          /    |    \           /     |    |     \
+     /     |      \        /     |     \         /      |    |      \
+    /      |       |      |      |      |       |       |    |       \
+   /       |       |      |      |      |       |       |    |        \
+|1|3| |6|7|8| |12|16|  |32|39||42|48||51|55|  |61|64| |71|75||83|86| |91|95|99|
+</pre>
+B-tree nodes have a variable number of keys and children, subject to
+some constraints.  In many respects, they work just like binary search
+trees, but are considerably "fatter."  The following definition is
+from the book, with some references to the above example:
+<p>
+A B-tree is a tree with root <em>root</em>[T] with the following
+properties:
+</p><ol>
+<li> Every node has the following fields:
+	<ul>
+	<li> <em>n</em>[<em>x</em>], the number of keys currently 
+	in node <em>x</em>.  For example, <em>n</em>[<tt>|40|50|</tt>]
+	in the above example B-tree is 2. <em>n</em>[<tt>|70|80|90|</tt>]
+	is 3.
+	</li><li> The <em>n</em>[<em>x</em>] keys themselves, stored
+	in nondecreasing order: 
+	<em>key</em><sub>1</sub>[<em>x</em>] &lt;=
+	<em>key</em><sub>2</sub>[<em>x</em>] &lt;= ... &lt;=
+	<em>key</em><sub><em>n</em>[<em>x</em>]</sub>[<em>x</em>]
+	For example, the keys in <tt>|70|80|90|</tt> are ordered.
+	</li><li> <em>leaf</em>[<em>x</em>], a boolean value that is True 
+	if <em>x</em> is a leaf and False if <em>x</em> is an internal
+	node.
+	</li></ul>
+</li><li> If <em>x</em> is an internal node, it contains <em>n</em>[<em>x</em>]+1
+pointers 
+<em>c</em><sub>1</sub>,
+<em>c</em><sub>2</sub>, ... ,
+<em>c</em><sub><em>n</em>[<em>x</em>]</sub>,
+<em>c</em><sub><em>n</em>[<em>x</em>]+1</sub> to its children.  For example,
+in the above B-tree, the root node has two keys, thus three children.  Leaf nodes
+have no children so their <em>c</em><sub>i</sub> fields are undefined.
+</li><li> The keys <em>key</em><sub><em>i</em></sub>[<em>x</em>] separate the ranges of keys
+stored in each subtree: if <em>k</em><sub><em>i</em></sub> is any key stored
+in the subtree with root <em>c</em><sub><em>i</em></sub>[<em>x</em>], then
+<blockquote>
+<em>k</em><sub>1</sub> &lt;= <em>key</em><sub>1</sub>[<em>x</em>] &lt;=
+<em>k</em><sub>2</sub> &lt;= <em>key</em><sub>2</sub>[<em>x</em>] &lt;= ...
+&lt;= <em>key</em><sub><em>n</em>[<em>x</em>]</sub>[<em>x</em>] &lt;=
+<em>k</em><sub><em>n</em>[<em>x</em>]+1</sub>.
+</blockquote>
+For example, everything in the far left subtree of the root is numbered
+less than 30.  Everything in the middle subtree is between 30 and 60, while
+everything in the far right subtree is greater than 60.  The same property
+can be seen at each level for all keys in non-leaf nodes.
+</li><li> Every leaf has the same depth, which is the tree's height <em>h</em>.
+In the above example, <em>h</em>=2.
+</li><li> There are lower and upper bounds on the number of keys a node can
+contain.  These bounds can be expressed in terms of a fixed integer
+<em>t</em> &gt;= 2 called the <em>minimum degree</em> of the B-tree:
+<ul>
+<li> Every node other than the root must have at least <em>t</em>-1 keys.
+Every internal node other than the root thus has at least <em>t</em> children.
+If the tree is nonempty, the root must have at least one key.
+</li><li> Every node can contain at most 2<em>t</em>-1 keys.  Therefore, an internal
+node can have at most 2<em>t</em> children.  We say that a node is <em>full</em>
+if it contains exactly 2<em>t</em>-1 keys.
+</li></ul>
+</li></ol>
+<h2>Some Analysis</h2>
+Theorem 19.1 in the book states that any <em>n</em>-key B-tree with
+<em>n</em> &gt; 1 of height <em>h</em> and minimum degree <em>t</em> satisfies
+the following property:
+<blockquote>
+<em>h</em> &lt;= log<sub><em>t</em></sub>(<em>n+1</em>)/2
+</blockquote>
+That of course gives us that the height of a B-tree is always <em>O</em>(log <em>n</em>),
+but that log hides an impressive performance gain over regular binary search
+trees (since performance of algorithms will be proportional to the height of 
+the tree in many cases).
+<p>
+Consider a binary search tree arranged on a disk, with pointers being the
+byte offset in the file where a child occurs.  A typical situation will
+have maybe 50 bytes of information, 4 bytes of key, and 8 bytes (two 32-bit
+integers) for left and right pointers.  That makes 62 bytes that will
+comfortably fit in a 512-byte sector.  In fact, we can put many such nodes
+in the same sector; however, when our <em>n</em> (= number of nodes) grows
+large, it is unlikely that the same two nodes will be accessed sequentially,
+so access to each node will cost roughly one disk access.  In the best
+possible case, the a binary tree with <em>n</em> nodes is of height about
+<tt>floor</tt>(log<sub>2</sub><em>n</em>).  So searching for an
+arbitrary node will take about log<sub>2</sub><em>n</em> disk accesses.
+In a file with one million nodes, for instance, the phone book for a 
+medium-sized city, this is about 20 disk accesses.  Assuming the 15 millisecond
+access time. a single access will take 0.3 seconds.
+</p><p>
+Contrast this with a B-tree with records that fit into one 512-byte sector.
+Let <em>t</em>=4.  Then each node can have up to 8 children, 7 keys.
+With 50*7 bytes of information, 4*7 bytes of keys, 4*8 bytes of 
+children pointers, and 4 bytes to store <em>n</em>[<em>x</em>], we have
+414 bytes of information fitting comfortably into a 512 byte sector.
+With one million records, we would have to do log<sub>4</sub>1,000,000
+= 10 disk accesses, taking 0.15 seconds, reducing by a half the time it
+takes.
+If we choose to keep all the information in the leaves as suggested
+above and only keep pointer and key information, we can fit up to 64
+keys and let <em>t</em>=32.  Now the number of disk accesses in our
+example is less than or equal to log<sub>32</sub> 1,000,000 = 4.
+In practice, up to a few thousand keys can be supported with blocks
+spanning many sectors; such blocks take only a tiny bit longer to access
+than a single arbitrary access, so performance is still improved.
+</p><p>
+Of course, asymptotically, the number of accesses is "the same," but
+for real-world numbers, B-trees are a lot better.  The key is the
+fact that disk access times are much slower than memory and computation
+time.  If we were to implement B-trees using real memory and pointers,
+there would probably be no performance improvement whatsoever because
+of the algorithmic overhead; indeed, there might be a performance decrease.
+</p><h2>Operations on B-trees</h2>
+Let's look at the operations on a B-tree.  We assume that the root
+node is always kept in memory; it makes no sense to retrieve it from the
+disk every time since we will always need it.  (In fact, it might be wise
+to store a "cache" of frequently used and/or low depth nodes in memory
+to further reduce disk accesses...)
+<p>
+<b>Searching a B-tree</b>
+Searching a B-tree is much like searching a binary search tree, only
+the decision whether to go "left" or "right" is replaced by the decision
+whether to go to child 1, child 2, ..., child <em>n</em>[<em>x</em>].
+The following procedure, <tt>B-Tree-Search</tt>, should be called with
+the root node as its first parameter.  It returns the block where the
+key <em>k</em> was found along with the index of the key in the block,
+or "null" if the key was not found:
+</p><pre>B-Tree-Search (x, k) // search starting at node x for key k
+	i = 1
+
+	// search for the correct child
+
+	while i &lt;= n[x] and k &gt; key<sub>i</sub>[x] do
+		i++
+	end while
+
+	// now i is the least index in the key array such that
+	// k &lt;= key<sub>i</sub>[x], so k will be found here or
+	// in the i'th child
+
+	if i &lt;= n[x] and k = key<sub>i</sub>[x] then 
+		// we found k at this node
+		return (x, i)
+	
+	if leaf[x] then return null
+
+	// we must read the block before we can work with it
+
+	Disk-Read (c<sub>i</sub>[x])
+	return B-Tree-Search (c<sub>i</sub>[x], k)
+</pre>
+The time in this algorithm is dominated by the time to do disk reads.
+Clearly, we trace a path from root down possibly to a leaf, doing one
+disk read each time, so the number of disk reads for <tt>B-Tree-Search</tt>
+is <em>O</em>(<em>h</em>) = <em>O</em>(log <em>n</em>) where <em>h</em>
+is the height of the B-tree and <em>n</em> is the number of keys.
+<p>
+We do a linear search for the correct key.  There are 
+<img src="./BTree_1_files/theta.uc.gif" align="middle">(<em>t</em>) keys (at least
+<em>t</em>-1 and at most 2<em>t</em>-1), and this search is done
+for each disk access, so the computation time is 
+<em>O</em>(<em>t</em> log <em>n</em>).  Of course, this time is very
+small compared to the time for disk accesses.  If we have some spare time
+one day, in between reading Netscape and playing DOOM, we might consider
+using a binary search (remember, the keys are nondecreasing) and get this
+down to <em>O</em>(log <em>t</em> log <em>n</em>).
+
+
+</p></body></html>

@@ -1,0 +1,344 @@
+
+<!-- saved from url=(0066)http://www.cs.utexas.edu/users/djimenez/utsa/cs3343/lecture17.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title> Analysis of Algorithms: Lecture 17 </title>
+</head><body>
+<h1>B-Trees continued.</h1>
+<h2>More B-tree operations</h2>
+<b>Creating an empty B-tree</b>
+<p>
+To initialize a B-tree, we need simply to build an empty root node:
+</p><pre>B-Tree-Create (T)
+	x = allocate-node ();
+	leaf[x] = True
+	n[x] = 0
+	Disk-Write (x)
+	root[T] = x
+</pre>
+This assumes there is an <tt>allocate-node</tt> function that returns
+a node with <em>key</em>, <em>c</em>, <em>leaf</em> fields, etc.,
+and that each node has a unique "address" on the disk.
+<p>
+Clearly, the running time of <tt>B-Tree-Create</tt> is <em>O</em>(1),
+dominated by the time it takes to write the node to disk.
+</p><p>
+<b>Inserting a key into a B-tree</b>
+</p><p>
+Inserting into a B-tree is a bit more complicated than inserting into
+an ordinary binary search tree.  We have to find a place 
+to put the new key.  We would prefer to put it in the root, since
+that is kept in RAM and so we don't have to do any disk accesses.  
+If that node is not full (i.e., <em>n</em>[<em>x</em>]
+for that node is not 2<em>t</em>-1), then we can just stick the new key
+in, shift around some pointers and keys, write the results back to
+disk, and we're done.  Otherwise, we will have to split the root and do 
+something with the resulting pair of nodes, maintaining the properties
+of the definition of a B-tree.  
+</p><p>Here is the general algorithm for
+insertinging a key <em>k</em> into a B-tree <em>T</em>.  It calls two
+other procedures, <tt>B-Tree-Split-Child</tt>, that splits a node,
+and <tt>B-Tree-Insert-Nonfull</tt>, that handles inserting into
+a node that isn't full.
+</p><pre>B-Tree-Insert (T, k)
+	r = root[T]
+	if n[r] = 2t - 1 then
+		// uh-oh, the root is full, we have to split it
+		s = allocate-node ()
+		root[T] = s 	// new root node
+		leaf[s] = False // will have some children
+		n[s] = 0	// for now
+		c<sub>1</sub>[s] = r // child is the old root node
+		B-Tree-Split-Child (s, 1, r) // r is split
+		B-Tree-Insert-Nonfull (s, k) // s is clearly not full
+	else
+		B-Tree-Insert-Nonfull (r, k)
+	endif
+</pre>
+Let's look at the non-full case first: this procedure is called by
+<tt>B-Tree-Insert</tt> to insert a key into a node that isn't full.
+In a B-tree with a large minimum degree, this is the common case.
+Before looking at the pseudocode, let's look at a more English
+explanation of what's going to happen:
+<p>
+To insert the key <em>k</em> into the node <em>x</em>, there are
+two cases:
+</p><ul>
+<li> <em>x</em> is a leaf node.  Then we find where <em>k</em> belongs
+in the array of keys, shift everything over to the left, and stick
+<em>k</em> in there.
+</li><li> <em>x</em> is not a leaf node.  We can't just stick <em>k</em> in
+because it doesn't have any children; children are really only created
+when we split a node, so we don't get an unbalanced tree.  
+We find a child of <em>x</em> where we can (recursively) insert <em>k</em>.  
+We read that child in from disk.  If that child is full, we split it and figure out
+which one <em>k</em> belongs in.  Then we recursively insert <em>k</em> into
+this child (which we know is non-full, because if it were, we would have
+split it).
+</li></ul>
+Here's the algorithm:
+<pre>B-Tree-Insert-Nonfull (x, k)
+	i = n[x]
+
+	if leaf[x] then
+
+		// shift everything over to the "right" up to the
+		// point where the new key k should go
+
+		while i &gt;= 1 and k &lt; key<sub>i</sub>[x] do
+			key<sub>i+1</sub>[x] = key<sub>i</sub>[x]
+			i--
+		end while
+
+		// stick k in its right place and bump up n[x]
+
+		key<sub>i+1</sub>[x] = k
+		n[x]++
+	else
+
+		// find child where new key belongs:
+
+		while i &gt;= 1 and k &lt; key<sub>i</sub>[x] do
+			i--
+		end while
+
+		// if k is in c<sub>i</sub>[x], then k &lt;= key<sub>i</sub>[x] (from the definition)
+		// we'll go back to the last key (least i) where we found this
+		// to be true, then read in that child node
+
+		i++
+		Disk-Read (c<sub>i</sub>[x])
+		if n[c<sub>i</sub>[x]] = 2t - 1 then
+
+			// uh-oh, this child node is full, we'll have to split it
+
+			B-Tree-Split-Child (x, i, c<sub>i</sub>[x])
+
+			// now c<sub>i</sub>[x] and c<sub>i+1</sub>[x] are the new children, 
+			// and key<sub>i</sub>[x] may have been changed. 
+			// we'll see if k belongs in the first or the second
+
+			if k &gt; key<sub>i</sub>[x] then i++
+		end if
+
+		// call ourself recursively to do the insertion
+
+		B-Tree-Insert-Nonfull (c<sub>i</sub>[x], k)
+	end if
+</pre>
+Now let's see how to split a node.  When we split a node, we always do
+it with respect to its parent; two new nodes appear and the parent has
+one more child than it did before.  Again, let's see some English before
+we have to look at the pseudocode:
+<p>
+We will split a node <em>y</em> that is the <em>i</em>th child of its parent
+<em>x</em>.  Node <em>x</em> will end up having one more child we'll call
+<em>z</em>, and we'll make room for it in the <em>c</em><sub><em>i</em></sub>[<em>x</em>]
+array right next to <em>y</em>.  
+</p><p>
+We know <em>y</em> is full, so it has
+2<em>t</em>-1 keys.  We'll "cut" <em>y</em> in half, copying
+<em>key</em><sub><em>t</em>+1</sub>[<em>y</em>] through 
+<em>key</em><sub>2<em>t</em>-1</sub>[<em>y</em>] into the first <em>t</em>-1
+keys of this new node <em>z</em>.
+</p><p>
+If the node isn't a leaf, we'll also have to copy over the child pointers
+<em>c</em><sub><em>t</em>+1</sub>[<em>y</em>] through
+<em>c</em><sub>2<em>t</em></sub>[<em>y</em>] (one more child than keys)
+into the first <em>t</em> children of <em>z</em>.
+</p><p>
+Then we have to shift the keys and children of <em>x</em> over one
+starting at index <em>i+1</em> to accomodate the new node <em>z</em>,
+and then update the <em>n</em>[] counts on <em>x</em>, <em>y</em> and <em>z</em>,
+finally writing them to disk.
+</p><p>
+Here's the pseudocode:
+</p><pre>B-Tree-Split-Child (x, i, y)
+	z = allocate-node ()
+
+	// new node is a leaf if old node was 
+
+	leaf[z] = leaf[y]
+
+	// we since y is full, the new node must have t-1 keys
+
+	n[z] = t - 1
+
+	// copy over the "right half" of y into z
+
+	for j in 1..t-1 do
+		key<sub>j</sub>[z] = key<sub>j+t</sub>[y]
+	end for
+
+	// copy over the child pointers if y isn't a leaf
+
+	if not leaf[y] then
+		for j in 1..t do
+			c<sub>j</sub>[z] = c<sub>j+t</sub>[y]
+		end for
+	end if
+
+	// having "chopped off" the right half of y, it now has t-1 keys
+
+	n[y] = t - 1
+
+	// shift everything in x over from i+1, then stick the new child in x;
+	// y will half its former self as c<sub>i</sub>[x] and z will 
+	// be the other half as c<sub>i+1</sub>[x]
+
+	for j in n[x]+1 downto i+1 do
+		c<sub>j+1</sub>[x] = c<sub>j</sub>[x]
+	end for
+	c<sub>i+1</sub> = z
+
+	// the keys have to be shifted over as well...
+
+	for j in n[x] downto i do
+		key<sub>j+1</sub>[x] = key<sub>j</sub>[x]
+	end for
+
+	// ...to accomodate the new key we're bringing in from the middle 
+	// of y (if you're wondering, since (t-1) + (t-1) = 2t-2, where 
+	// the other key went, its coming into x)
+	
+	key<sub>i</sub>[x] = key<sub>t</sub>[y]
+	n[x]++
+
+	// write everything out to disk
+
+	Disk-Write (y)
+	Disk-Write (z)
+	Disk-Write (x)
+</pre>
+<p>
+Note that this is the only time we ever create a child.  Doing a split
+doesn't increase the height of a tree, because we only add a sibling to
+existing keys at the same level.  Thus, the only time the height of the
+tree ever increases is when we split the root.  So we satisfy the part
+of the definition that says "each leaf must occur at the same depth."
+</p><p>
+<b>Example of Insertion</b>
+</p><p>
+Let's look at an example of inserting into a B-tree.  For preservation
+of sanity, let <em>t</em> = 2.  So a node is full if it has 2(2)-1 = 3
+keys in it, and each node can have up to 4 children.  We'll insert
+the sequence <tt> 5 9 3 7 1 2 8 6 0 4 </tt> into the tree:
+</p><pre>Step 1: Insert 5
+                                  ___
+                                 |_5_|
+
+Step 2: Insert 9
+B-Tree-Insert simply calls B-Tree-Insert-Nonfull, putting 9 to the
+right of 5:
+                                 _______
+                                |_5_|_9_|
+
+Step 3: Insert 3
+Again, B-Tree-Insert-Nonfull is called
+                               ___ _______
+                              |_3_|_5_|_9_|
+
+Step 4: Insert 7
+Tree is full.  We allocate a new (empty) node, make it the root, split
+the former root, then pull 5 into the new root:
+                                 ___
+                                |_5_|
+                             __ /   \__
+                            |_3_|  |_9_|
+
+Then insert we insert 7; it goes in with 9
+                                 ___
+                                |_5_|
+                             __ /   \______
+                            |_3_|  |_7_|_9_|
+
+Step 5: Insert 1
+It goes in with 3
+                                 ___
+                                |_5_|
+                         ___ __ /   \______
+                        |_1_|_3_|  |_7_|_9_|
+
+Step 6: Insert 2
+It goes in with 3
+                                 ___
+                                |_5_|
+                               /     \
+                       ___ __ /___    \______
+                      |_1_|_2_|_3_|  |_7_|_9_|
+
+Step 7: Insert 8
+It goes in with 9
+ 
+                                 ___
+                                |_5_|
+                               /     \
+                       ___ __ /___    \__________
+                      |_1_|_2_|_3_|  |_7_|_8_|_9_|
+
+Step 8: Insert 6
+It would go in with |7|8|9|, but that node is full.  So we split it,
+bringing its middle child into the root:
+
+                                _______
+                               |_5_|_8_|
+                              /    |   \
+                     ___ ____/__  _|_   \__
+                    |_1_|_2_|_3_||_7_| |_9_|
+
+Then insert 6, which goes in with 7:
+                                _______
+                            ___|_5_|_8_|__
+                           /       |      \
+                  ___ ____/__    __|____   \__
+                 |_1_|_2_|_3_|  |_6_|_7_|  |_9_|
+
+Step 9: Insert 0
+
+0 would go in with |1|2|3|, which is full, so we split it, sending the middle
+child up to the root:
+                             ___________
+                            |_2_|_5_|_8_|
+                          _/    |   |    \_
+                        _/      |   |      \_
+                      _/_     __|   |______  \___
+                     |_1_|   |_3_| |_6_|_7_| |_9_| 
+
+Now we can put 0 in with 1
+                             ___________
+                            |_2_|_5_|_8_|
+                          _/    |   |    \_
+                        _/      |   |      \_
+                  ___ _/_     __|   |______  \___
+                 |_0_|_1_|   |_3_| |_6_|_7_| |_9_| 
+
+
+Step 10: Insert 4
+It would be nice to just stick 4 in with 3, but the B-Tree algorithm
+requires us to split the full root.  Note that, if we don't do this and
+one of the leaves becomes full, there would be nowhere to put the middle
+key of that split since the root would be full, thus, this split of the
+root is necessary:
+                                 ___
+                                |_5_|
+                            ___/     \___
+                           |_2_|     |_8_|
+                         _/    |     |    \_
+                       _/      |     |      \_
+                 ___ _/_     __|     |______  \___
+                |_0_|_1_|   |_3_|   |_6_|_7_| |_9_| 
+
+Now we can insert 4, assured that future insertions will work:
+
+                                 ___
+                                |_5_|
+                            ___/     \___
+                           |_2_|     |_8_|
+                         _/    |     |    \_
+                       _/      |     |      \_
+                 ___ _/_    ___|___  |_______ \____
+                |_0_|_1_|  |_3_|_4_| |_6_|_7_| |_9_| 
+
+                          
+</pre>
+
+
+</body></html>

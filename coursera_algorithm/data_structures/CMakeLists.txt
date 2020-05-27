@@ -1,6 +1,6 @@
 project(DataStructures)
 cmake_minimum_required(VERSION 3.6)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++17")
 
 if(0)
 ###########  WEEK 2  ###########
@@ -39,6 +39,10 @@ endif(0)
 
 
 # binary_search_tree_2.cpp
-set(binary_search_tree_2_SRC binary_search_tree_2.cpp)
-add_executable(binary_search_tree_2 ${binary_search_tree_2_SRC})
+# set(binary_search_tree_2_SRC binary_search_tree_2.cpp)
+# add_executable(binary_search_tree_2 ${binary_search_tree_2_SRC})
+
+# B_tree.cpp
+set(B_tree_SRC B_tree.cpp)
+add_executable(B_tree ${B_tree_SRC})
 
