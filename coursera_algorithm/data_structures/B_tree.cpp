@@ -118,6 +118,16 @@ private:
     friend class BTree;
 };
 
+struct STSearchResult {
+    STSearchResult(): p_node(nullptr), idx(0){
+    }
+
+    STSearchResult(BTreeNode *node, size_t i): p_node(node), idx(i){
+    }
+
+    BTreeNode *p_node;
+    size_t idx;
+};
 
 class BTree {
 public:
@@ -169,6 +179,31 @@ public:
                 display(p_child, level);
             }
         }
+    }
+
+    STSearchResult search(BTreeNode* p_node, int k) {
+        int idx = 0;
+        
+        /*
+                    key0       key1      key2
+                 V         V          V          V
+                ch0       ch1        ch2        ch3
+        */
+
+        // 找到在哪个区间里边
+        while(idx < p_node->key_size() && k > (p_node->_keys[idx])) {
+            ++idx;
+        }
+
+        if(idx < p_node->key_size() && k == (p_node->_keys[idx])) {
+            return STSearchResult(p_node, idx);
+        }
+
+        if(p_node->leaf()) {
+            return STSearchResult();
+        }
+
+        return search(p_node->get_child_at(idx), k);
     }
 
 private:
@@ -306,6 +341,18 @@ int main(int argc, char const *argv[])
 
         cout << "\n\n" << endl;
     }
+
+    STSearchResult ret = b_tree.search(b_tree._root, 5);
+    cout << "search 5 result nodes=[ " << ret.p_node->display_key() << "], idx=" << ret.idx << endl;
+
+    ret = b_tree.search(b_tree._root, 0);
+    cout << "search 0 result nodes=[ " << ret.p_node->display_key() << "], idx=" << ret.idx << endl;
+
+    ret = b_tree.search(b_tree._root, 6);
+    cout << "search 6 result nodes=[ " << ret.p_node->display_key() << "], idx=" << ret.idx << endl;
+
+    ret = b_tree.search(b_tree._root, 7);
+    cout << "search 7 result nodes=[ " << ret.p_node->display_key() << "], idx=" << ret.idx << endl;
     
     return 0;
 }
