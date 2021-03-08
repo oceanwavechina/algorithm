@@ -2,3 +2,8 @@
 .pydevproject
 .settings/org.eclipse.core.resources.prefs
 .vscode/
+.DS_Store
+.cproject
+.project
+algorithm_box/.DS_Store
+coursera_algorithm/algorithmic-toolbox/.DS_Store
