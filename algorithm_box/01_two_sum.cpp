@@ -11,6 +11,7 @@
 #include <unordered_map>
 #include <sstream>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -54,6 +55,31 @@ tuple<int, int> tow_number_hash(vector<int> numbers, int target) {
 	return make_tuple(-1, -1);
 }
 
+vector< pair<int , int> > all_pairs_of_specific_sum(const vector<int>& numbers, int target)
+{
+	vector< pair<int , int> > ret;
+
+	unordered_map<int/*num*/, list<int>/*positions*/ > unmatched;
+
+	for(int i=0; i< numbers.size(); ++i) {
+		auto another_it = unmatched.find(target - numbers[i]);
+
+		if(another_it != unmatched.end()) {
+			list<int>& positions = another_it->second;
+			if(positions.empty()) {
+				positions.push_back(i);
+			} else {
+				ret.push_back(make_pair(i, positions.front()));
+				positions.pop_front();
+			}
+		} else {
+			unmatched[numbers[i]].push_back(i);
+		}
+	}
+
+	return ret;
+}
+
 tuple<int, int> tow_number_tow_pointor(vector<int> numbers, int target) {
 
 	// 两指针的方法需要排序，也就改变了原来的位置，所以用这个方法实现不了
@@ -73,6 +99,13 @@ int main(int argc, char **argv) {
 	tuple<int, int> solution = tow_number_hash(numbers, target);
 
 	cout << "solution: " << get<0>(solution) << ", " << get<1>(solution) << endl;
+
+	vector< pair<int , int> > all_paires = all_pairs_of_specific_sum(numbers, target);
+	cout << "all_pairs: ";
+	for(auto apair : all_paires) {
+		cout << apair.first << "_" << apair.second << ", ";
+	}
+	cout << endl;
 
 	return 0;
 }
