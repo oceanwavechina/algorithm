@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.6)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++14")
 
 if(0)
+
+# 01_two_sum.cpp
+set(01_two_sum_SRC 01_two_sum.cpp)
+add_executable(01_two_sum ${01_two_sum_SRC})
+
 # sum_of_three_numbers.cpp
 set(sum_of_three_numbers_SRC sum_of_three_numbers.cpp)
 add_executable(sum_of_three_numbers ${sum_of_three_numbers_SRC})
@@ -228,12 +233,18 @@ add_executable(counter_min_sketch ${counter_min_sketch_SRC})
 set(KMP_SRC KMP.cpp)
 add_executable(KMP ${KMP_SRC})
 
-endif(0)
-
-
 # Aho-Corasick_automation.cpp
 set(Aho-Corasick_automation_SRC Aho-Corasick_automation.cpp)
 add_executable(Aho-Corasick_automation ${Aho-Corasick_automation_SRC})
+
+endif(0)
+
+
+
+# valid_parentheses.cpp
+set(valid_parentheses_SRC valid_parentheses.cpp)
+add_executable(valid_parentheses ${valid_parentheses_SRC})
+
 
 
 
