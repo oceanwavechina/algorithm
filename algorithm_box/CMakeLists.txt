@@ -237,14 +237,15 @@ add_executable(KMP ${KMP_SRC})
 set(Aho-Corasick_automation_SRC Aho-Corasick_automation.cpp)
 add_executable(Aho-Corasick_automation ${Aho-Corasick_automation_SRC})
 
-endif(0)
-
-
-
 # valid_parentheses.cpp
 set(valid_parentheses_SRC valid_parentheses.cpp)
 add_executable(valid_parentheses ${valid_parentheses_SRC})
 
+endif(0)
 
+
+# none_make_team.cpp
+set(none_make_team_SRC none_make_team.cpp)
+add_executable(none_make_team ${none_make_team_SRC})
 
 
