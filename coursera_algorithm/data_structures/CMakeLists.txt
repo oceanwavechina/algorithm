@@ -35,14 +35,13 @@ add_executable(binary_search_tree_2 ${binary_search_tree_2_SRC})
 set(hash_table_SRC hash_table.cpp)
 add_executable(hash_table ${hash_table_SRC})
 
-endif(0)
-
-
-# binary_search_tree_2.cpp
-# set(binary_search_tree_2_SRC binary_search_tree_2.cpp)
-# add_executable(binary_search_tree_2 ${binary_search_tree_2_SRC})
-
 # B_tree.cpp
 set(B_tree_SRC B_tree.cpp)
 add_executable(B_tree ${B_tree_SRC})
 
+endif(0)
+
+
+# hash_table.cpp
+set(hash_table_SRC hash_table.cpp)
+add_executable(hash_table ${hash_table_SRC})

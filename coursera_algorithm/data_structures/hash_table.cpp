@@ -37,33 +37,39 @@ private:
 
 
 public:
-	OpenAddressingHashTable(uint size)
-		:_size(size)
+	// 默认大小是10
+	OpenAddressingHashTable()
+		:_table_size(10), _loadfactor_threshold(_table_size / 2), _member_size(0)
 	{
-		_p_buckets = new Entry[_size];
-		memset(_p_buckets, sizeof(Entry) * _size, 0);
+		_p_buckets = new Entry[_table_size];
 	}
 
 
 public:
 	int Insert(int key, VALUE_TYPE value)
 	{
-		int i=0;
-		uint hash = hash_func(key, i);
+		// 需要重新分配更大的空间
+		if(_member_size + 1 > _loadfactor_threshold) {
+			_resize();
+		}
 
-		while(i < _size)
-		{
-			Entry& entry = *(_p_buckets + hash);
+		// 找一个没有使用的位置
+		uint64_t pos = get_hash_position(key);
+
+		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
+			Entry& entry = _p_buckets[pos++];
 
 			if(entry.deleted || entry.empty) {
 				entry.key = key;
 				entry.value = value;
 				entry.empty = false;
 				entry.deleted = false;
-				return hash;
-			} else {
-				hash = hash_func(key, ++i);
+
+				++_member_size;
+
+				return pos;
 			}
+
 		}
 
 		return	-1;
@@ -71,20 +77,18 @@ public:
 
 	bool Search(int key, VALUE_TYPE& ret)
 	{
-		int i = 0;
-		uint hash = hash_func(key, i);
+		uint64_t pos = get_hash_position(key);
 
-		while(i++ < _size) {
-			Entry& entry = *(_p_buckets + hash);
+		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
+			const Entry& entry = _p_buckets[pos++];
 
 			if (entry.empty)
 				return false;
 			else if(entry.key == key) {
 				ret = entry.value;
 				return true;
-			} else {
-				hash = hash_func(key, i);
 			}
+
 		}
 
 		return false;
@@ -92,50 +96,104 @@ public:
 
 	void Delete(int key)
 	{
-		int i = 0;
-		uint hash = hash_func(key, i);
+		uint64_t pos = get_hash_position(key);
 
-		while(i++ < _size) {
-			Entry& entry = *(_p_buckets + hash);
+		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
+			Entry& entry = *(_p_buckets + pos++);
 
 			if(entry.key == key) {
 				entry.deleted = true;
 
-				// 注意这里不能直接设置为空，即是删除了，空的话会是查找中断，导致其他相同hash值的元素找不到
-				// 这个也是开放定址法要注意的点
-				//entry.empty = true;
+				--_member_size;
+
+				// WARNING:
+				// 		注意这里不能直接设置为空，即是删除了，空的话会是查找中断，导致其他相同hash值的元素找不到
+				// 		这个也是开放定址法要注意的点
+				//		entry.empty = true;
 				return;
 			}
 		}
-
 	}
 
 	void display() {
-		for(int i=0; i< _size; ++i) {
+		for(int i=0; i< _table_size; ++i) {
 			Entry& entry = *(_p_buckets + i);
+#if 0
 			if (!entry.deleted && !entry.empty)
-				cout << entry.key << ": " << entry.value << "\t\t";
+				cout << entry.key << ": " << entry.value << "\t";
 			else
-				cout << -1 << ": " << "  " << "\t\t";
+				cout << -1 << ": " << "  " << "\t";
+#else
+			cout<< entry.key << ":" << entry.value;
+			if(entry.deleted)
+				cout << ":d";
+
+			cout << "\t";
+#endif
 		}
-		cout << endl;
+		cout << "msize:" << _member_size;
+		cout << endl << endl;
 	}
 
-	uint hash_func(int key, int probnum)
+	uint64_t get_hash_position(int key, uint64_t probnum = 0)
 	{
-		return (key + probnum) % _size;
+		// hash 出来的pos肯定是在table数组里边的
+		return (key + probnum) % _table_size;
 	}
+
+private:
+	 void _resize() {
+		 // 1. 重新分配表: 原有空间大小 * 2
+		 // 2. 把之前所有元素，重现计算hash，放到新的表里边
+
+		 Entry* _p_old_buckets = _p_buckets;
+		 size_t old_size = _table_size;
+
+		 // 分配空间, 并修改当前空间的大小和阈值
+		 _table_size = old_size * 2;
+		 _loadfactor_threshold = _table_size / 2;
+		 _p_buckets = new Entry[_table_size];
+
+		 cout << "_resize, newsize:" << _table_size << endl;
+
+		 // 移动元素，且重新hash
+		 for(size_t i=0; i<old_size; ++i) {
+
+			 Entry old_entry = _p_old_buckets[i];
+
+			 // 找到一个没有使用的位置
+			 uint64_t pos = get_hash_position(old_entry.key);
+
+			 for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
+				 Entry& entry = _p_buckets[pos++];
+
+				 if(entry.deleted || entry.empty) {
+					entry.key = old_entry.key;
+					entry.value = old_entry.value;
+					entry.empty = false;
+					entry.deleted = false;
+					break;
+				 }
+
+			 };
+		 }
+
+		 delete[] _p_buckets;
+	 }
 
 private:
 
 	Entry* _p_buckets;
-	unsigned int _size;
+	size_t _table_size;
+
+	size_t _member_size;	// 这个是当前表里边已经存的数据的个数
+	int _loadfactor_threshold;	// 负载因子的阈值：当表中的元素个数大于 _loadfactor_threshold 时 需要resize
 };
 
 int main(int argc, char **argv) {
 
 	typedef string value_t;
-	OpenAddressingHashTable<value_t> table(10);
+	OpenAddressingHashTable<value_t> table;
 
 	cout << "insert 1 at: " << table.Insert(1, "one") << endl;
 	table.display();
@@ -143,11 +201,11 @@ int main(int argc, char **argv) {
 	table.display();
 	cout << "insert 3 at: " << table.Insert(3, "three") << endl;
 	table.display();
-	cout << "insert 4 at: " << table.Insert(4, "four") << endl;
-	table.display();
-	cout << "insert 5 at: " << table.Insert(5, "five") << endl;
-	table.display();
-	cout << "insert 6 at: " << table.Insert(6, "six") << endl;
+//	cout << "insert 4 at: " << table.Insert(4, "four") << endl;
+//	table.display();
+//	cout << "insert 5 at: " << table.Insert(5, "five") << endl;
+//	table.display();
+	cout << "insert 14 at: " << table.Insert(14, "fourteen") << endl;
 	table.display();
 	cout << "insert 7 at: " << table.Insert(7, "seven") << endl;
 	table.display();
