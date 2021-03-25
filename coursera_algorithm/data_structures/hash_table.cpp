@@ -11,6 +11,9 @@ using namespace std;
 
 
 /*
+  	Integer Hash Function
+ 	 	http://web.archive.org/web/20071223173210/http://www.concentric.net/~Ttwang/tech/inthash.htm
+
 	Note from
 		https://www.geeksforgeeks.org/what-are-hash-functions-and-how-to-choose-a-good-hash-function/
 
