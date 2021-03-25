@@ -9,6 +9,46 @@
 
 using namespace std;
 
+
+/*
+	Note from
+		https://www.geeksforgeeks.org/what-are-hash-functions-and-how-to-choose-a-good-hash-function/
+
+
+	The mod method:
+		In this method for creating hash functions,
+		we map a key into one of the slots of table by taking the remainder of key divided by table_size.
+		That is, the hash function is
+
+			h(key) = key mod table_size
+
+			i.e. key % table_size
+
+		* Since it requires only a single division operation, hashing by division is quite fast.
+
+		* When using the division method, we usually avoid certain values of table_size
+		  like table_size should not be a power of a number suppose r,
+		  since if table_size = r^p, then h(key) is just the p lowest-order bits of key.
+		  Unless we know that all low-order p-bit patterns are equally likely,
+		  we are better off designing the hash function to depend on all the bits of the key.
+
+		* It has been found that the best results with the division method are achieved when the table size is prime.
+		  However, even if table_size is prime, an additional restriction is called for.
+		  If r is the number of possible character codes on an computer, and if table_size is a prime such that r % table_size equal 1,
+		  then hash function h(key) = key % table_size is simply the sum of the binary representation of the characters in the key mod table_size.
+
+			Suppose r = 256 and table_size = 17, in which r % table_size i.e. 256 % 17 = 1.
+			So for key = 37599, its hash is
+				37599 % 17 = 12
+
+			But for key = 573, its hash function is also
+				573 % 17 = 12
+
+		* Hence it can be seen that by this hash function, many keys can have the same hash. This is called Collision.
+
+		* A prime not too close to an exact power of 2 is often good choice for table_size.
+ */
+
 template <typename VALUE_TYPE>
 class OpenAddressingHashTable{
 
@@ -39,7 +79,7 @@ private:
 public:
 	// 默认大小是10
 	OpenAddressingHashTable()
-		:_table_size(10), _loadfactor_threshold(_table_size / 2), _member_size(0)
+		:_table_size(4), _loadfactor_threshold(_table_size / 2), _member_size(0)
 	{
 		_p_buckets = new Entry[_table_size];
 	}
@@ -135,22 +175,62 @@ public:
 		cout << endl << endl;
 	}
 
-	uint64_t get_hash_position(int key, uint64_t probnum = 0)
+	uint64_t get_hash_position(int key)
 	{
 		// hash 出来的pos肯定是在table数组里边的
-		return (key + probnum) % _table_size;
+		return key % _table_size;
 	}
 
 private:
+
+	uint64_t _get_next_newsize(uint64_t old_size) {
+
+		if(old_size >= UINT64_MAX) return UINT64_MAX;
+
+		int new_table_size = 4;
+
+		while (1) {
+			if(new_table_size > old_size) {
+				return new_table_size;
+			} else {
+				new_table_size *= 2;
+			}
+		}
+	}
+
 	 void _resize() {
-		 // 1. 重新分配表: 原有空间大小 * 2
+		 // 1. 重新分配表: old_size * 2
 		 // 2. 把之前所有元素，重现计算hash，放到新的表里边
+
+		 /*
+		     Redis中的渐进式rehash
+
+		  	  在数据量比较大的时候 hashtable 的 resize(rehash)过程 会比较耗时, redis使用的是渐进式的rehash：
+		  	  	  1. 每个dict有两个table， 其中table[0],是主table (在rehash的过程中属于 old-data 的table)
+		  	  	  2. 当需要rehash的时候，table中的 rehashidx 会置成非负
+		  	  	  3. 当每次调用find，add，等的操作的时候，会先执行一次rehash，当old-table中的数据都移到new-table中reahsh结束
+		  	  	  	  然后把 table[0] 的数据释放掉， 把指针table[0] 指向table[1]的数据
+		  	  	  	  这里在rehash的过程中，每rehash一个bucket，就会吧old-data中的bucket数据删除
+
+			  这里有几个问题：
+		  	 	 1. rehash过程中，如果有插入，删除，修改数据怎么处理
+		  	 	     插入：只在new-table中进行，这样在之后的查找时，需要查找两个table
+		  	 	     修改：修改有点复杂，修改的操作是 查找 -> 更新
+		  	 	     	 1. 现在老的表里边查找，如果找到了，说明数据还没有移动到new-table中，直接修改entry
+		  	 	     	 2，如果没有找到，要么本来没有，要么已经移到new-table中了，那就执行插入操作
+		  	 	     	 3. 插入操作，如上所述直接在new-table中找
+		  	 	     删除：	删除的话，两个表一起同步删除
+
+		  	 	 2. rehash的过程中会不会出现需要再次扩容的情况
+		  	 	 	 可以试想，如果在rehash开始后，一直是insert操作，那当insert的次数到达old-table的bucket个数时，rehash就完成了
+		  	 	 	 redis的扩容方式是2的倍数增长，所以应该不会出现，但是它代码里边倒是判断了两次扩容不能重叠进行
+		  */
 
 		 Entry* _p_old_buckets = _p_buckets;
 		 size_t old_size = _table_size;
 
 		 // 分配空间, 并修改当前空间的大小和阈值
-		 _table_size = old_size * 2;
+		 _table_size = _get_next_newsize(old_size);
 		 _loadfactor_threshold = _table_size / 2;
 		 _p_buckets = new Entry[_table_size];
 
