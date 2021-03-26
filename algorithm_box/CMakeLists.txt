@@ -1,7 +1,7 @@
 project(AlgorithmBOX)
 cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
 if(0)
 
@@ -241,11 +241,14 @@ add_executable(Aho-Corasick_automation ${Aho-Corasick_automation_SRC})
 set(valid_parentheses_SRC valid_parentheses.cpp)
 add_executable(valid_parentheses ${valid_parentheses_SRC})
 
-endif(0)
-
-
 # none_make_team.cpp
 set(none_make_team_SRC none_make_team.cpp)
 add_executable(none_make_team ${none_make_team_SRC})
 
+endif(0)
+
+
+# bloom_filter.cpp
+set(bloom_filter_SRC bloom_filter.cpp)
+add_executable(bloom_filter ${bloom_filter_SRC})
 
