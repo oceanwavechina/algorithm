@@ -12,6 +12,16 @@
     # CS168: The Modern Algorithmic Toolbox Lecture #1: Introduction and Consistent Hashing
     虚拟节点还可以对处理能力强的节点进行倾斜，也就是可以对处理能力强的节点生成多个虚拟节点
 
+	这里介绍了jump hashing， 适合sharding，但是不适合load-balancing
+    https://itnext.io/introducing-consistent-hashing-9a289769052e
+
+	Rendezvous 算是和一致性hash很像的方法
+		基本思想都是先把 node 做hash，保存一下，生成一个 hash-set，然后根据一定的规则去在这些hash-set 中去查找
+		区别在于：
+			Rendezvous是每次找 node+key 之后的hash 可以得到最大值的那个 node
+			一致性hash是 找到 key 和 node 的 hash 值 最为接近的那个 node
+
+	google 的jump hashing是 mod 类型的hash一样，不需要保存hash值。
 */
 
 #include <iostream>
@@ -109,7 +119,13 @@ private:
 private:
     std::hash<std::string> _hash_func;
     size_t _n_virtual_replicas;
-    map<THash/*hash*/, TNode> _circle;
+
+    /*
+     fix(IMPORTANT):
+     	 这里一定要是multimap，因为不同的node或是key，可能会hash到同一个值
+     	 用map的话可能会覆盖原来的元素，发生严重的问题
+     */
+    multimap<THash/*hash*/, TNode> _circle;
 
     unordered_map<THash/*hash*/, string/*node_name*/> _node_names;
 };
