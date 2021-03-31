@@ -247,8 +247,9 @@ add_executable(none_make_team ${none_make_team_SRC})
 
 endif(0)
 
+# consistent_hash_jump_consistent_hash.cpp
+set(consistent_hash_jump_consistent_hash_SRC consistent_hash_jump_consistent_hash.cpp)
+add_executable(consistent_hash_jump_consistent_hash ${consistent_hash_jump_consistent_hash_SRC})
 
-# bloom_filter.cpp
-set(bloom_filter_SRC bloom_filter.cpp)
-add_executable(bloom_filter ${bloom_filter_SRC})
+
 
