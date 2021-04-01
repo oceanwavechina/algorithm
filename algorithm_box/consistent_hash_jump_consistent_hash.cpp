@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -45,7 +46,7 @@ using namespace std;
  */
 
 
-unsigned int ch_consistent_without_uniformity(unsigned int key, unsigned int n)
+uint32_t ch_consistent_without_uniformity(uint64_t key, uint32_t n)
 {
 	/*
 	  如何做到一致性的？
@@ -55,22 +56,76 @@ unsigned int ch_consistent_without_uniformity(unsigned int key, unsigned int n)
 	  	  2. 根据1的性质， 当n不变时，我们得到的hash结果永远是相同的
 
 	  	  3. 要保证一致性，我们只需要控制rand()的 **调用次数是单调递增(不必是严格递增)** 的就可以
+	  	  	  因为while中的 prob_id < n 的判断直接会，移动到*新桶*，或是不动
+	  	  	  注意，这里的新桶不一定是最后一个
 
 	  	  4. 如下while循环，当 n(桶的个数) 变化时，rand()的调用次数，要么和之前一样，要么会增加
 	  	  	  至于增加多少次，我们并不关心，因为次数一旦确定，那下次肯定还是这个次数
 	  	  	  所以是满足函数返回值是满足上边的递归公式的
+
+	  	  5. 为什么不满足均匀性：
+	  	  	  因为 rand() 是纯随机的, 这个rand也可以理解成当bucket数量变化时，key移动到新桶的概率
+	  	  	  如果 +rand() 后 >=n 那就留在旧桶，如果 <n 那就移动到新桶了
+	  	  	  所以在处理均匀性的问题，也就会处理这个rand()如何保证 其有 old_cnt / new_cnt 的概率留在旧桶
+	  	  	  也就是
+	  	  	  	  previous_id + rand() > new_bucket_cnt 的概率是 rand() 决定的
 	 */
 
     srand(key);
-    unsigned int id = 0;
-    unsigned int fence = rand();
-    while (n > fence)
+
+    //
+    // target_id:
+    // 		这个是最终的bucket的id 范围是 [0, n)
+    // 		默认是0，满足递归的初始条件
+    //
+    unsigned int target_id = 0;
+
+    //
+    // prob_id:
+	// 		这个随机分配的bucket的id, 最终的target_id，肯定要小于n的
+	// 		这个 prob_id 领先 target_id 一步
+    //		所以当 prob_id 大于等于 n 时，那target_id就是我们要找的值
+	//
+    unsigned int prob_id = rand();
+
+    while (prob_id < n)
     {
-        id = fence;
-        fence = id + rand();
+    	target_id = prob_id;
+        prob_id = target_id + rand();
     }
 
-    return id;
+    return target_id;
+}
+
+// TODO
+uint32_t ch_consistent_and_evenly(uint64_t key, uint32_t n)
+{
+	/*
+	  1. 这里的rand()是怎选择的：
+	  	  	  上一次的rand()，无法保证，当bucket数量变化时，key留在旧桶中的概率是 old_cnt / new_cnt
+
+	  	  	  这里的r 取值范围在 [0, 1] 很重要， 假设之前有 n 个桶， 增加1个后有 n+1 个
+	  	  	  最后一步 prob_id 是 (previous_id + 1) / r
+	  	  	  也就是证明 prob_id >= n+1 的概率 等价于 ((previous_id + 1) / r) >= n+1 的概率
+	  	  	  	  => 1/r >= (n+1) / (previous_id+1)
+	  	  	  	  => r <= (n+1) / (previous_id+1)
+	  	  	  	  因为 (n+1) / (previous_id+1) >= 1
+	  	  	  	  所以 (n+1) / (previous_id+1) >= 1 >= r
+
+	 */
+
+    srand(key);
+    uint32_t target_id = 0;
+    uint32_t prob_id = 0;
+
+    while (prob_id < n)
+    {
+    	target_id = prob_id;
+    	float r = rand() / RAND_MAX;	// 这里的 r 范围是 [0.0, 1.0]
+        prob_id = std::floor( (float)(target_id + 1.0) / r );
+    }
+
+    return target_id;
 }
 
 int32_t JumpConsistentHash(uint64_t key, int32_t num_buckets)
