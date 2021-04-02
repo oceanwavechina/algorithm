@@ -43,6 +43,11 @@ using namespace std;
 			ch(key, n) = |
 						 | -> n-1
 		========================================================
+
+
+	需要指出的是：https://blog.helong.info/blog/2015/03/13/jump_consistent_hash/
+			不像割环法，jump consistent hash不需要对key做hash，这是由于jump consistent hash使用内置的伪随机数生成器，来对每一次key做再hash，
+		（byron的理解：所以结果分布的均匀性与输入key的分布无关，由伪随机数生成器的均匀性保证）。
  */
 
 
