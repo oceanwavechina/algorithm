@@ -104,14 +104,36 @@ uint32_t ch_consistent_and_evenly(uint64_t key, uint32_t n)
 	  1. 这里的rand()是怎选择的：
 	  	  	  上一次的rand()，无法保证，当bucket数量变化时，key留在旧桶中的概率是 old_cnt / new_cnt
 
-	  	  	  这里的r 取值范围在 [0, 1] 很重要， 假设之前有 n 个桶， 增加1个后有 n+1 个
-	  	  	  最后一步 prob_id 是 (previous_id + 1) / r
-	  	  	  也就是证明 prob_id >= n+1 的概率 等价于 ((previous_id + 1) / r) >= n+1 的概率
-	  	  	  	  => 1/r >= (n+1) / (previous_id+1)
-	  	  	  	  => r <= (n+1) / (previous_id+1)
-	  	  	  	  因为 (n+1) / (previous_id+1) >= 1
-	  	  	  	  所以 (n+1) / (previous_id+1) >= 1 >= r
+	  	  	  1. 我们首先对于，留在旧桶这个动作进行量化，
+	  	  	  	  假设之前有n个桶，现在有n+1个桶，留在旧桶也就等价于：
+	  	  	  	  	  prob_id >= n+1
+	  	  	  	  	  ( 这个是因为prob_id 不能大于桶的个数，当上述不等式成立时，所以只取前一个prob_id，
+	  	  	  	  	  	那就是prob_id < n+1，也就是在旧桶了)
 
+	  	  	  2. 我们接下来证明 prob_id >= n+1 的概率是 n/(n+1)
+	  	  	  	  即证明 P(prob_id) = n/(n+1)
+
+	  	  	  	 因： prob_id = (last_id + 1) / r
+
+	  	  	  	 有： P(prob_id >= n+1)
+	  	  	  	 	 => P( ( (last_id + 1) / r) >= (n+1) )
+	  	  	  	 	 => P( ( (last_id + 1) / (n+1) ) >= r)
+	  	  	  	 	 => P( r <= ( (last_id + 1) / (n+1) ) )
+
+	  	  	  	 	 last_id 必然是小于n的，所以 last_id+1 的最大值是n, 于是也就有
+
+	  	  	  	 	 => P( r <= ( n / (n+1) ) )
+
+	  	  	  	 	 因为 r 是 [0.0, 1.0] 之间均匀分布的 而 n / (n+1) 是在[0.0, n/n+1] 之间分布的
+	  	  	  	 	 也就是有 [0.0, ... , n/n+1, ..., 1.0],
+	  	  	  	 	 所以 P( r <= ( n / (n+1) ) ) 的概率必然在上述区间的前边，其概率也就是为 n / n+1
+
+	  	  	  	 	 即 当 r 在 [0.0，1.0] 均匀分时，P( r <= ( n / (n+1) ) ) 的概率是 n/n+1
+	  	  	  	 	 	 因 P(prob_id >= n+1) 等价于 P( r <= ( n / (n+1) ) )
+	  	  	  	 	 	 所以 P(prob_id >= n+1) 的概率也是 n/n+1，
+	  	  	  	 	 	 也就是说留在旧桶的概率是 n/n+1
+
+	  	  	  	 证毕
 	 */
 
     srand(key);
