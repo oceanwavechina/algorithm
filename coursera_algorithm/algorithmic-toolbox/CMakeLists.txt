@@ -2,6 +2,8 @@ project(Algorithm)
 cmake_minimum_required(VERSION 3.6)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 
+if(0)
+
 ###########  WEEK 2  ###########
 # A plus B
 set(APlusB_SRC APlusB.cpp)
@@ -77,3 +79,10 @@ add_executable(money_change ${money_change_SRC})
 # knapsack_with_repetitions.cpp
 set(knapsack_with_repetitions_SRC knapsack_with_repetitions.cpp)
 add_executable(knapsack_with_repetitions ${knapsack_with_repetitions_SRC})
+
+endif(0)
+
+# bucket_sort.cpp
+set(bucket_sort_SRC bucket_sort.cpp)
+add_executable(bucket_sort ${bucket_sort_SRC})
+
