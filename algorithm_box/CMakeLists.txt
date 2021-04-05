@@ -245,11 +245,17 @@ add_executable(valid_parentheses ${valid_parentheses_SRC})
 set(none_make_team_SRC none_make_team.cpp)
 add_executable(none_make_team ${none_make_team_SRC})
 
-endif(0)
-
 # consistent_hash_jump_consistent_hash.cpp
 set(consistent_hash_jump_consistent_hash_SRC consistent_hash_jump_consistent_hash.cpp)
 add_executable(consistent_hash_jump_consistent_hash ${consistent_hash_jump_consistent_hash_SRC})
+
+endif(0)
+
+# LRU_cache.cpp
+set(LRU_cache_SRC LRU_cache.cpp)
+add_executable(LRU_cache ${LRU_cache_SRC})
+
+
 
 
 
