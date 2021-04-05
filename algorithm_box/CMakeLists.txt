@@ -251,9 +251,10 @@ add_executable(consistent_hash_jump_consistent_hash ${consistent_hash_jump_consi
 
 endif(0)
 
-# LRU_cache.cpp
-set(LRU_cache_SRC LRU_cache.cpp)
-add_executable(LRU_cache ${LRU_cache_SRC})
+# dp_most_profit_stock_trade_once.cpp
+set(dp_most_profit_stock_trade_once_SRC dp_most_profit_stock_trade_once.cpp)
+add_executable(dp_most_profit_stock_trade_once ${dp_most_profit_stock_trade_once_SRC})
+
 
 
 
