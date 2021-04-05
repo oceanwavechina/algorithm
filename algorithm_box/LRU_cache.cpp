@@ -106,6 +106,12 @@ public:
 		p_node->next = nullptr;
 	}
 
+	void move_to_front(Node<K, V>* p_node) {
+		assert(p_node);
+		remove(p_node);
+		push_front(p_node);
+	}
+
 	Node<K, V>* pop_back() {
 
 		if(!_tail) {
@@ -186,8 +192,7 @@ public:
 			value = p_node->value;
 
 			// 把这个节点移动到链表的开始
-			_list.remove(p_node);
-			_list.push_front(p_node);
+			_list.move_to_front(p_node);
 		}
 
 		ostringstream oss;
@@ -212,14 +217,13 @@ public:
 			p_node->value = value;
 
 			// 移到链表的前边
-			_list.remove(p_node);
-			_list.push_front(p_node);
+			_list.move_to_front(p_node);
 
 		} else  {
 			// 不存在，需要创建
 			if(_map.size() == _capacity) {
 				// 需要把最后一个(也就是最长时间没有使用的)删除掉
-				// 我们这里不全部删除，只是从list结尾拿掉，直接用来存要加的数据
+				// 我们这里不释放节点，只是从list结尾拿掉，直接用来存要加的数据
 				p_node = _list.pop_back();
 				_map.erase(p_node->key);
 				oss << ", remove:" << p_node->key;
@@ -262,7 +266,8 @@ private:
 
 
 int main(int argc, char **argv) {
-	LRUCache<long, string> aCache(1);
+	//LRUCache<long, string> aCache(1);
+	LRUCache<long, string> aCache(3);
 	aCache.set(1, "1");
 	aCache.set(2, "2");		// {2, 1}
 
