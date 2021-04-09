@@ -23,7 +23,7 @@
  	bloomfilter
 		https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/
 
- 		如果filter中有，说明数据大概率出现了，
+ 		如果filter中有，说明数据大概率出现了(实际上也可能没出现)
  		如果filter中没有，那数据指定没有
 
  		1. Bloom filters MIGHT BE generate some False(错误的) Positive(filter中已经存在) results.

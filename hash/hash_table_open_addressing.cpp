@@ -52,7 +52,7 @@ using namespace std;
 		* A prime not too close to an exact power of 2 is often good choice for table_size.
  */
 
-template <typename VALUE_TYPE>
+template <typename KEY_TYPE, typename VALUE_TYPE>
 class OpenAddressingHashTable{
 
 private:
@@ -65,15 +65,16 @@ private:
 		 */
 	public:
 		Entry()
-			:key(-1), deleted(false), empty(true)
+			:deleted(false), empty(true)
 		{}
 
-		Entry(int _key, VALUE_TYPE _value)
+		Entry(KEY_TYPE _key, VALUE_TYPE _value)
 			:key(_key), value(_value), deleted(false), empty(true)
 		{}
 
-		int key;
+		KEY_TYPE key;
 		VALUE_TYPE value;
+
 		bool deleted;
 		bool empty;
 	};
@@ -89,7 +90,7 @@ public:
 
 
 public:
-	int Insert(int key, VALUE_TYPE value)
+	int Insert(KEY_TYPE key, VALUE_TYPE value)
 	{
 		// 需要重新分配更大的空间
 		if(_member_size + 1 > _loadfactor_threshold) {
@@ -97,7 +98,7 @@ public:
 		}
 
 		// 找一个没有使用的位置
-		uint64_t pos = get_hash_position(key);
+		size_t pos = get_hash_position(key);
 
 		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
 			Entry& entry = _p_buckets[pos++];
@@ -118,9 +119,9 @@ public:
 		return	-1;
 	}
 
-	bool Search(int key, VALUE_TYPE& ret)
+	bool Search(KEY_TYPE key, VALUE_TYPE& ret)
 	{
-		uint64_t pos = get_hash_position(key);
+		size_t pos = get_hash_position(key);
 
 		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
 			const Entry& entry = _p_buckets[pos++];
@@ -137,9 +138,9 @@ public:
 		return false;
 	}
 
-	void Delete(int key)
+	void Delete(KEY_TYPE key)
 	{
-		uint64_t pos = get_hash_position(key);
+		size_t pos = get_hash_position(key);
 
 		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
 			Entry& entry = *(_p_buckets + pos++);
@@ -178,15 +179,17 @@ public:
 		cout << endl << endl;
 	}
 
-	uint64_t get_hash_position(int key)
+	size_t get_hash_position(KEY_TYPE key)
 	{
 		// hash 出来的pos肯定是在table数组里边的
-		return key % _table_size;
+
+		//return key % _table_size;
+		return std::hash<KEY_TYPE>{}(key) % _table_size;
 	}
 
 private:
 
-	uint64_t _get_next_newsize(uint64_t old_size) {
+	size_t _get_next_newsize(uint64_t old_size) {
 
 		if(old_size >= UINT64_MAX) return UINT64_MAX;
 
@@ -245,7 +248,7 @@ private:
 			 Entry old_entry = _p_old_buckets[i];
 
 			 // 找到一个没有使用的位置
-			 uint64_t pos = get_hash_position(old_entry.key);
+			 size_t pos = get_hash_position(old_entry.key);
 
 			 for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
 				 Entry& entry = _p_buckets[pos++];
@@ -276,7 +279,7 @@ private:
 int main(int argc, char **argv) {
 
 	typedef string value_t;
-	OpenAddressingHashTable<value_t> table;
+	OpenAddressingHashTable<int, value_t> table;
 
 	cout << "insert 1 at: " << table.Insert(1, "one") << endl;
 	table.display();
