@@ -45,7 +45,7 @@ public:
         oss << "add:" << node;
         for (size_t i = 0; i < _n_virtual_replicas; ++i) {
             size_t hash = _cal_virtual_node_hash(node, i);
-            _circle[hash] = node;
+            _node_hash_circle[hash] = node;
             _node_names[hash] = node + "_v" + to_string(i);
             oss << " -> virtual" << i << ":" << hash;
         }
@@ -54,12 +54,12 @@ public:
 
     void remove(TNode node) {
         for(size_t i=0; i< _n_virtual_replicas; ++i) {
-            _circle.erase(_cal_virtual_node_hash(node, i));
+            _node_hash_circle.erase(_cal_virtual_node_hash(node, i));
         }
     }
 
     TNode get( const string& key) {
-        if(_circle.empty()) {
+        if(_node_hash_circle.empty()) {
             return TNode();
         }
 
@@ -70,8 +70,8 @@ public:
         // 如果 _circle 里边有这个hash对应的node，直接返回
         // 没有的话，就要找大于这个hash值, 并且顺时针，紧挨着的node
         //
-        auto it = _circle.find(key_hash);
-        if(it != _circle.end()) {
+        auto it = _node_hash_circle.find(key_hash);
+        if(it != _node_hash_circle.end()) {
             display_circle("node for " + key + " is: ", it->first);
             return it->second;
         }
@@ -79,25 +79,25 @@ public:
         //
         // 顺时针查找最近的一个node
         //
-        auto it_upper = _circle.upper_bound(key_hash);
-        if(it_upper != _circle.end()) {
+        auto it_upper = _node_hash_circle.upper_bound(key_hash);
+        if(it_upper != _node_hash_circle.end()) {
             display_circle("node for " + key + " is: ", it_upper->first);
             return it_upper->second;
         } else {
-            display_circle("node for " + key + " is: ", _circle.begin()->first);
-            return _circle.begin()->second;
+            display_circle("node for " + key + " is: ", _node_hash_circle.begin()->first);
+            return _node_hash_circle.begin()->second;
         }
     }
 
     size_t size() {
         //display_circle(0);
-        return _circle.size();
+        return _node_hash_circle.size();
     }
 
     void display_circle(string msg, const THash& target_hash) {
         ostringstream oss;
         oss << msg;
-        for(auto item : _circle) {
+        for(auto item : _node_hash_circle) {
             if(target_hash == item.first)
                 //oss << "\t\033[4m*" << _node_names[item.first] << "*";
                 oss << "\t*" << _node_names[item.first] << "*";
@@ -124,8 +124,11 @@ private:
      fix(IMPORTANT):
      	 这里一定要是multimap，因为不同的node或是key，可能会hash到同一个值
      	 用map的话可能会覆盖原来的元素，发生严重的问题
+     	 这里存的是node的hash，node是有限的，而且hash的空间是非负整数范围，node最多可能只有几万个
+     	 所以这里用map问题也不大
      */
-    multimap<THash/*hash*/, TNode> _circle;
+    // multimap<THash/*hash*/, TNode> _node_hash_circle;
+    map<THash/*hash*/, TNode> _node_hash_circle;
 
     unordered_map<THash/*hash*/, string/*node_name*/> _node_names;
 };
