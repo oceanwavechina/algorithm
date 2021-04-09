@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -50,6 +51,10 @@ using namespace std;
 		* Hence it can be seen that by this hash function, many keys can have the same hash. This is called Collision.
 
 		* A prime not too close to an exact power of 2 is often good choice for table_size.
+
+	开放定址法需要注意的问题:
+		1. 删除的时候要用delete标志，不能把bucket直接清空
+		2. 添加和查找的时候，如果有冲突了，要用模除循环的方式，找整个数组，不能只找后半段
  */
 
 template <typename KEY_TYPE, typename VALUE_TYPE>
@@ -88,20 +93,26 @@ public:
 		_p_buckets = new Entry[_table_size];
 	}
 
-
 public:
-	int Insert(KEY_TYPE key, VALUE_TYPE value)
+	size_t InsertOrUpdate(KEY_TYPE key, VALUE_TYPE value)
 	{
+		// 已经存在了，直接更新数据
+		int64_t cur_pos = _GetKeyPos(key);
+		if(cur_pos != -1) {
+			_p_buckets[cur_pos].value = value;
+			return cur_pos;
+		}
+
 		// 需要重新分配更大的空间
 		if(_member_size + 1 > _loadfactor_threshold) {
-			_resize();
+			_Resize();
 		}
 
 		// 找一个没有使用的位置
-		size_t pos = get_hash_position(key);
+		size_t pos = _GetHashPosition(key);
 
 		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
-			Entry& entry = _p_buckets[pos++];
+			Entry& entry = _p_buckets[pos];
 
 			if(entry.deleted || entry.empty) {
 				entry.key = key;
@@ -111,85 +122,106 @@ public:
 
 				++_member_size;
 
-				return pos;
+				break;
 			}
 
+			pos = (++pos) % _table_size;
 		}
 
-		return	-1;
+		return pos;
 	}
 
-	bool Search(KEY_TYPE key, VALUE_TYPE& ret)
+	bool Search(KEY_TYPE key, VALUE_TYPE& value)
 	{
-		size_t pos = get_hash_position(key);
+		bool found = false;
 
-		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
-			const Entry& entry = _p_buckets[pos++];
-
-			if (entry.empty)
-				return false;
-			else if(entry.key == key) {
-				ret = entry.value;
-				return true;
-			}
-
+		int64_t pos = _GetKeyPos(key);
+		if(pos != -1) {
+			value = _p_buckets[pos].value;
+			found = true;
 		}
 
-		return false;
+		return found;
 	}
 
 	void Delete(KEY_TYPE key)
 	{
-		size_t pos = get_hash_position(key);
+		int64_t pos = _GetKeyPos(key);
 
-		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
-			Entry& entry = *(_p_buckets + pos++);
-
+		if(pos != -1) {
+			Entry& entry = *(_p_buckets + pos);
 			if(entry.key == key) {
+
+				//
+				// WARNING:
+				// 		注意这里不能直接设置为空，即是删除了，空的话会是查找中断，导致其他相同hash值的元素找不到
+				// 		这个也是开放定址法要注意的点, 要用一个新的状态delete来标记这个位置
+				//		entry.empty = true;
+				//
+
 				entry.deleted = true;
 
 				--_member_size;
 
-				// WARNING:
-				// 		注意这里不能直接设置为空，即是删除了，空的话会是查找中断，导致其他相同hash值的元素找不到
-				// 		这个也是开放定址法要注意的点
-				//		entry.empty = true;
 				return;
 			}
 		}
 	}
 
 	void display() {
+		cout << "\t";
 		for(int i=0; i< _table_size; ++i) {
-			Entry& entry = *(_p_buckets + i);
+			Entry& entry = _p_buckets[i];
 #if 0
 			if (!entry.deleted && !entry.empty)
 				cout << entry.key << ": " << entry.value << "\t";
 			else
 				cout << -1 << ": " << "  " << "\t";
 #else
-			cout<< entry.key << ":" << entry.value;
+			cout << i << ")_" << entry.key << ":" << entry.value;
 			if(entry.deleted)
 				cout << ":d";
 
-			cout << "\t";
+			cout << "    ";
 #endif
 		}
-		cout << "msize:" << _member_size;
+		cout << "\n\tcursize:" << _member_size;
 		cout << endl << endl;
 	}
 
-	size_t get_hash_position(KEY_TYPE key)
-	{
-		// hash 出来的pos肯定是在table数组里边的
-
-		//return key % _table_size;
-		return std::hash<KEY_TYPE>{}(key) % _table_size;
+	size_t Size() {
+		return _member_size;
 	}
 
 private:
 
-	size_t _get_next_newsize(uint64_t old_size) {
+	int64_t _GetKeyPos(KEY_TYPE key)
+	{
+		size_t pos = _GetHashPosition(key);
+
+		for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
+			const Entry& entry = _p_buckets[pos];
+
+			if(entry.key == key && !entry.deleted && !entry.empty) {
+				return pos;
+			}
+
+			// 注意这里要用模除循环
+			pos = (++pos) % _table_size;
+		}
+
+		return -1;
+	}
+
+	size_t _GetHashPosition(KEY_TYPE key)
+	{
+		// hash 出来的pos肯定是在table数组里边的
+
+		return key % _table_size;
+		//return std::hash<KEY_TYPE>{}(key) % _table_size;
+	}
+
+	size_t _GetNextNewSize(uint64_t old_size) {
 
 		if(old_size >= UINT64_MAX) return UINT64_MAX;
 
@@ -204,7 +236,7 @@ private:
 		}
 	}
 
-	 void _resize() {
+	 void _Resize() {
 		 // 1. 重新分配表: old_size * 2
 		 // 2. 把之前所有元素，重现计算hash，放到新的表里边
 
@@ -236,7 +268,7 @@ private:
 		 size_t old_size = _table_size;
 
 		 // 分配空间, 并修改当前空间的大小和阈值
-		 _table_size = _get_next_newsize(old_size);
+		 _table_size = _GetNextNewSize(old_size);
 		 _loadfactor_threshold = _table_size / 2;
 		 _p_buckets = new Entry[_table_size];
 
@@ -247,8 +279,12 @@ private:
 
 			 Entry old_entry = _p_old_buckets[i];
 
+			 if(old_entry.deleted || old_entry.empty) {
+				 continue;
+			 }
+
 			 // 找到一个没有使用的位置
-			 size_t pos = get_hash_position(old_entry.key);
+			 size_t pos = _GetHashPosition(old_entry.key);
 
 			 for(size_t prob_cnt = 0; prob_cnt < _table_size; ++prob_cnt) {
 				 Entry& entry = _p_buckets[pos++];
@@ -278,47 +314,61 @@ private:
 
 int main(int argc, char **argv) {
 
-	typedef string value_t;
-	OpenAddressingHashTable<int, value_t> table;
+	OpenAddressingHashTable<int, string> table;
 
-	cout << "insert 1 at: " << table.Insert(1, "one") << endl;
+	cout << "insert 1 at: " << table.InsertOrUpdate(1, "v1") << endl;
 	table.display();
-	cout << "insert 2 at: " << table.Insert(2, "two") << endl;
+
+	cout << "insert 2 at: " << table.InsertOrUpdate(2, "v2") << endl;
 	table.display();
-	cout << "insert 3 at: " << table.Insert(3, "three") << endl;
+
+	cout << "insert 3 at: " << table.InsertOrUpdate(3, "v3") << endl;
 	table.display();
-//	cout << "insert 4 at: " << table.Insert(4, "four") << endl;
+
+//	cout << "insert 4 at: " << table.InsertOrUpdate(4, "v4") << endl;
 //	table.display();
-//	cout << "insert 5 at: " << table.Insert(5, "five") << endl;
+//	cout << "insert 5 at: " << table.InsertOrUpdate(5, "v5") << endl;
 //	table.display();
-	cout << "insert 14 at: " << table.Insert(14, "fourteen") << endl;
+
+	cout << "insert 14 at: " << table.InsertOrUpdate(14, "v14") << endl;
 	table.display();
-	cout << "insert 7 at: " << table.Insert(7, "seven") << endl;
+
+	cout << "insert 14 again at: " << table.InsertOrUpdate(14, "v14sec") << endl;
 	table.display();
-//	cout << "insert 8 at: " << table.Insert(8, "eight") << endl;
+
+	cout << "insert 30 at: " << table.InsertOrUpdate(30, "v30") << endl;
+	table.display();
+
+	cout << "insert 46 at: " << table.InsertOrUpdate(46, "v46") << endl;
+	table.display();
+
+	cout << "insert 62 at: " << table.InsertOrUpdate(62, "v62") << endl;
+	table.display();
+
+//	cout << "insert 8 at: " << table.InsertOrUpdate(8, "v8") << endl;
 //	table.display();
-//	cout << "insert 9 at: " << table.Insert(9, "nine") << endl;
+//	cout << "insert 9 at: " << table.InsertOrUpdate(9, "v9") << endl;
 //	table.display();
-//	cout << "insert 10 at: " << table.Insert(10, "ten") << endl;
+//	cout << "insert 10 at: " << table.InsertOrUpdate(10, "v10") << endl;
 //	table.display();
 
 	cout << endl << endl;
 
-	cout << "insert 14 at: " << table.Insert(14, "fourteen") << endl;
+	cout << "insert 14 at: " << table.InsertOrUpdate(14, "v14") << endl;
 	table.display();
 
 	table.Delete(7);
 	cout << "after delete 7" << endl;
 	table.display();
 
-	value_t val;
+	string val;
 	if(table.Search(14, val)) {
 		cout << "find key=14, with value=" << val << endl;
 	} else {
 		cout << "failed to find key=14" << endl;
 	}
 
-	cout << "insert 8 at: " << table.Insert(8, "eight") << endl;
+	cout << "insert 8 at: " << table.InsertOrUpdate(8, "v8") << endl;
 	table.display();
 
 	if(table.Search(8, val)) {
