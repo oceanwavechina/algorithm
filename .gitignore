@@ -1,6 +1,6 @@
 /build/
 .pydevproject
-.settings
+.settings/
 .vscode/
 .DS_Store
 .cproject

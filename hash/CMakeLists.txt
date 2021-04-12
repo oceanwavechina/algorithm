@@ -1,4 +1,4 @@
-project(HASH)
+project(AlgorithmBOX_HASH)
 cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
@@ -24,6 +24,10 @@ add_executable(consistent_hash_jump_consistent_hash ${consistent_hash_jump_consi
 set(hash_table_open_addressing_SRC hash_table_open_addressing.cpp)
 add_executable(hash_table_open_addressing ${hash_table_open_addressing_SRC})
 
+
+# counter_min_sketch.cpp
+set(counter_min_sketch_SRC counter_min_sketch.cpp)
+add_executable(counter_min_sketch ${counter_min_sketch_SRC})
 
 endif(0)
 
