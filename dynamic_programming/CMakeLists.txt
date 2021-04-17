@@ -25,6 +25,14 @@ add_executable(up_the_steps ${up_the_steps_SRC})
 set(word_break_problem_SRC word_break_problem.cpp)
 add_executable(word_break_problem ${word_break_problem_SRC})
 
+# knapsack_with_repetitions.cpp
+set(knapsack_with_repetitions_SRC knapsack_with_repetitions.cpp)
+add_executable(knapsack_with_repetitions ${knapsack_with_repetitions_SRC})
+
+# money_change.cpp
+set(money_change_SRC money_change.cpp)
+add_executable(money_change ${money_change_SRC})
+
 #endif(0)
 
 
