@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
-#if(0)
+if(0)
 
 # cut_rode.cpp
 set(cut_rode_SRC cut_rode.cpp)
@@ -33,9 +33,19 @@ add_executable(knapsack_with_repetitions ${knapsack_with_repetitions_SRC})
 set(money_change_SRC money_change.cpp)
 add_executable(money_change ${money_change_SRC})
 
-#endif(0)
+# find_all_subarray_with_0_sum.cpp
+set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
+add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
 
+# find_all_subarray_with_x_sum.cpp
+set(find_all_subarray_with_x_sum_SRC find_all_subarray_with_x_sum.cpp)
+add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
 
+endif(0)
+
+# find_all_subarray_with_0_sum.cpp
+set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
+add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
 
 
 

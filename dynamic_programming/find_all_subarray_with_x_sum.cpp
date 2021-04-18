@@ -2,25 +2,24 @@
  * @Author: liuyanan 
  * @Date: 2019-01-09 15:55:34 
  * @Last Modified by: liuyanan
- * @Last Modified time: 2019-01-09 17:06:33
+ * @Last Modified time: 2019-01-09 17:06:21
  */
 
 
 /*
-    Given an array, print all subarrays in the array which has sum 0.
+    这个是根据 sum=0 题想到的更一般的情况
+    Given an array, print all subarrays in the array which has sum X.
 
     Examples:
         Input:  
-            arr = [6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7]
+            idx = [0, 1,  2,  3, 4,  5, 6]
+            arr = [6, 3, -1, -3, 5, -2, 2]
         Output:  
             Subarray found from Index 2 to 4
-            Subarray found from Index 2 to 6          
-            Subarray found from Index 5 to 6
-            Subarray found from Index 6 to 9
-            Subarray found from Index 0 to 10
+            Subarray found from Index 2 to 6
             
     思路：
-        是一个动态规划， 有个技巧就是，判断subarray和为0的方式
+        是一个动态规划， 有个技巧就是，判断subarray和为X的方式
         因为满足条件的 suarray 可能是从中间开始的，所以问题就是我们如何记录中间开始的subarray
         方法就是计算差， 比如sum[0-2] = 8 , 而且 sum[0-4] = 8, 那这两个子数组公共的部分的和就是0
             注意这个公共的部分是半开半闭区间，不包括前一个数组的最后一个元素
@@ -37,7 +36,7 @@ using namespace std;
 typedef vector< pair<uint32_t, uint32_t> > RangeVec;
 
 
-RangeVec find_all_subarray_with_0_sum(vector<int32_t> nums) 
+RangeVec find_all_subarray_with_x_sum(vector<int32_t> nums, int32_t s) 
 {
     RangeVec all_pos;
 
@@ -51,12 +50,26 @@ RangeVec find_all_subarray_with_0_sum(vector<int32_t> nums)
         sum += nums[i];
 
         // 找到了一个满足条件的，直接放入结果中
-        if(sum == 0) {
+        if(sum == s) {
             all_pos.push_back({0, i});
         }
 
-        auto pre_same_sums = sum_with_endpos_map.find(sum);
+        // 这里如果s=0，也就是和等于0的情况
+        auto pre_same_sums = sum_with_endpos_map.find(sum-s);
         if(pre_same_sums != sum_with_endpos_map.end()) {
+        	/*
+        	  这里用的是for 循环，因为对于一个sum=x的，在 sum_with_endpos_map 里边可能有多个endpos，如下：
+
+        	  	  0 ...... end1 ...................................
+        	  	  0 .................. end2 .......................
+        	  	  0 ................................. end3.........
+        	  	  	    	  	  	  	  	  	  	  	  	  	   ^
+        	  	  	  	  	  	  	  	  	  	  	  	  	  	   i
+
+        	  	  其中 [0, end1], [0, end2], [0, end3], [0, i] 的和都是 x
+
+        	  	  所以有 [end1+1, i], [end2+1, i], [end1+3, i] 的和都是0
+        	 */
             for(auto pre_pos : pre_same_sums->second) {
                 all_pos.push_back({pre_pos+1, i});
             }
@@ -79,8 +92,7 @@ void display_pos(RangeVec poses)
 
 int main(int argc, char const *argv[])
 {
-    // 前后两个0也是可以的
-    vector<int32_t> nums = {0, 6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7, 0};
+    vector<int32_t> nums = {6, 3, -1, -3, 5, -2, 2};
     cout << "Array:\n\tidx: ";
     for(auto idx=0; idx<nums.size(); ++idx) {
         cout << idx << "\t";
@@ -91,9 +103,8 @@ int main(int argc, char const *argv[])
     }
     cout << endl;
 
-    RangeVec all_pos = find_all_subarray_with_0_sum(nums);
+    RangeVec all_pos = find_all_subarray_with_x_sum(nums, 2);
     display_pos(all_pos);
     
     return 0;
 }
-

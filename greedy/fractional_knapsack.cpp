@@ -13,6 +13,8 @@
  * knapsack 分为两种：fractional_knapsack 和 discrete_knapsack
  * 这里我们要讨论的是 fractional_knapsack,
  * 		这个即，物品是可以分割的，也就是说我可以取0.12，1.42， 这样的小数，而不必是整个物品都拿来
+ * 		还有一个要点，就是物品的是不可以重复取的，换言之，一个物品数量是给定的，一旦拿完了，就只能拿别的物品了
+ * 		进一步讲，要是可以无限拿同一个物品，也就没有计算的意义了，都拿最贵的那个就好了
  *
  * input:
  * 		weights: 	w1, ..., wn of n items;
