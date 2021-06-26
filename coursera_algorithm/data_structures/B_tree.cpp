@@ -21,6 +21,8 @@ using namespace std;
 
     docs/BTree_1.html docs/BTree_2.html
 
+    https://www.youtube.com/watch?v=0BSbT--qI3E
+
     B树有以下性质：
         性质1. 根结点至少有两个子女；
         性质2. 每个非根节点所包含的关键字个数 j 满足：t-1 <= j <= 2t-1；

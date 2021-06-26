@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
-#if(0)
+if(0)
 
 # memory_pool.cpp
 set(memory_pool_SRC memory_pool.cpp)
@@ -25,8 +25,13 @@ add_executable(valid_parentheses ${valid_parentheses_SRC})
 set(print_Z_pattern_SRC print_Z_pattern.cpp)
 add_executable(print_Z_pattern ${print_Z_pattern_SRC})
 
-# none_make_team.cpp
-set(none_make_team_SRC none_make_team.cpp)
-add_executable(none_make_team ${none_make_team_SRC})
+# make_team.cpp
+set(make_team_SRC make_team.cpp)
+add_executable(make_team ${make_team_SRC})
 
-#endif(0)
+endif(0)
+
+
+# next_permutation.cpp
+set(next_permutation_SRC next_permutation.cpp)
+add_executable(next_permutation ${next_permutation_SRC})
