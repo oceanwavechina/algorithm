@@ -38,35 +38,54 @@ void next_permutation(string& sequence)
 	//			   ^      ^
 	//			 left   right
 	//
+	//	思路：
+	//		详见 pic/next-permutation.png
+	//
 
-	int right = sequence.size() - 1;
-	int left = right - 1;
+	cout << "current number: " << sequence << endl;
 
-	while(left >= 0) {
-		if(sequence[left] < sequence[right]) {
-			swap(sequence[left], sequence[right]);
-			return;
+	// 1 从右到左，找到第一个非增的元素 partition_num
+	int partition_num_pos = sequence.size() - 1;
+	while(partition_num_pos >= 0) {
+		if(sequence[partition_num_pos] < sequence[partition_num_pos + 1]) {
+			break;
 		}
-		--left;
-		--right;
+		--partition_num_pos;
+	}
+	cout << "partiton number: " << sequence[partition_num_pos] << ", pos: " << partition_num_pos << endl;
+
+	if(partition_num_pos >= 0) {
+
+		// 2. 从左到右，找到第一个比 partition_num 大的元素 change_num
+		int change_num_pos = sequence.size() - 1;
+		while(change_num_pos>= 0) {
+			if(sequence[change_num_pos] > sequence[partition_num_pos]) {
+				break;
+			}
+			--change_num_pos;
+		}
+		cout << "change number: " << sequence[change_num_pos] << ", pos: " << change_num_pos << endl;
+
+		// 3. 交换 partition_num 和 change_num
+		swap(sequence[change_num_pos], sequence[partition_num_pos]);
 	}
 
-	left = 0;
-	right = sequence.size() - 1;
-	while(left < right) {
-		swap(sequence[left], sequence[right]);
-		++left;
-		--right;
+	// 4. 翻转 partition_num 右边的所有元素
+	int start = ++partition_num_pos;
+	int end = sequence.size() - 1;
+	while(start < end) {
+		swap(sequence[start], sequence[end]);
+		++start;
+		--end;
 	}
+	cout << "next permutation: " << sequence << "\n\n" << endl;
 }
 
 int main(int argc, char **argv)
 {
 	string sequece("123");
-	cout << sequece << endl;
 	for(int i=0; i<10; ++i) {
 		next_permutation(sequece);
-		cout << sequece << endl;
 	}
 
 	return 0;
