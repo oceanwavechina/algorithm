@@ -29,9 +29,14 @@ add_executable(print_Z_pattern ${print_Z_pattern_SRC})
 set(make_team_SRC make_team.cpp)
 add_executable(make_team ${make_team_SRC})
 
-endif(0)
-
-
 # next_permutation.cpp
 set(next_permutation_SRC next_permutation.cpp)
 add_executable(next_permutation ${next_permutation_SRC})
+
+endif(0)
+
+
+# stack_with_min.cpp
+set(stack_with_min_SRC stack_with_min.cpp)
+add_executable(stack_with_min ${stack_with_min_SRC})
+
