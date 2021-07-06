@@ -41,6 +41,11 @@ add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
 set(find_all_subarray_with_x_sum_SRC find_all_subarray_with_x_sum.cpp)
 add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
 
+# find_greatest_sum_of_subarray.cpp
+set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
+add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
+
+
 endif(0)
 
 # find_all_subarray_with_0_sum.cpp

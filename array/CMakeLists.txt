@@ -5,10 +5,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
 #if(0)
 
-# find_greatest_sum_of_subarray.cpp
-set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
-add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
-
 # find_in_sorted_2D_array.cpp
 set(find_in_sorted_2D_array_SRC find_in_sorted_2D_array.cpp)
 add_executable(find_in_sorted_2D_array ${find_in_sorted_2D_array_SRC})
