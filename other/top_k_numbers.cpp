@@ -36,24 +36,32 @@ int partition(std::vector<int>& array, int start, int end)
 {
 	// 这里的 start / end 都是闭区间
 
-	int pivot = start;
+	int pivot_pos = start;
+	int pivot_val = array[start];
+	end += 1;
 
-	while(start < end) {
+	while(1) {
 
-		while(start < end && array[start] <= array[pivot]) {
+		do {
 			++start;
-		}
+		} while(array[start] < pivot_val);
 
-		while(start < end && array[end] > array[pivot]) {
+		do {
 			--end;
+		} while(array[end] > pivot_val);
+
+		if(start >= end) {
+			break;
 		}
 
-		if(start < end) {
-			std::swap(array[start], array[end]);
-		}
+		std::swap(array[start], array[end]);
 	}
 
-	std::swap(array[start], array[pivot]);
+	// 为什么 pivot 要跟 end 交换，可以看上边循环的结束的两种情况
+	// 	1. 当 start == end 时，跟谁 start/end 中的任意一个交换都行
+	//  2. 当 start < end 时，end在小的这边了，也就是 array[end] <= pivot_val, 所以交换之后仍满足 partition 的要求
+	//  假设跟 start 交换， 如果跳出循环时，array[start] >= pivot_val, 那交换后就违反了 partition 的要求
+	std::swap(array[pivot_pos], array[end]);
 
 	display(array, "after partition");
 

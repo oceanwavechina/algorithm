@@ -38,22 +38,30 @@ bool is_more_than_half(const std::vector<int>& data, int number)
 int partition(std::vector<int>& data, int left, int right)
 {
 	// left 和 right 是闭区间
-	int pivot = left;
-	left += 1;
+	int pivot_pos = left;
+	int pivot_val = data[left];
 
-	while(left < right) {
-		while(left < right && data[left] <= data[pivot]) {
+	right +=1;	// 注意这里为什么要先 +1
+
+	while(true) {
+
+		do {
 			++left;
-		}
-		while(left < right && data[right] > data[pivot]) {
+		} while(data[left] < pivot_val);
+
+		do {
 			--right;
+		} while(data[right] > pivot_val);
+
+		if(left >= right) {
+			break;
 		}
 
 		std::swap(data[left], data[right]);
 	}
 
-	// 注意这里，是原数组中的两个数交换
-	std::swap(data[pivot], data[right]);
+	// 注意这里为什么 povit 要跟 right 交换
+	std::swap(data[pivot_pos], data[right]);
 
 	return left;
 }
@@ -147,8 +155,8 @@ void display(const std::vector<int>& data)
 
 int main(int argc, char **argv)
 {
-	// std::vector<int> numbers {1,2,3,2,2,2,5,4,2};
-	std::vector<int> numbers {1,2,3,2,2,3,5,4,1};
+	std::vector<int> numbers {1,2,3,2,2,2,5,4,2};
+	//std::vector<int> numbers {1,2,3,2,2,3,5,4,1};
 	display(numbers);
 
 	std::cout << "target number (const): " << find_more_than_half_number_using_counter(numbers) << std::endl;
