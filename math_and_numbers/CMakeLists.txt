@@ -50,7 +50,7 @@ add_executable(single_number ${single_number_SRC})
 
 endif(0)
 
-#  find_more_than_half_number
-set(find_more_than_half_number_SRC find_more_than_half_number.cpp)
-add_executable(find_more_than_half_number ${find_more_than_half_number_SRC})
+#  find_median
+set(find_median_SRC find_median.cpp)
+add_executable(find_median ${find_median_SRC})
 

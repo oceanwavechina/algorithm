@@ -58,7 +58,7 @@ public:
 			// 并不是直接插入，而是在小根堆那边换出一个来
 			_min_heap.push(num);
 			int smaller = _min_heap.top();
-			cout << "into max-heap: " << smaller << endl;
+			//cout << "into max-heap: " << smaller << endl;
 			_min_heap.pop();
 
 			_max_heap.push(smaller);
@@ -66,7 +66,7 @@ public:
 
 			_max_heap.push(num);
 			int bigger = _max_heap.top();
-			cout << "into min-heap: " << bigger << endl;
+			//cout << "into min-heap: " << bigger << endl;
 			_max_heap.pop();
 
 			_min_heap.push(bigger);
@@ -80,7 +80,7 @@ public:
 		 * 		2. 求平均值的时候要用2.0， 而不是2。不然隐士转成整数了
 		 */
 
-		cout << "_counter: " << _counter << endl;
+		//cout << "_counter: " << _counter << endl;
 		if (_counter % 2 == 0) {
 			return (_max_heap.top() + _min_heap.top()) / 2;
 		} else {
@@ -91,7 +91,7 @@ public:
 private:
 	// 优先级队列没有清空操作
 	priority_queue<int> _max_heap;
-	priority_queue<int> _min_heap;
+	priority_queue<int, std::vector<int>, std::greater<int>> _min_heap;
 	int _counter;
 };
 
