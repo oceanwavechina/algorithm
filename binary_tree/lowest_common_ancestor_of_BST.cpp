@@ -11,6 +11,11 @@
 
 using namespace std;
 
+/*
+ 	 题目： 输入两个二叉搜索树的结点，求两个结点的最低公共祖先，所谓的最低公共祖先是指距离两个节点最近的共同祖先。
+ */
+
+
 struct Node
 {
 	Node(int v):value(v), left(NULL), right(NULL) {}
@@ -48,49 +53,90 @@ Node* getTestTree() {
 
 	buildTree(node12, node5, node18);
 	buildTree(node5, node2, node9);
+	buildTree(node2, nullptr, nullptr);
+	buildTree(node9, nullptr, nullptr);
 	buildTree(node18, node15, node19);
 	buildTree(node15, nullptr, node17);
 	buildTree(node17, node16, nullptr);
+	buildTree(node16, nullptr, nullptr);
+	buildTree(node19, nullptr, nullptr);
 
 	return node12;
 }
 
 
-Node* getLowestCommonAncestor(Node* tree, int v1, int v2)
+Node* getLowestCommonAncestor_Recursively(Node* p_node, int v1, int v2)
 {
+	if(!p_node) {
+		return nullptr;
+	}
+
 	int small = min(v1, v2);
 	int big = max(v1, v2);
 
-	Node* iterator = tree;
+	if(p_node->value > small && p_node->value > big) {
+		return getLowestCommonAncestor_Recursively(p_node->left, v1, v2);
+	} else if(p_node->value < small && p_node->value < big) {
+		return getLowestCommonAncestor_Recursively(p_node->right, v1, v2);
+	} else {
+		return p_node;
+	}
+}
 
-	while(iterator) {
-		if( iterator->value < small) { // 在 iterator 的右孩子上
-			iterator = iterator->right;
-			continue;
-		} else if(iterator->value > big) {	// 在iterator 的左孩子上
-			iterator = iterator->left;
+Node* getLowestCommonAncestor_Iteratorly(Node* p_root, int v1, int v2)
+{
+	Node* p_cursor = p_root;
+
+	int small = min(v1, v2);
+	int big = max(v1, v2);
+
+	do {
+
+		if(p_cursor->value > small && p_cursor->value < big) {
+			return p_cursor;
+		}
+
+		if(p_cursor->value > small && p_cursor->value > big) {
+			p_cursor = p_cursor->left;
 			continue;
 		}
 
-		// 好像不能判断某个值是不是在二叉树中
-//		if (!iterator->left || ! iterator->right) {
-//			// 这个判断用来检查v1,或是 v2不是二叉树节点的情况
-//			return nullptr;
-//		} else if (iterator->value < small && iterator->value > big) {
-//			return nullptr;
-//		} else {
-//			return iterator;
-//		}
+		if(p_cursor->value < small && p_cursor->value < big) {
+			p_cursor = p_cursor->right;
+			continue;
+		}
 
-		return iterator;
-	}
+		// 异常数据
+		break;
+
+	} while (p_cursor);
 
 	return nullptr;
 }
 
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
+
+	/*
+	 	buildTree(node12, node5, node18);
+		buildTree(node5, node2, node9);
+		buildTree(node18, node15, node19);
+		buildTree(node15, nullptr, node17);
+		buildTree(node17, node16, nullptr);
+
+									 12
+								  /      \
+								 5        18
+							   /   \     /  \
+							  2     9   15   19
+							              \
+							               17
+							              /
+							             16
+	 */
+
 
 	Node* tree = getTestTree();
 	int tes_cases[6][3] = {
@@ -105,8 +151,9 @@ int main(int argc, char **argv) {
 
 	for(int i=0; i < 6; ++i) {
 		cout << "testcase: " << tes_cases[i][0] << " " << tes_cases[i][1] << ", ";
-		Node* target = getLowestCommonAncestor(tree, tes_cases[i][0], tes_cases[i][1]);
-		if (target && tes_cases[i][2] != 0) {
+		// Node* target = getLowestCommonAncestor_Recursively(tree, tes_cases[i][0], tes_cases[i][1]);
+		Node* target = getLowestCommonAncestor_Iteratorly(tree, tes_cases[i][0], tes_cases[i][1]);
+		if (tes_cases[i][2] != 0 && target) {
 			cout << "get target: " << target->value;
 			assert(target->value == tes_cases[i][2]);
 		}

@@ -37,9 +37,13 @@ add_executable(output_binarytree_by_level ${output_binarytree_by_level_SRC})
 set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
 add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC})
 
-endif(0)
-
-
 # mirror_tree.cpp
 set(mirror_tree_SRC mirror_tree.cpp)
 add_executable(mirror_tree ${mirror_tree_SRC})
+
+endif(0)
+
+# lowest_common_ancestor_of_BST.cpp
+set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
+add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC})
+
