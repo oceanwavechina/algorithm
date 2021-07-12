@@ -37,9 +37,15 @@ add_executable(next_permutation ${next_permutation_SRC})
 set(stack_with_min_SRC stack_with_min.cpp)
 add_executable(stack_with_min ${stack_with_min_SRC})
 
-endif(0)
-
-
 # top_k_numbers.cpp
 set(top_k_numbers_SRC top_k_numbers.cpp)
 add_executable(top_k_numbers ${top_k_numbers_SRC})
+
+
+endif(0)
+
+
+# number_of_1.cpp
+set(number_of_1_SRC number_of_1.cpp)
+add_executable(number_of_1 ${number_of_1_SRC})
+
