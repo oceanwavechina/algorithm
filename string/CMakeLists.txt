@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
-#if(0)
+if(0)
 
 # Aho-Corasick_automation.cpp
 set(Aho-Corasick_automation_SRC Aho-Corasick_automation.cpp)
@@ -50,7 +50,11 @@ set(my_itoa_SRC my_itoa.cpp)
 add_executable(my_itoa ${my_itoa_SRC})
 
 
-#endif(0)
+endif(0)
+
+# first_none_repeat_charactor.cpp
+set(first_none_repeat_charactor_SRC first_none_repeat_charactor.cpp)
+add_executable(first_none_repeat_charactor ${first_none_repeat_charactor_SRC})
 
 
 

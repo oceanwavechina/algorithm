@@ -24,7 +24,7 @@ using namespace std;
   	  	  先在给定的前后两个点的情况下，遍历中间的点，找到所有符合条件的ip，
   	  	  然后分别移动前后两个指针，在遍历中间的点，在O(n^2)的复杂度下解决
 
-			  start	  middle		end
+			  start	  middle    end
 			    V		 V		 V
 			172  .  10   .    4  .   12
 			 ^		^		  ^		 ^
