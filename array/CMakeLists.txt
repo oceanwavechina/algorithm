@@ -9,10 +9,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 set(find_in_sorted_2D_array_SRC find_in_sorted_2D_array.cpp)
 add_executable(find_in_sorted_2D_array ${find_in_sorted_2D_array_SRC})
 
-# search_in_rotated_sorted_array.cpp
-set(search_in_rotated_sorted_array_SRC search_in_rotated_sorted_array.cpp)
-add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_SRC})
-
 # subarray_with_given_sum.cpp
 set(subarray_with_given_sum_SRC subarray_with_given_sum.cpp)
 add_executable(subarray_with_given_sum ${subarray_with_given_sum_SRC})

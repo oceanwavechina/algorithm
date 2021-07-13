@@ -9,5 +9,10 @@ set(binary_search_SRC binary_search.cpp)
 add_executable(binary_search ${binary_search_SRC})
 #target_link_libraries(binary_search m)
 
+# search_in_rotated_sorted_array.cpp
+set(search_in_rotated_sorted_array_SRC search_in_rotated_sorted_array.cpp)
+add_executable(search_in_rotated_sorted_array ${search_in_rotated_sorted_array_SRC})
+
+
 endif(0)
 
