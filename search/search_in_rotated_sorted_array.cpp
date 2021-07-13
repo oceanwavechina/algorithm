@@ -11,6 +11,10 @@
 
 
 /*
+ 	旋转数组：
+ 		把一个数组最开始的若干个元素搬到数的末尾， 我们称之为数组的旋转。
+ 		比如 {3,4,5,1,2} 是 {1,2,3,4,5} 的一个旋转
+
     return the the index of the target value
     给定一没有重复元素的旋转数组（它对应的原数组是有序的），求给定元素在旋转数组内的下标（不存在的返回-1）。
 
@@ -42,16 +46,24 @@ int find_in_rotated_sorted_array(int A[], int len, int target) {
             break;
         }
 
+        //
+        //	if else 两个分支中肯定有一个是有序的
+        //		如果 if 成立，那就是左边是有序的
+        //		如果 else 成立，那就是右边是有序的
+        //
         if (A[left] < A[middle]) {
-            /*
-             * 注意这里的left和right与target比较时，需要加等号，而middle不用，因为上边已经加过了
-             */
+            //
+            // 注意这里的left和right与target比较时，需要加等号，而middle不用，因为上边已经加过了
+            //
             if (target >= A[left] && target < A[middle]) {
                 right = middle - 1;
             } else {
                 left = middle + 1;
             }
         } else {
+        	//
+        	// 这里的比较中，也是一样，right要加等于，而middle不用加，因为已经肯定不等于了
+        	//
             if (target > A[middle] && target <= A[right]) {
                 left = middle + 1;
             } else {
