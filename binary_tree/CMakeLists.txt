@@ -43,7 +43,8 @@ add_executable(mirror_tree ${mirror_tree_SRC})
 
 endif(0)
 
-# lowest_common_ancestor_of_BST.cpp
-set(lowest_common_ancestor_of_BST_SRC lowest_common_ancestor_of_BST.cpp)
-add_executable(lowest_common_ancestor_of_BST ${lowest_common_ancestor_of_BST_SRC})
+# find_node_with_multi_parent.cpp
+set(find_node_with_multi_parent_SRC find_node_with_multi_parent.cpp)
+add_executable(find_node_with_multi_parent ${find_node_with_multi_parent_SRC})
+
 
