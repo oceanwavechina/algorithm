@@ -44,12 +44,12 @@ Node* construct_linklist(vector<int> values)
 
 
 /*
-	pre		 cur    next
-	 |		  |		 |
-	 V		  V		 V
-	 NULL ->	 HEAD -> X -> X -> X -> TAIL
+     pre      cur
+      |        |
+      V        V
+	 NULL ->  HEAD  -> X -> X -> X -> TAIL
 
-    这个题，找清楚上述三个位置就好，搞明白如何把头节点一般化处理
+    这个题，找清楚上述两个位置就好，搞明白如何把头节点一般化处理
  */
 
 Node* reverse(Node* head)
@@ -61,10 +61,9 @@ Node* reverse(Node* head)
 	Node* p_reverse_head = NULL;
 	Node* pre = NULL;
 	Node* cur = head;
-	Node* next = NULL;
 
 	while(cur) {
-		 next = cur->p_next;		// 这个是保存 cur->p_next
+		Node* next = cur->p_next;		// 这个是保存 cur->p_next
 
 		if (next == NULL)
 			p_reverse_head = cur;

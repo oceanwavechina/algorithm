@@ -32,7 +32,7 @@ struct Node {
 
 };
 
-Node* creat_list(vector<int> data) {
+Node* creat_list(vector<int>& data) {
 
 	Node *head = nullptr;
 	Node *curNode = nullptr;

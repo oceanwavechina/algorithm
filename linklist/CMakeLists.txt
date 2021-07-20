@@ -28,9 +28,16 @@ add_executable(merge_k_sorted_linklist ${merge_k_sorted_linklist_SRC})
 set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
 add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
 
-
-endif(0)
-
 # delete_node_in_O1.cpp
 set(delete_node_in_O1_SRC delete_node_in_O1.cpp)
 add_executable(delete_node_in_O1 ${delete_node_in_O1_SRC})
+
+endif(0)
+
+# is_palindrome.cpp
+set(is_palindrome_SRC is_palindrome.cpp)
+add_executable(is_palindrome ${is_palindrome_SRC})
+
+# linklist_reverse.cpp
+set(linklist_reverse_SRC linklist_reverse.cpp)
+add_executable(linklist_reverse ${linklist_reverse_SRC})
