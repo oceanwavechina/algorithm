@@ -4,6 +4,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++17")
 
 if(0)
 ###########  WEEK 2  ###########
+
 # heaps_sort.cpp
 set(heaps_sort_SRC heaps_sort.cpp)
 add_executable(heaps_sort ${heaps_sort_SRC})
@@ -41,7 +42,6 @@ add_executable(B_tree ${B_tree_SRC})
 
 endif(0)
 
-
-# hash_table.cpp
-set(hash_table_SRC hash_table.cpp)
-add_executable(hash_table ${hash_table_SRC})
+# heap_sort.cpp
+set(heap_sort_SRC heap_sort.cpp)
+add_executable(heap_sort ${heap_sort_SRC})

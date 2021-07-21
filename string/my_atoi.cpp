@@ -40,6 +40,7 @@ int my_atoi(const char* str)
 		++str;
 	}
 
+	// 这里的技巧，直接跟 ascii 码比较
 	while(*str >= '0' && *str <= '9') {
 		ret = ret * 10 + (*str-'0');
 		++str;

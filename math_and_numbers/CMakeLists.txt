@@ -50,7 +50,3 @@ add_executable(single_number ${single_number_SRC})
 
 endif(0)
 
-#  find_median
-set(find_median_SRC find_median.cpp)
-add_executable(find_median ${find_median_SRC})
-

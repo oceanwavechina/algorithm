@@ -9,6 +9,9 @@
 #include <iostream>
 #include <vector>
 
+#include <queue>
+std::priority_queue a;
+
 using namespace std;
 
 /*
