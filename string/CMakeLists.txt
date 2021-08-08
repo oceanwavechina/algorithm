@@ -50,12 +50,17 @@ set(my_itoa_SRC my_itoa.cpp)
 add_executable(my_itoa ${my_itoa_SRC})
 
 
-endif(0)
-
 # first_none_repeat_charactor.cpp
 set(first_none_repeat_charactor_SRC first_none_repeat_charactor.cpp)
 add_executable(first_none_repeat_charactor ${first_none_repeat_charactor_SRC})
 
+
+endif(0)
+
+
+# longest_common_prefix.cpp
+set(longest_common_prefix_SRC longest_common_prefix.cpp)
+add_executable(longest_common_prefix ${longest_common_prefix_SRC})
 
 
 
