@@ -41,11 +41,16 @@ add_executable(stack_with_min ${stack_with_min_SRC})
 set(top_k_numbers_SRC top_k_numbers.cpp)
 add_executable(top_k_numbers ${top_k_numbers_SRC})
 
+# number_of_1.cpp
+set(number_of_1_SRC number_of_1.cpp)
+add_executable(number_of_1 ${number_of_1_SRC})
 
 endif(0)
 
 
-# number_of_1.cpp
-set(number_of_1_SRC number_of_1.cpp)
-add_executable(number_of_1 ${number_of_1_SRC})
+# queue_by_two_stacks.cpp
+set(queue_by_two_stacks_SRC queue_by_two_stacks.cpp)
+add_executable(queue_by_two_stacks ${queue_by_two_stacks_SRC})
+
+
 
