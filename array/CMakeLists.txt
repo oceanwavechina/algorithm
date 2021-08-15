@@ -33,9 +33,14 @@ add_executable(remove_duplicates ${remove_duplicates_SRC})
 set(reverse_pair_SRC reverse_pair.cpp)
 add_executable(reverse_pair ${reverse_pair_SRC})
 
-endif(0)
-
-
 # remove_duplicates_allow_twice.cpp
 set(remove_duplicates_allow_twice_SRC remove_duplicates_allow_twice.cpp)
 add_executable(remove_duplicates_allow_twice ${remove_duplicates_allow_twice_SRC})
+
+endif(0)
+
+
+# find_repeat_twice.cpp
+set(find_repeat_twice_SRC find_repeat_twice.cpp)
+add_executable(find_repeat_twice ${find_repeat_twice_SRC})
+
