@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
-#if(0)
+if(0)
 
 # find_in_sorted_2D_array.cpp
 set(find_in_sorted_2D_array_SRC find_in_sorted_2D_array.cpp)
@@ -33,4 +33,9 @@ add_executable(remove_duplicates ${remove_duplicates_SRC})
 set(reverse_pair_SRC reverse_pair.cpp)
 add_executable(reverse_pair ${reverse_pair_SRC})
 
-#endif(0)
+endif(0)
+
+
+# remove_duplicates_allow_twice.cpp
+set(remove_duplicates_allow_twice_SRC remove_duplicates_allow_twice.cpp)
+add_executable(remove_duplicates_allow_twice ${remove_duplicates_allow_twice_SRC})

@@ -9,23 +9,43 @@
 #include <string>
 
 
+
+/*
+	问题：
+		Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+		Do not allocate extra space for another array, you must do this in place with constant memory.
+
+		For example,
+			Given input array A = [1,1,2],
+			Your function should return length = 2, and A is now [1,2].
+
+	玩法是：
+		1. 用一个指针(下标) left，表示最新的一个不重复的元素。
+		2. 另一个指针 cursor 从左到右进行遍历，当发现跟 left 对应的元素不一样则放到 left+1 的 位置
+		3. 需要注意的是 left 只有当不重复元素 append 时才向右移动
+			而 cursor 是遍历的指针，没检查一个元素就向右移动。
+
+	这个题的延时玩法是允许有两个重复的。
+ */
+
+
 /*
  * return the length of new array
  */
 int remove_duplicates(int A[], int len) {
 	int l_index = 0;
-	int r_index = 0;
+	int cursor = 0;
 
-	while (r_index < len) {
-		if (A[l_index] != A[r_index]) {
-			A[++l_index] = A[r_index];
+	while (cursor < len) {
+		if (A[l_index] != A[cursor]) {
+			A[++l_index] = A[cursor];
 		}
-		++r_index;
+		++cursor;
 	}
 
 	++l_index;
 
-	while (l_index < r_index){
+	while (l_index < cursor){
 		A[l_index++] = 0;
 	}
 
@@ -35,32 +55,9 @@ int remove_duplicates(int A[], int len) {
 int remove_duplicates_2(int A[], int len) {
 	int left = 0;
 
-	for (int i=1; i<len; ++i) {
-		if (A[left] != A[i]) {
-			A[++left] = A[i];
-		}
-	}
-
-	return left + 1;
-}
-
-
-int remove_duplicates_allow_twice(int A[], int len) {
-
-	/*
-	 * 技巧就是：
-	 * 		我们不需要比较左边指针和右边指针的数据是否相等，因为是有序的，只要比较左边指针前一个和右边指针就好
-	 *
-	 * 有个注意的点就是起始位置的设置，即，左右指针从什么地方开始
-	 *
-	 */
-
-	int left = 1;
-	int ALLOW_MAX_DUPLICATE=3;
-
-	for (int i=2; i<len; ++i) {
-		if(A[left-(ALLOW_MAX_DUPLICATE-1)] != A[i]) {
-			A[++left] = A[i];
+	for (int cursor=1; cursor<len; ++cursor) {
+		if (A[left] != A[cursor]) {
+			A[++left] = A[cursor];
 		}
 	}
 
@@ -87,10 +84,8 @@ int main(int argc, char **argv) {
 
 	int len = sizeof A / sizeof(int);
 
-
 	display(A, len, "original array:");
-	//len = remove_duplicates_2(A, len);
-	len = remove_duplicates_allow_twice(A, len);
+	len = remove_duplicates_2(A, len);
 	display(A, len, "after removed:");
 
 	return 0;
