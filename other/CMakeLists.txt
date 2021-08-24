@@ -45,12 +45,20 @@ add_executable(top_k_numbers ${top_k_numbers_SRC})
 set(number_of_1_SRC number_of_1.cpp)
 add_executable(number_of_1 ${number_of_1_SRC})
 
-endif(0)
-
-
 # queue_by_two_stacks.cpp
 set(queue_by_two_stacks_SRC queue_by_two_stacks.cpp)
 add_executable(queue_by_two_stacks ${queue_by_two_stacks_SRC})
+
+# intervals_merge.cpp
+set(intervals_merge_SRC intervals_merge.cpp)
+add_executable(intervals_merge ${intervals_merge_SRC})
+
+endif(0)
+
+
+# intervals_insert.cpp
+set(intervals_insert_SRC intervals_insert.cpp)
+add_executable(intervals_insert ${intervals_insert_SRC})
 
 
 
