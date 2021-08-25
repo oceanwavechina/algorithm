@@ -152,10 +152,10 @@ DataVec merge_sort(DataVec data)
 
 	int mid = data.size() / 2;
 
-	DataVec A = merge_sort(DataVec(data.begin(), data.begin()+mid));
-	DataVec B = merge_sort(DataVec(data.begin()+mid, data.end()));
+	DataVec part1 = merge_sort(DataVec(data.begin(), data.begin()+mid));
+	DataVec part2 = merge_sort(DataVec(data.begin()+mid, data.end()));
 
-	return  merge(A, B);
+	return  merge(part1, part2);
 }
 
 
