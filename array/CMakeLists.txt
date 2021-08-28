@@ -44,8 +44,8 @@ add_executable(find_repeat_twice ${find_repeat_twice_SRC})
 endif(0)
 
 
-# reverse_pair.cpp
-set(reverse_pair_SRC reverse_pair.cpp)
-add_executable(reverse_pair ${reverse_pair_SRC})
+# common_value_of_orderd_arrays.cpp
+set(common_value_of_orderd_arrays_SRC common_value_of_orderd_arrays.cpp)
+add_executable(common_value_of_orderd_arrays ${common_value_of_orderd_arrays_SRC})
 
 
