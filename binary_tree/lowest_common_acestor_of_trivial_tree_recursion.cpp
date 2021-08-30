@@ -94,19 +94,21 @@ Node* getTestTree() {
 
 Node* get_node_by_value(Node* tree, long val)
 {
-	if(!tree) {
-		return nullptr;
-	}
-
 	if(tree->value == val) {
 		return tree;
 	}
 
-	Node* ret = get_node_by_value(tree->left, val);
-	if(ret) return ret;
+	Node* ret = nullptr;
+	if(tree->left) {
+		ret = get_node_by_value(tree->left, val);
+		if(ret) return ret;
+	}
 
-	ret = get_node_by_value(tree->right, val);
-	return ret;
+	if(tree->right) {
+		return get_node_by_value(tree->right, val);
+	}
+
+	return nullptr;
 }
 
 bool find_node(Node* tree, Node* x)

@@ -109,6 +109,39 @@ Node* getTestTree() {
 
 Node* get_node_by_value(Node* tree, long val)
 {
+
+	/*
+	这里在理解下递归：
+
+		递归有两个条件：
+			1. 一个是初始值，
+			2. 另一个是递推关系
+
+		对应递归函数，其实是两个过程：
+			1. 压栈的过程，这个是向前找到初始值的过程，没有任何计算
+			2. 出栈过程，这个是从初始值开始向后计算的过程
+			 	 所以每一个递归函数返回时，我们就认为初始值到当前的节点已经计算完了，比如：
+
+			 	 	 ret = get_node_by_value(tree->child1, val);
+
+			 	 当这行代码执行完成后，就认为 tree-child1，这个分支的所有遍历完成了
+			 	 (先不要去纠结里边来来回回跳了多少次， 因为我们关心的是这个递归返回值)
+
+		关于递归函数需要注意的是：
+			1. 初始值在哪里
+			2. 对于多有分支都要依次判断
+			3. 我们只关心递归函数返回值代表的是什么
+
+			比如我们这里的实现：
+
+				ret = get_node_by_value(tree->child1, val) 中
+
+				如果 ret != nullptr 表示的是：
+
+					tree->child1 子树中存在一个节点 ret 满足: ret->value == val
+					此时我们只需要依次向上返回即可，不需要在对这个 ret 做什么了
+	 */
+
 	if(tree->value == val) {
 		return tree;
 	}
@@ -128,13 +161,10 @@ Node* get_node_by_value(Node* tree, long val)
 		}
 	}
 	if(tree->child3) {
-		ret = get_node_by_value(tree->child3, val);
-		if(ret) {
-			return ret;
-		}
+		return get_node_by_value(tree->child3, val);
 	}
 
-	return ret;
+	return nullptr;
 }
 
 long len(Node* p_node)
