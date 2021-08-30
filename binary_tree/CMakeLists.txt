@@ -45,10 +45,16 @@ add_executable(mirror_tree ${mirror_tree_SRC})
 set(find_node_with_multi_parent_SRC find_node_with_multi_parent.cpp)
 add_executable(find_node_with_multi_parent ${find_node_with_multi_parent_SRC})
 
-endif(0)
-
 # lowest_common_ancestor_with_parent_pointer.cpp
 set(lowest_common_ancestor_with_parent_pointer_SRC lowest_common_ancestor_with_parent_pointer.cpp)
 add_executable(lowest_common_ancestor_with_parent_pointer ${lowest_common_ancestor_with_parent_pointer_SRC})
 
+# lowest_common_acestor_of_trivial_tree_recursion.cpp
+set(lowest_common_acestor_of_trivial_tree_recursion_SRC lowest_common_acestor_of_trivial_tree_recursion.cpp)
+add_executable(lowest_common_acestor_of_trivial_tree_recursion ${lowest_common_acestor_of_trivial_tree_recursion_SRC})
 
+endif(0)
+
+# lowest_common_acestor_of_trivial_tree_stack.cpp
+set(lowest_common_acestor_of_trivial_tree_stack_SRC lowest_common_acestor_of_trivial_tree_stack.cpp)
+add_executable(lowest_common_acestor_of_trivial_tree_stack ${lowest_common_acestor_of_trivial_tree_stack_SRC})

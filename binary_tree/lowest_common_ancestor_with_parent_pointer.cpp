@@ -109,19 +109,31 @@ Node* getTestTree() {
 
 Node* get_node_by_value(Node* tree, long val)
 {
-	if(!tree) {
-		return nullptr;
-	}
-
 	if(tree->value == val) {
 		return tree;
 	}
 
-	Node* ret = get_node_by_value(tree->child1, val);
-	if(ret) return ret;
-	ret = get_node_by_value(tree->child2, val);
-	if(ret) return ret;
-	ret = get_node_by_value(tree->child3, val);
+	Node* ret = nullptr;
+
+	if(tree->child1) {
+		ret = get_node_by_value(tree->child1, val);
+		if(ret) {
+			return ret;
+		}
+	}
+	if(tree->child2) {
+		ret = get_node_by_value(tree->child2, val);
+		if(ret) {
+			return ret;
+		}
+	}
+	if(tree->child3) {
+		ret = get_node_by_value(tree->child3, val);
+		if(ret) {
+			return ret;
+		}
+	}
+
 	return ret;
 }
 
@@ -148,7 +160,6 @@ Node* advance(Node* p_node, long step)
 
 long common_ancestor(Node* tree, long x, long y)
 {
-	cout << "here" << endl;
 	Node* p_x = get_node_by_value(tree, x);
 	Node* p_y = get_node_by_value(tree, y);
 
