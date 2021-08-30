@@ -149,7 +149,17 @@ Node* get_node_by_value(Node* tree, long val)
 	Node* ret = nullptr;
 
 	if(tree->child1) {
+
+		/*
+		  当这个函数被调用时，实际上是压栈的过程，即将遍历 tree->child1 这颗子树，
+		  	  我们只需要关系初始值(压栈的结束条件) 和 调用递归函数(确定递归关系)
+		 */
+
 		ret = get_node_by_value(tree->child1, val);
+		/*
+		 当这个节点返回的时候，说明 tree->child1 所对应的子树都遍历完了
+		 也就是在出栈计算的过程中把 tree->child1 所对应的子树 都计算完了
+		 */
 		if(ret) {
 			return ret;
 		}

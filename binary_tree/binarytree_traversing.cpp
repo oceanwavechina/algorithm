@@ -10,8 +10,23 @@
 #include <stdlib.h>
 #include <stack>
 
-
 using namespace std;
+
+/*
+ 关于各种顺序递归遍历的理解：
+
+ 	 递归本质上分成两部分:
+ 	 	 一个压栈
+ 	 	 一个出栈
+
+	压栈是从后往前，也可以说是从顶到低， 而出栈反之
+
+	对一颗树，如果在压栈之前做操作，那就是从根到叶子的顺序
+			如果在出栈之后做操作，那就是从叶子到根的顺序
+
+			因为到最低成的叶子之后才有出栈操作，也就是当栈顶的那个函数返回的时候，实际上是叶子之下的元素才处理完，接下来就是叶子了
+ */
+
 
 struct Node
 {
@@ -71,6 +86,7 @@ void inOrderTraverse(Node* root)
 }
 
 void preOrderTraverse(Node* root) {
+
 	if (root == NULL) {
 		return ;
 	}
@@ -93,6 +109,9 @@ void postOrderTraverse(Node* root) {
 
 	if (root->left) {
 		postOrderTraverse(root->left);
+		/*
+		  当这个函数返回的时候，说明 root->left 下的所有节点都遍历完了
+		 */
 	}
 
 	if (root->right) {
