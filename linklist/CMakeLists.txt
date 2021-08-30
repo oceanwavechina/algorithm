@@ -4,9 +4,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -g -std=c++14")
 
 if(0)
 
-# common_node_in_linklist.cpp
-set(common_node_in_linklist_SRC common_node_in_linklist.cpp)
-add_executable(common_node_in_linklist ${common_node_in_linklist_SRC})
+# first_common_node_in_linklist.cpp
+set(first_common_node_in_linklist_SRC first_common_node_in_linklist.cpp)
+add_executable(first_common_node_in_linklist ${first_common_node_in_linklist_SRC})
 
 # delete_node_in_O1.cpp
 set(delete_node_in_O1_SRC delete_node_in_O1.cpp)
