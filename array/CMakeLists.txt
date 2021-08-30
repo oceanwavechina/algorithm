@@ -45,11 +45,15 @@ add_executable(find_repeat_twice ${find_repeat_twice_SRC})
 set(common_value_of_orderd_arrays_SRC common_value_of_orderd_arrays.cpp)
 add_executable(common_value_of_orderd_arrays ${common_value_of_orderd_arrays_SRC})
 
-endif(0)
-
-
 # find_the_two_single_numbers.cpp
 set(find_the_two_single_numbers_SRC find_the_two_single_numbers.cpp)
 add_executable(find_the_two_single_numbers ${find_the_two_single_numbers_SRC})
+
+endif(0)
+
+
+# find_the_first_missing_number.cpp
+set(find_the_first_missing_number_SRC find_the_first_missing_number.cpp)
+add_executable(find_the_first_missing_number ${find_the_first_missing_number_SRC})
 
 
