@@ -36,10 +36,16 @@ add_executable(delete_node_in_O1 ${delete_node_in_O1_SRC})
 set(is_palindrome_SRC is_palindrome.cpp)
 add_executable(is_palindrome ${is_palindrome_SRC})
 
-endif(0)
-
-
 # is_contain_circle.cpp
 set(is_contain_circle_SRC is_contain_circle.cpp)
 add_executable(is_contain_circle ${is_contain_circle_SRC})
+
+
+endif(0)
+
+
+# find_circle_entry.cpp
+set(find_circle_entry_SRC find_circle_entry.cpp)
+add_executable(find_circle_entry ${find_circle_entry_SRC})
+
 

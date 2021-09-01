@@ -15,8 +15,12 @@ using namespace std;
 
 
 /*
- *	K个有序链表的合并
- *
+ 	K个有序链表的合并
+
+ 	玩法是这样的：
+ 		把每个 list 头结点(如果有的话)，都放到一个 heap 里边，也就是用 heap 排序
+
+ 		需要注意的是，每次从 heap 里边拿走一个节点后，还要把这个节点的 next 压入 heap 中
  */
 
 struct Node{

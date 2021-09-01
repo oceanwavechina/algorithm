@@ -52,51 +52,55 @@ Node* create_list(vector<int> nums){
 Node * merge(Node* A, Node* B) {
 
 	/*
-	 *	需要注意的点
-	 *		1. 一般对链表操作，需要保存头节点，如果p_i当成最后的链表，那么结果链表是错误的
-	 *		2. 需要搞明白，每一步都有哪些指针需要移动
+	 玩法是这样的：
+	  	  我们通过比较 A，B，每次从其中拿最小的元素放到 C 的尾部，当 A(或B) 被拿掉一个后，其对应的游标则向后移动
+
+	 需要注意的点
+	 	 1. 一般对链表操作，需要保存头节点，如果p_i当成最后的链表，那么结果链表是错误的
+	 	 2. 需要搞明白，每一步都有哪些指针需要移动
 	 */
 
-	Node* p_a = A;
-	Node* p_b = B;
-	Node* p_i = nullptr;
-	Node* p_c = nullptr;
+	Node* p_cursor_a = A;
+	Node* p_cursor_b = B;
 
-	while(p_a && p_b) {
+	Node* p_c_head = nullptr;		// C 链表的头节点
+	Node* p_c_tail = nullptr;		// C 链表的尾节点
 
-		if (p_a->data < p_b->data) {
+	while(p_cursor_a && p_cursor_b) {
 
-			if (! p_c)
-				p_c = p_a;
+		if (p_cursor_a->data < p_cursor_b->data) {
 
-			if (p_i) {
-				p_i->next = p_a;
+			if (! p_c_head)
+				p_c_head = p_cursor_a;
+
+			if (p_c_tail) {
+				p_c_tail->next = p_cursor_a;
 			}
-			p_i = p_a;
-			p_a = p_a->next;
+			p_c_tail = p_cursor_a;
+			p_cursor_a = p_cursor_a->next;
 
 		} else {
 
-			if (! p_c)
-				p_c = p_b;
+			if (! p_c_head)
+				p_c_head = p_cursor_b;
 
-			if (p_i) {
-				p_i->next = p_b;
+			if (p_c_tail) {
+				p_c_tail->next = p_cursor_b;
 			}
-			p_i = p_b;
-			p_b = p_b->next;
+			p_c_tail = p_cursor_b;
+			p_cursor_b = p_cursor_b->next;
 		}
 	}
 
-	if(p_a) {
-		p_i->next = p_a;
+	if(p_cursor_a) {
+		p_c_tail->next = p_cursor_a;
 	}
 
-	if (p_b) {
-		p_i->next = p_b;
+	if (p_cursor_b) {
+		p_c_tail->next = p_cursor_b;
 	}
 
-	return p_c;
+	return p_c_head;
 }
 
 
@@ -116,6 +120,11 @@ Node* merge_recur(Node* A, Node* B) {
 	if (!B)
 		return A;
 
+
+#if 0
+	//
+	// 如下的这种方式理解递归不好理解的话，我们把代码拆细点就可以了
+	//
 	Node* merge_head = nullptr;
 
 	if(A->data < B->data){
@@ -127,6 +136,34 @@ Node* merge_recur(Node* A, Node* B) {
 	}
 
 	return merge_head;
+#else
+
+	//
+	//	这里的递归是因为各种顺序都用到了
+	//
+
+	Node* p_cursor_c = nullptr;
+
+	if(A->data < B->data) {
+
+		// 这里算是先序操作了，先确定当前的头
+		p_cursor_c = A;
+
+		Node* p_next = merge_recur(A->next, B);
+
+		// 这里算是后续操作了，把子函数的的返回值保存
+		p_cursor_c->next = p_next;
+	} else {
+		p_cursor_c = B;
+
+		Node* p_next = merge_recur(A, B->next);
+
+		p_cursor_c->next = p_next;
+	}
+
+	return p_cursor_c;
+#endif
+
 }
 
 void display(Node* head, string msg) {
