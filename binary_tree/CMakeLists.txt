@@ -57,9 +57,13 @@ add_executable(lowest_common_acestor_of_trivial_tree_recursion ${lowest_common_a
 set(lowest_common_acestor_of_trivial_tree_stack_SRC lowest_common_acestor_of_trivial_tree_stack.cpp)
 add_executable(lowest_common_acestor_of_trivial_tree_stack ${lowest_common_acestor_of_trivial_tree_stack_SRC})
 
-endif(0)
-
 # find_path_with_given_sum.cpp
 set(find_path_with_given_sum_SRC find_path_with_given_sum.cpp)
 add_executable(find_path_with_given_sum ${find_path_with_given_sum_SRC})
+
+endif(0)
+
+# is_balance_tree.cpp
+set(is_balance_tree_SRC is_balance_tree.cpp)
+add_executable(is_balance_tree ${is_balance_tree_SRC})
 
