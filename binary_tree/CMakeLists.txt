@@ -59,6 +59,7 @@ add_executable(lowest_common_acestor_of_trivial_tree_stack ${lowest_common_acest
 
 endif(0)
 
-# lowest_common_acestor_of_trivial_tree_recursion.cpp
-set(lowest_common_acestor_of_trivial_tree_recursion_SRC lowest_common_acestor_of_trivial_tree_recursion.cpp)
-add_executable(lowest_common_acestor_of_trivial_tree_recursion ${lowest_common_acestor_of_trivial_tree_recursion_SRC})
+# find_path_with_given_sum.cpp
+set(find_path_with_given_sum_SRC find_path_with_given_sum.cpp)
+add_executable(find_path_with_given_sum ${find_path_with_given_sum_SRC})
+
