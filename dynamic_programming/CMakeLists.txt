@@ -41,16 +41,16 @@ add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
 set(find_all_subarray_with_x_sum_SRC find_all_subarray_with_x_sum.cpp)
 add_executable(find_all_subarray_with_x_sum ${find_all_subarray_with_x_sum_SRC})
 
-# find_greatest_sum_of_subarray.cpp
-set(find_greatest_sum_of_subarray_SRC find_greatest_sum_of_subarray.cpp)
-add_executable(find_greatest_sum_of_subarray ${find_greatest_sum_of_subarray_SRC})
+# max_sum_of_arbitrary_subarray.cpp
+set(max_sum_of_arbitrary_subarray_SRC max_sum_of_arbitrary_subarray.cpp)
+add_executable(max_sum_of_arbitrary_subarray ${max_sum_of_arbitrary_subarray_SRC})
 
 
 endif(0)
 
-# find_all_subarray_with_0_sum.cpp
-set(find_all_subarray_with_0_sum_SRC find_all_subarray_with_0_sum.cpp)
-add_executable(find_all_subarray_with_0_sum ${find_all_subarray_with_0_sum_SRC})
+# max_sum_of_continuous_subarray.cpp
+set(max_sum_of_continuous_subarray_SRC max_sum_of_continuous_subarray.cpp)
+add_executable(max_sum_of_continuous_subarray ${max_sum_of_continuous_subarray_SRC})
 
 
 
