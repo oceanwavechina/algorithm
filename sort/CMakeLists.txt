@@ -2,7 +2,7 @@ project(Algorithm_Recursive)
 cmake_minimum_required(VERSION 3.6)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -O2 -std=c++14")
 
-#if(0)
+if(0)
 
 # 1_selection_sort.cpp
 set(1_selection_sort_SRC 1_selection_sort.cpp)
@@ -51,5 +51,6 @@ add_executable(straight_insertion_sort ${straight_insertion_sort_SRC})
 endif(0)
 
 
-
-
+# quick_sort.cpp
+set(quick_sort_SRC quick_sort.cpp)
+add_executable(quick_sort ${quick_sort_SRC})
