@@ -58,10 +58,15 @@ add_executable(first_none_repeat_charactor ${first_none_repeat_charactor_SRC})
 set(longest_common_prefix_SRC longest_common_prefix.cpp)
 add_executable(longest_common_prefix ${longest_common_prefix_SRC})
 
-endif(0)
-
-
 # first_single_charactor_from_stream.cpp
 set(first_single_charactor_from_stream_SRC first_single_charactor_from_stream.cpp)
 add_executable(first_single_charactor_from_stream ${first_single_charactor_from_stream_SRC})
+
+endif(0)
+
+
+# replace_space.cpp
+set(replace_space_SRC replace_space.cpp)
+add_executable(replace_space ${replace_space_SRC})
+
 
