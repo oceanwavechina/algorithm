@@ -49,7 +49,7 @@ Node* create_list(vector<int> nums){
 }
 
 
-Node * merge(Node* A, Node* B) {
+Node * merge(Node* p_a, Node* p_b) {
 
 	/*
 	 玩法是这样的：
@@ -60,44 +60,47 @@ Node * merge(Node* A, Node* B) {
 	 	 2. 需要搞明白，每一步都有哪些指针需要移动
 	 */
 
-	Node* p_cursor_a = A;
-	Node* p_cursor_b = B;
-
 	Node* p_c_head = nullptr;		// C 链表的头节点
-	Node* p_c_tail = nullptr;		// C 链表的尾节点
+	Node* p_c_tail = nullptr;		// C 链表的尾节点, 指向合并后的链表的最后一个节点
 
-	while(p_cursor_a && p_cursor_b) {
+	while(p_a && p_b) {
 
-		if (p_cursor_a->data < p_cursor_b->data) {
+		if (p_a->data < p_b->data) {
 
 			if (! p_c_head)
-				p_c_head = p_cursor_a;
+				p_c_head = p_a;
 
-			if (p_c_tail) {
-				p_c_tail->next = p_cursor_a;
+			if (!p_c_tail) {
+				p_c_tail = p_a;
+			} else {
+				p_c_tail->next = p_a;
+				p_c_tail = p_c_tail->next;
 			}
-			p_c_tail = p_cursor_a;
-			p_cursor_a = p_cursor_a->next;
+
+			p_a = p_a->next;
 
 		} else {
 
 			if (! p_c_head)
-				p_c_head = p_cursor_b;
+				p_c_head = p_b;
 
-			if (p_c_tail) {
-				p_c_tail->next = p_cursor_b;
+			if (!p_c_tail) {
+				p_c_tail = p_b;
+			} else {
+				p_c_tail->next = p_b;
+				p_c_tail = p_c_tail->next;
 			}
-			p_c_tail = p_cursor_b;
-			p_cursor_b = p_cursor_b->next;
+
+			p_b = p_b->next;
 		}
 	}
 
-	if(p_cursor_a) {
-		p_c_tail->next = p_cursor_a;
+	if(p_a) {
+		p_c_tail->next = p_a;
 	}
 
-	if (p_cursor_b) {
-		p_c_tail->next = p_cursor_b;
+	if (p_b) {
+		p_c_tail->next = p_b;
 	}
 
 	return p_c_head;
@@ -186,12 +189,12 @@ int main(int argc, char **argv) {
 
 	Node* list_A = create_list(data_A);
 	Node* list_B = create_list(data_B);
-	display(list_A, "list A:");
-	display(list_B, "list B:");
+	display(list_A, "list A:\t");
+	display(list_B, "list B:\t");
 
 	//Node* list_C = merge(list_A, list_B);
 	Node* list_C = merge_recur(list_A, list_B);
-	display(list_C, "list C:");
+	display(list_C, "list C:\t");
 
 	return 0;
 }

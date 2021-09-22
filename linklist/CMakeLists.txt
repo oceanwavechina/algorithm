@@ -40,12 +40,14 @@ add_executable(is_palindrome ${is_palindrome_SRC})
 set(is_contain_circle_SRC is_contain_circle.cpp)
 add_executable(is_contain_circle ${is_contain_circle_SRC})
 
-
-endif(0)
-
-
 # find_circle_entry.cpp
 set(find_circle_entry_SRC find_circle_entry.cpp)
 add_executable(find_circle_entry ${find_circle_entry_SRC})
 
+endif(0)
+
+
+# merge_sorted_linklist.cpp
+set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
+add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
 
