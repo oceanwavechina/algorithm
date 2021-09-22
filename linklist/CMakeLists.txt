@@ -47,7 +47,7 @@ add_executable(find_circle_entry ${find_circle_entry_SRC})
 endif(0)
 
 
-# merge_sorted_linklist.cpp
-set(merge_sorted_linklist_SRC merge_sorted_linklist.cpp)
-add_executable(merge_sorted_linklist ${merge_sorted_linklist_SRC})
+# sort_list.cpp
+set(sort_list_SRC sort_list.cpp)
+add_executable(sort_list ${sort_list_SRC})
 
