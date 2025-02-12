@@ -32,6 +32,10 @@
             P = 8 is not an equilibrium index, because it does not fulfill the condition 0 ≤ P < N.
 */
 
+
+
+
+
 #include <iostream>
 #include <vector>
 #include <numeric>
