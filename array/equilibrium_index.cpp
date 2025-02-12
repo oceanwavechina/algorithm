@@ -30,14 +30,11 @@
         
         and there are no elements with indices greater than 7.
             P = 8 is not an equilibrium index, because it does not fulfill the condition 0 ≤ P < N.
-    
-    思路：
-        要注意的是这个题，不是要求左右两边是对称的，而是要求以index为分割点(不含)两端的和一样
-        遍历两遍，先计算出总和，然后在遍历比较左右两部分的和，时间复杂度O(n)
 */
 
 #include <iostream>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
@@ -67,6 +64,28 @@ Indices equilibrium_index(vector<int64_t> array)
     return idxs;
 }
 
+
+Indices equilibrium_index_20250212(vector<int64_t> nums) {
+
+    int64_t total_sum = std::accumulate(nums.begin(), nums.end(), 0);
+
+    int64_t left_partial_sum = 0;
+
+    Indices ret;
+
+    for(size_t i = 0; i< nums.size(); ++i) {
+
+        int64_t right_partial_sum = total_sum - left_partial_sum - nums[i];
+        if(left_partial_sum == right_partial_sum) {
+            ret.push_back(i);
+        }
+
+        left_partial_sum += nums[i];
+    }
+
+    return ret;
+}
+
 int main(int argc, char const *argv[])
 {
     vector<int64_t> array = {-1, 3,-4, 5, 1,-6, 2, 1};
@@ -77,7 +96,9 @@ int main(int argc, char const *argv[])
     }
     cout << endl;
     
-    Indices idxs = equilibrium_index(array);
+//    Indices idxs = equilibrium_index(array);
+    Indices idxs = equilibrium_index_20250212(array);
+
     cout << "Equilibrium Index is:";
     for(auto i : idxs) {
         cout << " " << i;
@@ -86,3 +107,16 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+
+
+
+
+
+
+
+/*
+     思路：
+        要注意的是这个题，不是要求左右两边是对称的，而是要求以index为分割点(不含)两端的和一样
+        遍历两遍，先计算出总和，然后在遍历比较左右两部分的和，时间复杂度O(n)
+ */

@@ -9,3 +9,4 @@ algorithm_box/.DS_Store
 coursera_algorithm/algorithmic-toolbox/.DS_Store
 
 Debug/
+*.out
