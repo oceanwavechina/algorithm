@@ -19,36 +19,6 @@
 			Given sorted array A = [1, 1, 1, 2, 2, 3],
 			Your function should return length = 5, and A is now [1, 1, 2, 2, 3]
 
-	这个是 remove_duplicates.cpp 一个延时题，思路是这样的：
-
-		因为数组是有序的， 所以在给定一个元素(其下标用left 表示) 跟 cursor 判断的时候，就会出现两种情况：
-			1. 相等
-			2. 不相等
-
-		如果不相等，那就好办了，直接把 cursor 放到 left+1 的位置上。
-
-		如果相等，我们就要判断下 是 <=2 次相等，还是 >2 次相等。也就是我们允许 <=2 次相等的。
-
-		   left
-			V
-		∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ .... ∆ ∆ ∆ ∆
-					^
-				  cursor
-
-		如上图，假设 a[left] 和 a[cursor] 一样的话，最多也会允许 a[left-1] 和 a[cursor] 对应的元素一样。但是 a[left-2] 就不能再和 a[curosr] 一样了。
-
-		根据递推关系，
-			1. 假设到left 这个位置都是满足条件的，则有 a[left-1] == a[left] 和 a[left-1] != a[left] 两种情况。
-
-			2. 这样我们只需要保证 a[left-1] 和 a[cursor] 不一样就可以了，因为我们允许 a[left] == a[left-1]
-
-				也就是有， 如果 a[left-1] == a[cursor], 那么与之对应的如下两种情况都是正确的：
-					1)  a[left-1] == a[left]		// 两个重复的
-					2)  a[left-1] != a[left]		// 都是惟一的
-
-			3. 所以当 a[left-1] == a[cursor] 时，是满足条件的，但是left 不能再向右移动了。因为我们最多允许两个重复的。
-				left 右移的条件是 a[left-1] == a[cursor]
-
  */
 
 
@@ -101,3 +71,44 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+/*
+    这个是 remove_duplicates.cpp 一个延时题，思路是这样的：
+
+        因为数组是有序的， 所以在给定一个元素(其下标用left 表示) 跟 cursor 判断的时候，就会出现两种情况：
+            1. 相等
+            2. 不相等
+
+        如果不相等，那就好办了，直接把 cursor 放到 left+1 的位置上。
+
+        如果相等，我们就要判断下 是 <=2 次相等，还是 >2 次相等。也就是我们允许 <=2 次相等的。
+
+           left
+            V
+        ∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ ∆ .... ∆ ∆ ∆ ∆
+                    ^
+                  cursor
+
+        如上图，假设 a[left] 和 a[cursor] 一样的话，最多也会允许 a[left-1] 和 a[cursor] 对应的元素一样。但是 a[left-2] 就不能再和 a[curosr] 一样了。
+
+        根据递推关系，
+            1. 假设到left 这个位置都是满足条件的，则有 a[left-1] == a[left] 和 a[left-1] != a[left] 两种情况。
+
+            2. 这样我们只需要保证 a[left-1] 和 a[cursor] 不一样就可以了，因为我们允许 a[left] == a[left-1]
+
+                也就是有， 如果 a[left-1] == a[cursor], 那么与之对应的如下两种情况都是正确的：
+                    1)  a[left-1] == a[left]        // 两个重复的
+                    2)  a[left-1] != a[left]        // 都是惟一的
+
+            3. 所以当 a[left-1] == a[cursor] 时，是满足条件的，但是left 不能再向右移动了。因为我们最多允许两个重复的。
+                left 右移的条件是 a[left-1] == a[cursor]
+ */

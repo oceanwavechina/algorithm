@@ -20,27 +20,6 @@
 			2   3
 
 	The highlighted path yields the maximum sum 10.
-
- Hint:
-	Anytime when you found that doing top down approach uses a lot of repeated calculation, 
-	bottom up approach usually is able to be more efficient.
-
- 	 	 	 	 _____Node____
- 	 	 	    / 			  \
- 	 	 	   / 			   \
- 	 	  left subtree 		right subtree
-
-	Try the bottom up approach. At each node, the potential maximum path could be one of these cases:
-		i. max(left subtree) + node
-		ii. max(right subtree) + node
-		iii. max(left subtree) + max(right subtree) + node (相当于横跨了当前节点的一个 ^ 形状的路径)
-		iv. the node itself
-		
-		Then, we need to return the maximum path sum that goes through this node and 
-		to either one of its left or right subtree to its parent.
-		There is a little trick here: 
-			If this maximum happens to be negative, we should return 0,
-			which means: not include this subtree as part of the maximum path of the parent node, which greatly simplifies our code.
  */
 
 
@@ -171,3 +150,29 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
+
+
+
+/*
+
+ Hint:
+    Anytime when you found that doing top down approach uses a lot of repeated calculation,
+    bottom up approach usually is able to be more efficient.
+
+                 _____Node____
+                /             \
+               /               \
+          left subtree      right subtree
+
+    Try the bottom up approach. At each node, the potential maximum path could be one of these cases:
+        i. max(left subtree) + node
+        ii. max(right subtree) + node
+        iii. max(left subtree) + max(right subtree) + node (相当于横跨了当前节点的一个 ^ 形状的路径)
+        iv. the node itself
+
+        Then, we need to return the maximum path sum that goes through this node and
+        to either one of its left or right subtree to its parent.
+        There is a little trick here:
+            If this maximum happens to be negative, we should return 0,
+            which means: not include this subtree as part of the maximum path of the parent node, which greatly simplifies our code.
+ */

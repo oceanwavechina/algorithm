@@ -15,10 +15,6 @@
 
         Input:  arr[] = {1, 4, 0, 0, 3, 10, 5}, sum = 7
         Ouptut: Sum found between indexes 1 and 4
-
-    思路：
-        以为是连续的，所以我们只有有连个指针指向start和end，像滑动窗口一样遍历一次就可以了
-        所以时间复杂度是O(1), 空间复杂度是O(1)
 */
 
 #include <utility>
@@ -85,3 +81,12 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+
+
+
+/*
+     思路：
+        以为是连续的，所以我们只有有连个指针指向start和end，像滑动窗口一样遍历一次就可以了
+        所以时间复杂度是O(1), 空间复杂度是O(1)
+ */
