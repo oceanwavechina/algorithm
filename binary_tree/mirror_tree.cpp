@@ -156,6 +156,26 @@ void mirror_tree_recursively(Node* p_node)
 }
 
 
+void mirror_tree_recursively2(Node* p_node) {
+
+    if(!p_node) {
+        return;
+    }
+
+    Node* tmp =  p_node->left;
+    p_node->left = p_node->right;
+    p_node->right = tmp;
+
+    if(p_node->left) {
+        mirror_tree_recursively(p_node->left);
+    }
+
+    if(p_node->right) {
+        mirror_tree_recursively(p_node->right);
+    }
+
+}
+
 /*
  	 因为是根据镜像的特点，其实是按行遍历的，所以我们使用queue就可以解决
  */
@@ -197,8 +217,8 @@ int main(int argc, char **argv) {
 
 	display(tree);
 
-	// mirror_tree_recursively(tree);
-	mirror_tree_iteratively(tree);
+	mirror_tree_recursively2(tree);
+	// mirror_tree_iteratively(tree);
 
 	display(tree);
 
