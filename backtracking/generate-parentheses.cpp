@@ -100,8 +100,10 @@ void generate_parentheses_backtracking(int n, string& str) {
         return;
     }
 
-    if(str.size() == 6 && is_valid_parentheses(str)) {
-        cout << str << endl;
+    if(str.size() == 6) {
+        if(is_valid_parentheses(str)) {
+            cout << str << endl;
+        }
         return;
     }
 
