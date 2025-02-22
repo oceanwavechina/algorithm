@@ -106,16 +106,16 @@ void generate_parentheses_backtracking(int n, string& str) {
     }
 
     str.push_back('(');
-    cout << "push (:" << str << endl;
+    cout << str << endl;
     generate_parentheses_backtracking(n, str);
     str.pop_back();
-    cout << "pop (:" << str << endl;
+    cout << str << endl;
 
     str.push_back(')');
-    cout << "push ):" << str << endl;
+    cout << str << endl;
     generate_parentheses_backtracking(n, str);
     str.pop_back();
-    cout << "pop ):" << str << endl;
+    cout << str << endl;
 }
 
 
