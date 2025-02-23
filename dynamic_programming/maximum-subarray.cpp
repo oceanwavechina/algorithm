@@ -32,12 +32,11 @@ using namespace std;
 
 
 int maxSubArray(vector<int>& nums) {
-    int global_max = nums[0];
-    int current_max = nums[0];
+    int global_max = 0;
+    int current_max = 0;
 
-    for(size_t i=1; i<nums.size(); ++i) {
+    for(size_t i=0; i<nums.size(); ++i) {
         current_max = std::max(nums[i], nums[i]+current_max);
-
         global_max = std::max(current_max, global_max);
     }
 
